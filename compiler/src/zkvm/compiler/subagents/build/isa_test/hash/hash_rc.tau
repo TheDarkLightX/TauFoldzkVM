@@ -1,0 +1,7 @@
+# HASH
+# Nibble: -1, Carry In: False, Carry Out: False
+# Guarantees: hashed
+
+solve ok=1 && d0=0 && d1=0 && d2=0 && d3=0 && d4=0 && d5=0 && d6=0 && d7=0 && d8=0 && d9=0 && d10=0 && d11=0 && d12=0 && d13=0 && d14=0 && d15=0 && x0=(d0+d11) && x1=(d1+d12) && x2=(d2+d13) && x3=(d3+d14) && x4=(d4+d15) && x5=(d5+d8) && x6=(d6+d9) && x7=(d7+d10) && y0=(x0+x5) && y1=(x1+x6) && y2=(x2+x7) && y3=(x3+x0) && y4=(x4+x1) && y5=(x5+x2) && y6=(x6+x3) && y7=(x7+x4) && h0=y0 && h1=y1 && h2=y2 && h3=y3 && h4=y4 && h5=y5 && h6=y6 && h7=y7
+
+quit

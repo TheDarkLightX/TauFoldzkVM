@@ -1,0 +1,6 @@
+# Component: halt
+# Guarantees: halted
+
+solve halt=1 && halted=halt
+
+quit

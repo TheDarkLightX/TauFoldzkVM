@@ -1,0 +1,8 @@
+# Contract: carry_1_to_2
+# Assumptions: cout1=0|cout1=1
+# Guarantees: cin=cout{from_nibble}
+# Character count: 20
+
+solve cout1=0 && cin=cout1
+
+quit

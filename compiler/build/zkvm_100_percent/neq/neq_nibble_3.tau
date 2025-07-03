@@ -1,0 +1,6 @@
+# Component: neq_nibble_3
+# Guarantees: neq3
+
+solve a3=1 && b3=0 && neq3=(a3+b3)
+
+quit

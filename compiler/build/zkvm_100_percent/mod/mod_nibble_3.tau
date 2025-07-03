@@ -1,0 +1,6 @@
+# Component: mod_nibble_3
+# Guarantees: rem3
+
+solve a3=1 && b3=1 && rem3=(a3&(b3+1))
+
+quit

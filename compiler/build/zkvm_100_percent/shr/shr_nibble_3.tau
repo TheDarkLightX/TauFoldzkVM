@@ -1,0 +1,7 @@
+# Component: shr_nibble_3
+# Assumptions: cin=0|cin=1
+# Guarantees: cout3=a12
+
+solve a12=1 && b12=0 && a13=0 && b13=1 && a14=1 && b14=0 && a15=0 && b15=1 && cin=0 && r12=a13 && r13=a14 && r14=a15 && r15=cin && cout3=a12
+
+quit

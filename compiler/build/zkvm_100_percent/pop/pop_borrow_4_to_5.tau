@@ -1,0 +1,6 @@
+# Component: pop_borrow_4_to_5
+# Guarantees: popborrow
+
+solve borrow=0 && popborrow=borrow
+
+quit

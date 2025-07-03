@@ -1,0 +1,7 @@
+# Contract: add_high
+# Assumptions: carry_in=0|carry_in=1
+# Guarantees: 
+
+solve (carry_in=0|carry_in=1) && a4=1 && b4=0 && a5=0 && b5=1 && a6=1 && b6=0 && a7=0 && b7=1 && s4=(a4+b4+carry_in) && c4=((a4&b4)|((a4+b4)&carry_in)) && s5=(a5+b5+c4) && c5=((a5&b5)|((a5+b5)&c4)) && s6=(a6+b6+c5) && c6=((a6&b6)|((a6+b6)&c5)) && s7=(a7+b7+c6) && c7=((a7&b7)|((a7+b7)&c6)) && guarantee=1
+
+quit

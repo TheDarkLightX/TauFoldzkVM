@@ -1,0 +1,7 @@
+# ADD_NIBBLE_1
+# Nibble: 1, Carry In: True, Carry Out: True
+# Guarantees: sum_ok_1, carry_ok_1
+
+solve valid_1=1 && a10=0 && b10=0 && a11=0 && b11=0 && a12=0 && b12=0 && a13=0 && b13=0 && ci1=0 && s10=(a10+b10+ci1) && c10=((a10&b10)|((a10+b10)&ci1)) && s11=(a11+b11+c10) && c11=((a11&b11)|((a11+b11)&c10)) && s12=(a12+b12+c11) && c12=((a12&b12)|((a12+b12)&c11)) && s13=(a13+b13+c12) && c13=((a13&b13)|((a13+b13)&c12)) && co1=c13
+
+quit

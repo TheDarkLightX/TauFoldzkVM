@@ -1,0 +1,5 @@
+# Component: log_nibble_4
+
+solve data4=0 && level4=1 && logged4=(data4|level4) && log=1
+
+quit

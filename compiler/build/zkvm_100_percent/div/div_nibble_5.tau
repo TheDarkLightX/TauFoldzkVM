@@ -1,0 +1,6 @@
+# Component: div_nibble_5
+# Guarantees: q5, r5
+
+solve a5=1 && b5=1 && q5=(a5&b5) && r5=0
+
+quit

@@ -1,0 +1,6 @@
+# Component: ret_nibble_6
+# Guarantees: newpc24, newpc25, newpc26, newpc27, spchanged6
+
+solve sp24=0 && sp25=1 && sp26=0 && sp27=1 && retaddr24=1 && retaddr25=0 && retaddr26=1 && retaddr27=0 && pc24=1 && pc25=0 && pc26=1 && pc27=0 && newpc24=retaddr24 && newpc25=retaddr25 && newpc26=retaddr26 && newpc27=retaddr27 && spchanged6=1
+
+quit

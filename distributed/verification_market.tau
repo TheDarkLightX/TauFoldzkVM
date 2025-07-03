@@ -1,0 +1,7 @@
+# Verification Market
+# Anyone can verify proofs and claim rewards for finding errors
+
+# Submitted proof (4-bit)
+solve proof0=1 && proof1=0 && proof2=1 && proof3=1 && expected0=0 && expected1=1 && expected2=1 && expected3=0 && check0=(proof0+expected0) && check1=(proof1+expected1) && check2=(proof2+expected2) && check3=(proof3+expected3) && all_match=((check0+1)&(check1+1)&(check2+1)&(check3+1)) && slash=(all_match+1) && reward=slash && result=(slash&reward)
+
+quit

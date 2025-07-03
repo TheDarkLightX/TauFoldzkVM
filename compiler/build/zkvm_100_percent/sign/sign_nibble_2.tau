@@ -1,0 +1,6 @@
+# Component: sign_nibble_2
+# Guarantees: sig8, sig9, sig10, sig11
+
+solve msg8=0 && msg9=1 && msg10=0 && msg11=1 && sk8=1 && sk9=0 && sk10=1 && sk11=0 && k8=0 && k9=1 && k10=0 && k11=1 && h8=(msg8&sk8) && s8=(k8+(h8&sk8)) && h9=(msg9&sk9) && s9=(k9+(h9&sk9)) && h10=(msg10&sk10) && s10=(k10+(h10&sk10)) && h11=(msg11&sk11) && s11=(k11+(h11&sk11)) && sig8=s8 && sig9=s9 && sig10=s10 && sig11=s11
+
+quit

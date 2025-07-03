@@ -1,0 +1,37 @@
+[package]
+name = "taufold-zkvm"
+version = "1.0.0"
+edition = "2021"
+authors = ["Dana Edwards <darklight@darkai.org>"]
+description = "TauFoldZKVM: Production-ready zero-knowledge virtual machine with mathematical correctness guarantees"
+license = "MIT"
+repository = "https://github.com/DarkLightX/TauStandardLibrary"
+keywords = ["zkvm", "zero-knowledge", "virtual-machine", "tau", "constraints"]
+categories = ["cryptography", "virtual-machine", "mathematics"]
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "1.0"
+tokio = { version = "1.0", features = ["full"] }
+rayon = "1.7"
+clap = { version = "4.0", features = ["derive"] }
+anyhow = "1.0"
+sha2 = "0.10"
+rand = "0.8"
+uuid = { version = "1.0", features = ["v4"] }
+chrono = { version = "0.4", features = ["serde"] }
+
+[dev-dependencies]
+criterion = "0.5"
+proptest = "1.0"
+
+[[bin]]
+name = "taufold-zkvm"
+path = "src/main.rs"
+
+[lib]
+name = "taufold_zkvm"
+path = "src/lib.rs"
+
+# Benchmarks will be added later

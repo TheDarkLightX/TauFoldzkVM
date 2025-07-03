@@ -1,0 +1,6 @@
+# Component: push_nibble_5
+# Guarantees: pushed5
+
+solve data5=0 && stackop=1 && pushed5=(data5&stackop)
+
+quit

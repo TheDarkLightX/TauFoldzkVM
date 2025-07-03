@@ -1,0 +1,5 @@
+# Component: recv_nibble_5
+
+solve msg5=0 && src5=0 && recv=1
+
+quit

@@ -1,0 +1,7 @@
+# Proof Aggregation Tree
+# Combines shard proofs via binary tree folding
+
+# Level 0: 4 shard proofs (2-bit identifiers)
+solve proof00=1 && proof01=0 && proof10=0 && proof11=1 && proof20=1 && proof21=1 && proof30=0 && proof31=0 && fold01_0=(proof00+proof10) && fold01_1=(proof01+proof11) && fold23_0=(proof20+proof30) && fold23_1=(proof21+proof31) && root0=(fold01_0+fold23_0) && root1=(fold01_1+fold23_1) && level1_valid=(fold01_0|fold01_1)&(fold23_0|fold23_1) && root_valid=(root0+root1) && valid=(level1_valid&root_valid)
+
+quit

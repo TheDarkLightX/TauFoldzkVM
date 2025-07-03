@@ -1,0 +1,7 @@
+# ADD_CARRY_6_7
+# Nibble: -1, Carry In: True, Carry Out: True
+# Guarantees: carry_ok_6_7
+
+solve nib6_ok=1 && co6=1 && ci7=co6 && cp67=1
+
+quit

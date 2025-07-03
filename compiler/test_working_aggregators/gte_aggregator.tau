@@ -1,0 +1,6 @@
+# Component: gte_aggregator
+# Guarantees: gtefinal
+
+solve gtres=0 && eqres=1 && gtefinal=(gtres|eqres)
+
+quit

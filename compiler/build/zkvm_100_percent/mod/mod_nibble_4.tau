@@ -1,0 +1,6 @@
+# Component: mod_nibble_4
+# Guarantees: rem4
+
+solve a4=1 && b4=1 && rem4=(a4&(b4+1))
+
+quit

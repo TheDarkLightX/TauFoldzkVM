@@ -1,0 +1,6 @@
+# Component: sign_nibble_6
+# Guarantees: sig24, sig25, sig26, sig27
+
+solve msg24=0 && msg25=1 && msg26=0 && msg27=1 && sk24=1 && sk25=0 && sk26=1 && sk27=0 && k24=0 && k25=1 && k26=0 && k27=1 && h24=(msg24&sk24) && s24=(k24+(h24&sk24)) && h25=(msg25&sk25) && s25=(k25+(h25&sk25)) && h26=(msg26&sk26) && s26=(k26+(h26&sk26)) && h27=(msg27&sk27) && s27=(k27+(h27&sk27)) && sig24=s24 && sig25=s25 && sig26=s26 && sig27=s27
+
+quit

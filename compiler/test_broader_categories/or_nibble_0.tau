@@ -1,0 +1,6 @@
+# Component: or_nibble_0
+# Guarantees: or0
+
+solve a0=1 && b0=0 && or0=(a0|b0)
+
+quit

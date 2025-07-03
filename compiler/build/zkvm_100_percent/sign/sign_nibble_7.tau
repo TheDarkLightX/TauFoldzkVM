@@ -1,0 +1,6 @@
+# Component: sign_nibble_7
+# Guarantees: sig28, sig29, sig30, sig31
+
+solve msg28=1 && msg29=0 && msg30=1 && msg31=0 && sk28=1 && sk29=0 && sk30=1 && sk31=0 && k28=1 && k29=0 && k30=1 && k31=0 && h28=(msg28&sk28) && s28=(k28+(h28&sk28)) && h29=(msg29&sk29) && s29=(k29+(h29&sk29)) && h30=(msg30&sk30) && s30=(k30+(h30&sk30)) && h31=(msg31&sk31) && s31=(k31+(h31&sk31)) && sig28=s28 && sig29=s29 && sig30=s30 && sig31=s31
+
+quit

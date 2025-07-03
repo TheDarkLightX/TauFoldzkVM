@@ -1,0 +1,6 @@
+# Component: shr_nibble_0
+# Guarantees: shr0
+
+solve a0=1 && shift0=1 && shr0=(a0&shift0)
+
+quit

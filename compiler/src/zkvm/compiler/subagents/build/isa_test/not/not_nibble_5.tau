@@ -1,0 +1,7 @@
+# NOT_NIBBLE_5
+# Nibble: 5, Carry In: False, Carry Out: False
+# Guarantees: not_correct_5
+
+solve valid_input_5=1 && a5_0=0 && r5_0=(a5_0+1) && a5_1=0 && r5_1=(a5_1+1) && a5_2=0 && r5_2=(a5_2+1) && a5_3=0 && r5_3=(a5_3+1)
+
+quit

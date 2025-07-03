@@ -1,0 +1,6 @@
+# Component: ret_nibble_4
+# Guarantees: newpc16, newpc17, newpc18, newpc19, spchanged4
+
+solve sp16=0 && sp17=1 && sp18=0 && sp19=1 && retaddr16=1 && retaddr17=0 && retaddr18=1 && retaddr19=0 && pc16=1 && pc17=0 && pc18=1 && pc19=0 && newpc16=retaddr16 && newpc17=retaddr17 && newpc18=retaddr18 && newpc19=retaddr19 && spchanged4=1
+
+quit

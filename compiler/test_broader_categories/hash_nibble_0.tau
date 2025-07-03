@@ -1,0 +1,6 @@
+# Component: hash_nibble_0
+# Guarantees: hash0
+
+solve in0=1 && hash0=(in0+1)
+
+quit

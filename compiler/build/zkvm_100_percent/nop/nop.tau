@@ -1,0 +1,6 @@
+# Component: nop
+# Guarantees: noop
+
+solve nop=1 && noop=nop
+
+quit

@@ -1,0 +1,2 @@
+# Simple XOR test
+solve a0=0 && b0=0 && r0=(a0+b0) && r0'

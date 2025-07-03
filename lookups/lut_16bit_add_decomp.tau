@@ -1,0 +1,9 @@
+# 16-bit ADD via 8-bit lookup decomposition with carry
+# Test: 0x00FF + 0x0001 = 0x0100
+
+# Input: a = 0x00FF (255), b = 0x0001 (1)
+# Expected: result = 0x0100 (256)
+
+solve ah0=0 && al0=1 && bh0=0 && bl0=1 && ah1=0 && al1=1 && bh1=0 && bl1=0 && ah2=0 && al2=1 && bh2=0 && bl2=0 && ah3=0 && al3=1 && bh3=0 && bl3=0 && ah4=0 && al4=1 && bh4=0 && bl4=0 && ah5=0 && al5=1 && bh5=0 && bl5=0 && ah6=0 && al6=1 && bh6=0 && bl6=0 && ah7=0 && al7=1 && bh7=0 && bl7=0 && sl0=(al0+bl0) && cl0=(al0&bl0) && sl1=(al1+bl1+cl0) && cl1=((al1&bl1)|((al1+bl1)&cl0)) && sl2=(al2+bl2+cl1) && cl2=((al2&bl2)|((al2+bl2)&cl1)) && sl3=(al3+bl3+cl2) && cl3=((al3&bl3)|((al3+bl3)&cl2)) && sl4=(al4+bl4+cl3) && cl4=((al4&bl4)|((al4+bl4)&cl3)) && sl5=(al5+bl5+cl4) && cl5=((al5&bl5)|((al5+bl5)&cl4)) && sl6=(al6+bl6+cl5) && cl6=((al6&bl6)|((al6+bl6)&cl5)) && sl7=(al7+bl7+cl6) && cl7=((al7&bl7)|((al7+bl7)&cl6)) && carry_to_high=cl7 && sh0=(ah0+bh0+carry_to_high) && ch0=((ah0&bh0)|((ah0+bh0)&carry_to_high)) && sh1=(ah1+bh1+ch0) && ch1=((ah1&bh1)|((ah1+bh1)&ch0)) && sh2=(ah2+bh2+ch1) && ch2=((ah2&bh2)|((ah2+bh2)&ch1)) && sh3=(ah3+bh3+ch2) && ch3=((ah3&bh3)|((ah3+bh3)&ch2)) && sh4=(ah4+bh4+ch3) && ch4=((ah4&bh4)|((ah4+bh4)&ch3)) && sh5=(ah5+bh5+ch4) && ch5=((ah5&bh5)|((ah5+bh5)&ch4)) && sh6=(ah6+bh6+ch5) && ch6=((ah6&bh6)|((ah6+bh6)&ch5)) && sh7=(ah7+bh7+ch6) && ch7=((ah7&bh7)|((ah7+bh7)&ch6)) && tl0=(sl0+1) && tl1=(sl1+1) && tl2=(sl2+1) && tl3=(sl3+1) && tl4=(sl4+1) && tl5=(sl5+1) && tl6=(sl6+1) && tl7=(sl7+1) && th0=sh0 && th1=(sh1+1) && th2=(sh2+1) && th3=(sh3+1) && th4=(sh4+1) && th5=(sh5+1) && th6=(sh6+1) && th7=(sh7+1) && low_ok=(tl0&tl1&tl2&tl3&tl4&tl5&tl6&tl7) && high_ok=(th0&th1&th2&th3&th4&th5&th6&th7) && result=(low_ok&high_ok)
+
+quit

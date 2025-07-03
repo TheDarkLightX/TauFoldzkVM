@@ -1,0 +1,5 @@
+# Component: not_nibble_6
+
+solve a24=0 && a25=1 && a26=0 && a27=1 && r24=(a24+1) && r25=(a25+1) && r26=(a26+1) && r27=(a27+1)
+
+quit

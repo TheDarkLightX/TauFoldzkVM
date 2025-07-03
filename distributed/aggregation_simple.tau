@@ -1,0 +1,5 @@
+# Simple Aggregation Test
+# Fold two 2-bit proofs
+solve p00=1 && p01=0 && p10=0 && p11=1 && f0=(p00+p10) && f1=(p01+p11) && valid=(f0&(f1+1))
+
+quit

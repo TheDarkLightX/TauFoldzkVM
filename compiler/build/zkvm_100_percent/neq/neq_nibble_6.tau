@@ -1,0 +1,6 @@
+# Component: neq_nibble_6
+# Guarantees: neq6
+
+solve a6=0 && b6=1 && neq6=(a6+b6)
+
+quit

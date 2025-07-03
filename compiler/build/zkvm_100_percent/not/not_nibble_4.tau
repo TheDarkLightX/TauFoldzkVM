@@ -1,0 +1,5 @@
+# Component: not_nibble_4
+
+solve a16=0 && a17=1 && a18=0 && a19=1 && r16=(a16+1) && r17=(a17+1) && r18=(a18+1) && r19=(a19+1)
+
+quit

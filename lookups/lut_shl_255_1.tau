@@ -1,0 +1,5 @@
+# SHL lookup validation: 255 shl 1 = 254
+# Shift with loss
+solve a0=1 && a1=1 && a2=1 && a3=1 && a4=1 && a5=1 && a6=1 && a7=1 && sh0=1 && sh1=0 && sh2=0 && sh3=0 && sh4=0 && sh5=0 && sh6=0 && sh7=0 && r0=0 && r1=a0 && r2=a1 && r3=a2 && r4=a3 && r5=a4 && r6=a5 && r7=a6 && t0=(r0+1) && t1=r1 && t2=r2 && t3=r3 && t4=r4 && t5=r5 && t6=r6 && t7=r7 && result=(t0&t1&t2&t3&t4&t5&t6&t7)
+
+quit

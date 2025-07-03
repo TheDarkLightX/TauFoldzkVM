@@ -1,0 +1,6 @@
+# Component: div_nibble_3
+# Guarantees: q3, r3
+
+solve a3=1 && b3=1 && q3=(a3&b3) && r3=0
+
+quit

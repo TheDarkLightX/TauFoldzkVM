@@ -1,0 +1,6 @@
+# Component: mstore_nibble_6
+# Guarantees: stored6
+
+solve maddr6=0 && mdata6=1 && memwrite6=1 && stored6=(mdata6&memwrite6)
+
+quit

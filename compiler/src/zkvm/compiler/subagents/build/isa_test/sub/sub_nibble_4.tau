@@ -1,0 +1,7 @@
+# SUB_NIBBLE_4
+# Nibble: 4, Carry In: True, Carry Out: True
+# Guarantees: diff_ok_4, borrow_ok_4
+
+solve valid_4=1 && a40=0 && b40=0 && a41=0 && b41=0 && a42=0 && b42=0 && a43=0 && b43=0 && v40=(b40+1) && v41=(b41+1) && v42=(b42+1) && v43=(b43+1) && k=0 && bi4=0 && d40=(a40+v40+bi4) && w40=((a40&v40)|((a40+v40)&bi4)) && d41=(a41+v41+w40) && w41=((a41&v41)|((a41+v41)&w40)) && d42=(a42+v42+w41) && w42=((a42&v42)|((a42+v42)&w41)) && d43=(a43+v43+w42) && w43=((a43&v43)|((a43+v43)&w42)) && bo4=(w43+1)
+
+quit

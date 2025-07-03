@@ -1,0 +1,15 @@
+{
+  "instructions": [
+    "Push(42)",
+    "Push(58)", 
+    "Add",
+    "Debug",
+    "Halt"
+  ],
+  "metadata": {
+    "name": "Simple Test",
+    "version": "1.0.0",
+    "description": "Basic arithmetic test",
+    "created_at": "2025-01-01T00:00:00Z"
+  }
+}

@@ -1,0 +1,7 @@
+# SUB_NIBBLE_6
+# Nibble: 6, Carry In: True, Carry Out: True
+# Guarantees: diff_ok_6, borrow_ok_6
+
+solve valid_6=1 && a60=0 && b60=0 && a61=0 && b61=0 && a62=0 && b62=0 && a63=0 && b63=0 && v60=(b60+1) && v61=(b61+1) && v62=(b62+1) && v63=(b63+1) && k=0 && bi6=0 && d60=(a60+v60+bi6) && w60=((a60&v60)|((a60+v60)&bi6)) && d61=(a61+v61+w60) && w61=((a61&v61)|((a61+v61)&w60)) && d62=(a62+v62+w61) && w62=((a62&v62)|((a62+v62)&w61)) && d63=(a63+v63+w62) && w63=((a63&v63)|((a63+v63)&w62)) && bo6=(w63+1)
+
+quit

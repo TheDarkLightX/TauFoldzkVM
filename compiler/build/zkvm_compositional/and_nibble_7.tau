@@ -1,0 +1,8 @@
+# Contract: and_nibble_7
+# Assumptions: none
+# Guarantees: none
+# Character count: 136
+
+solve a28=0 && b28=0 && a29=0 && b29=0 && a30=0 && b30=0 && a31=0 && b31=0 && r28=(a28&b28) && r29=(a29&b29) && r30=(a30&b30) && r31=(a31&b31)
+
+quit

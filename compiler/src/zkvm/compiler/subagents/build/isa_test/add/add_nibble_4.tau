@@ -1,0 +1,7 @@
+# ADD_NIBBLE_4
+# Nibble: 4, Carry In: True, Carry Out: True
+# Guarantees: sum_ok_4, carry_ok_4
+
+solve valid_4=1 && a40=0 && b40=0 && a41=0 && b41=0 && a42=0 && b42=0 && a43=0 && b43=0 && ci4=0 && s40=(a40+b40+ci4) && c40=((a40&b40)|((a40+b40)&ci4)) && s41=(a41+b41+c40) && c41=((a41&b41)|((a41+b41)&c40)) && s42=(a42+b42+c41) && c42=((a42&b42)|((a42+b42)&c41)) && s43=(a43+b43+c42) && c43=((a43&b43)|((a43+b43)&c42)) && co4=c43
+
+quit

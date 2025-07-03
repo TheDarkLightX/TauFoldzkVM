@@ -1,0 +1,6 @@
+# Component: gt_nibble_4
+# Guarantees: gt4
+
+solve a4=1 && b4=0 && gt4=(a4&(b4+1))
+
+quit

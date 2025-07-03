@@ -1,0 +1,83 @@
+{
+  "modules": {
+    "lookup_tables": [
+      "lookup_tables_part0.tau",
+      "lookup_tables_part1.tau",
+      "lookup_tables_part2.tau"
+    ],
+    "instruction_decoder": [
+      "instruction_decoder_part0.tau",
+      "instruction_decoder_part1.tau",
+      "instruction_decoder_part2.tau",
+      "instruction_decoder_part3.tau",
+      "instruction_decoder_part4.tau"
+    ],
+    "alu": [
+      "alu_part0.tau",
+      "alu_part1.tau",
+      "alu_part2.tau",
+      "alu_part3.tau",
+      "alu_part4.tau"
+    ],
+    "memory": [
+      "memory_part0.tau",
+      "memory_part1.tau",
+      "memory_part2.tau",
+      "memory_part3.tau",
+      "memory_part4.tau",
+      "memory_part5.tau",
+      "memory_part6.tau",
+      "memory_part7.tau",
+      "memory_part8.tau",
+      "memory_part9.tau",
+      "memory_part10.tau",
+      "memory_part11.tau",
+      "memory_part12.tau",
+      "memory_part13.tau",
+      "memory_part14.tau",
+      "memory_part15.tau",
+      "memory_part16.tau",
+      "memory_part17.tau",
+      "memory_part18.tau",
+      "memory_part19.tau",
+      "memory_part20.tau",
+      "memory_part21.tau",
+      "memory_part22.tau",
+      "memory_part23.tau",
+      "memory_part24.tau",
+      "memory_part25.tau",
+      "memory_part26.tau",
+      "memory_part27.tau",
+      "memory_part28.tau"
+    ],
+    "folding": [
+      "folding_part0.tau",
+      "folding_part1.tau",
+      "folding_part2.tau",
+      "folding_part3.tau",
+      "folding_part4.tau",
+      "folding_part5.tau",
+      "folding_part6.tau",
+      "folding_part7.tau",
+      "folding_part8.tau",
+      "folding_part9.tau",
+      "folding_part10.tau",
+      "folding_part11.tau",
+      "folding_part12.tau",
+      "folding_part13.tau",
+      "folding_part14.tau",
+      "folding_part15.tau",
+      "folding_part16.tau",
+      "folding_part17.tau"
+    ],
+    "execution": [
+      "execution_part0.tau"
+    ],
+    "verification": [
+      "verification_part0.tau"
+    ]
+  },
+  "total_files": 62,
+  "output_dir": "build/zkvm",
+  "compiler_version": "1.0.0"
+}

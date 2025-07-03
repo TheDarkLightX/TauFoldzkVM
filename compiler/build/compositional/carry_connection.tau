@@ -1,0 +1,7 @@
+# Contract: carry_connection
+# Assumptions: carry_out=0|carry_out=1
+# Guarantees: carry_in=carry_out
+
+solve (carry_out=0|carry_out=1) && carry_out=0 && carry_in=carry_out && guarantee=1
+
+quit

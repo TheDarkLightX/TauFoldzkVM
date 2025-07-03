@@ -1,0 +1,20 @@
+{
+  "instructions": [
+    {
+      "Push": 12345
+    },
+    "Hash",
+    {
+      "Push": 67890
+    },
+    "Hash",
+    "Xor",
+    "Halt"
+  ],
+  "metadata": {
+    "name": "Crypto Example",
+    "version": "1.0.0",
+    "description": "Demonstrates cryptographic operations with hashing and XOR",
+    "created_at": "2025-07-03T23:06:09.073415+00:00"
+  }
+}

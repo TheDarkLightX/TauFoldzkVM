@@ -1,0 +1,7 @@
+# Lookup Integration with ProtoStar Folding
+# Demonstrates O(d) lookup efficiency
+
+# Lookup table index (4-bit for demo)
+solve idx0=1 && idx1=1 && idx2=0 && idx3=1 && lut0=0 && lut1=1 && lut2=1 && lut3=0 && beta0=1 && beta1=0 && beta2=0 && beta3=0 && lookup_constraint=((idx0+lut0+1)&(idx1+lut1)&(idx2+lut2)&(idx3+lut3+1)) && idx20=0 && idx21=1 && idx22=1 && idx23=0 && lut20=1 && lut21=0 && lut22=0 && lut23=1 && folded_lookup=(lookup_constraint|(beta0&((idx20+lut20)&(idx21+lut21+1)&(idx22+lut22+1)&(idx23+lut23)))) && result=folded_lookup
+
+quit

@@ -1,0 +1,7 @@
+# XOR_NIBBLE_7
+# Nibble: 7, Carry In: False, Carry Out: False
+# Guarantees: xor_correct_7
+
+solve valid_inputs_7=1 && a7_0=0 && b7_0=0 && a7_1=0 && b7_1=0 && a7_2=0 && b7_2=0 && a7_3=0 && b7_3=0 && r7_0=(a7_0+b7_0) && r7_1=(a7_1+b7_1) && r7_2=(a7_2+b7_2) && r7_3=(a7_3+b7_3)
+
+quit

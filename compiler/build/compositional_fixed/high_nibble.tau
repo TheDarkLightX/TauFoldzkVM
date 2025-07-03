@@ -1,0 +1,5 @@
+# Compositional 8-bit adder - high_nibble.tau
+
+solve a4=1 && a5=0 && a6=1 && a7=0 && b4=1 && b5=0 && b6=1 && b7=0 && cin=1 && s4=(a4+b4+cin) && c4=((a4&b4)|((a4+b4)&cin)) && s5=(a5+b5+c4) && c5=((a5&b5)|((a5+b5)&c4)) && s6=(a6+b6+c5) && c6=((a6&b6)|((a6+b6)&c5)) && s7=(a7+b7+c6) && c7=((a7&b7)|((a7+b7)&c6))
+
+quit

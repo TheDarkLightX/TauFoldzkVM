@@ -1,0 +1,7 @@
+# NOT_NIBBLE_7
+# Nibble: 7, Carry In: False, Carry Out: False
+# Guarantees: not_correct_7
+
+solve valid_input_7=1 && a7_0=0 && r7_0=(a7_0+1) && a7_1=0 && r7_1=(a7_1+1) && a7_2=0 && r7_2=(a7_2+1) && a7_3=0 && r7_3=(a7_3+1)
+
+quit

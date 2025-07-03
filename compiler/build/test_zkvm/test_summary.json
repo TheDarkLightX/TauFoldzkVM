@@ -1,0 +1,13 @@
+{
+  "test": "compositional_zkvm",
+  "instructions_tested": [
+    "ADD",
+    "AND",
+    "JMP"
+  ],
+  "total_components": 24,
+  "total_constraints": 284,
+  "max_constraint_length": 196,
+  "composition_verified": true,
+  "notes": "All components under 700 chars, composition structure verified"
+}

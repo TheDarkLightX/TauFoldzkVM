@@ -1,0 +1,6 @@
+# Component: sign_nibble_5
+# Guarantees: sig20, sig21, sig22, sig23
+
+solve msg20=1 && msg21=0 && msg22=1 && msg23=0 && sk20=1 && sk21=0 && sk22=1 && sk23=0 && k20=1 && k21=0 && k22=1 && k23=0 && h20=(msg20&sk20) && s20=(k20+(h20&sk20)) && h21=(msg21&sk21) && s21=(k21+(h21&sk21)) && h22=(msg22&sk22) && s22=(k22+(h22&sk22)) && h23=(msg23&sk23) && s23=(k23+(h23&sk23)) && sig20=s20 && sig21=s21 && sig22=s22 && sig23=s23
+
+quit

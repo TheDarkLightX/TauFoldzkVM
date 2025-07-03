@@ -1,0 +1,6 @@
+# Component: mstore_nibble_3
+# Guarantees: stored3
+
+solve maddr3=1 && mdata3=0 && memwrite3=1 && stored3=(mdata3&memwrite3)
+
+quit

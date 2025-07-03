@@ -1,0 +1,6 @@
+# Component: dup_nibble_1
+# Guarantees: dup1
+
+solve top1=1 && dup1=top1
+
+quit

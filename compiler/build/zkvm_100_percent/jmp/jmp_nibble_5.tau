@@ -1,0 +1,6 @@
+# Component: jmp_nibble_5
+# Guarantees: newpc20, newpc21, newpc22, newpc23
+
+solve target20=1 && target21=0 && target22=1 && target23=0 && pc20=0 && pc21=1 && pc22=0 && pc23=1 && newpc20=target20 && newpc21=target21 && newpc22=target22 && newpc23=target23
+
+quit

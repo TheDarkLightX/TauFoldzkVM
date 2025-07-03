@@ -1,0 +1,6 @@
+# Component: lt_nibble_4
+# Guarantees: lt4
+
+solve a4=0 && b4=1 && lt4=((a4+1)&b4)
+
+quit

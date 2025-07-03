@@ -1,0 +1,6 @@
+# Component: ret_nibble_0
+# Guarantees: newpc0, newpc1, newpc2, newpc3, spchanged0
+
+solve sp0=0 && sp1=1 && sp2=0 && sp3=1 && retaddr0=1 && retaddr1=0 && retaddr2=1 && retaddr3=0 && pc0=1 && pc1=0 && pc2=1 && pc3=0 && newpc0=retaddr0 && newpc1=retaddr1 && newpc2=retaddr2 && newpc3=retaddr3 && spchanged0=1
+
+quit

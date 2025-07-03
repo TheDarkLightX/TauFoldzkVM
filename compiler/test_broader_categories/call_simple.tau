@@ -1,0 +1,6 @@
+# Component: call_simple
+# Guarantees: call0
+
+solve target0=1 && call0=target0
+
+quit

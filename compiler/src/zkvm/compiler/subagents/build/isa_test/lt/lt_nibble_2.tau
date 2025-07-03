@@ -1,0 +1,7 @@
+# LT_NIBBLE_2
+# Nibble: 2, Carry In: True, Carry Out: True
+# Guarantees: cmp_flags_2
+
+solve inputs_valid_2=1 && a2_0=0 && b2_0=0 && a2_1=0 && b2_1=0 && a2_2=0 && b2_2=0 && a2_3=0 && b2_3=0 && bin2=0 && eq0=((a2_0+b2_0+1)|((a2_0+1)+(b2_0+1)+1)) && eq1=((a2_1+b2_1+1)|((a2_1+1)+(b2_1+1)+1)) && eq2=((a2_2+b2_2+1)|((a2_2+1)+(b2_2+1)+1)) && eq3=((a2_3+b2_3+1)|((a2_3+1)+(b2_3+1)+1)) && neq2=(eq0&eq1&eq2&eq3) && bout2=bin2
+
+quit

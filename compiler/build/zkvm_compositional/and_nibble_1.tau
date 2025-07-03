@@ -1,0 +1,8 @@
+# Contract: and_nibble_1
+# Assumptions: none
+# Guarantees: none
+# Character count: 116
+
+solve a4=0 && b4=0 && a5=0 && b5=0 && a6=0 && b6=0 && a7=0 && b7=0 && r4=(a4&b4) && r5=(a5&b5) && r6=(a6&b6) && r7=(a7&b7)
+
+quit

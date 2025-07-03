@@ -1,0 +1,6 @@
+# Component: lte_nibble_0
+# Guarantees: lte0
+
+solve a0=0 && b0=1 && lte0=((a0+1)|b0)
+
+quit

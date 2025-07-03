@@ -1,0 +1,6 @@
+# Component: lte_nibble_4
+# Guarantees: lte4
+
+solve a4=0 && b4=1 && lte4=((a4+1)|b4)
+
+quit

@@ -1,0 +1,7 @@
+# Component: call_nibble_1
+# Assumptions: cin=0|cin=1
+# Guarantees: newpc4, newpc5, newpc6, newpc7, stack4, stack5, stack6, stack7, spchanged1, cout1
+
+solve target4=1 && target5=0 && target6=1 && target7=0 && pc4=0 && pc5=1 && pc6=0 && pc7=1 && sp4=1 && sp5=0 && sp6=1 && sp7=0 && cin=0 && r4=(pc4+cin) && c4=(pc4&cin) && r5=(pc5+c4) && c5=(pc5&c4) && r6=(pc6+c5) && c6=(pc6&c5) && r7=(pc7+c6) && c7=(pc7&c6) && cout1=c7 && stack4=r4 && stack5=r5 && stack6=r6 && stack7=r7 && newpc4=target4 && newpc5=target5 && newpc6=target6 && newpc7=target7 && spchanged1=1
+
+quit

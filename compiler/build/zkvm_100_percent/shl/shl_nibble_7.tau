@@ -1,0 +1,7 @@
+# Component: shl_nibble_7
+# Assumptions: cin=0|cin=1
+# Guarantees: overflow
+
+solve a28=1 && b28=0 && a29=0 && b29=1 && a30=1 && b30=0 && a31=0 && b31=1 && cin=0 && r28=cin && r29=a28 && r30=a29 && r31=a30 && overflow=a31
+
+quit

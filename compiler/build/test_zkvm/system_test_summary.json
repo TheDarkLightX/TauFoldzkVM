@@ -1,0 +1,11 @@
+{
+  "test": "system_instructions",
+  "instructions_tested": [
+    "TIME",
+    "RAND",
+    "ID"
+  ],
+  "total_components": 24,
+  "total_constraints": 279,
+  "notes": "TIME, RAND, ID instructions implemented with nibble decomposition"
+}

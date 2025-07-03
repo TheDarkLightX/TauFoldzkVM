@@ -1,0 +1,7 @@
+# SUB_NIBBLE_1
+# Nibble: 1, Carry In: True, Carry Out: True
+# Guarantees: diff_ok_1, borrow_ok_1
+
+solve valid_1=1 && a10=0 && b10=0 && a11=0 && b11=0 && a12=0 && b12=0 && a13=0 && b13=0 && v10=(b10+1) && v11=(b11+1) && v12=(b12+1) && v13=(b13+1) && k=0 && bi1=0 && d10=(a10+v10+bi1) && w10=((a10&v10)|((a10+v10)&bi1)) && d11=(a11+v11+w10) && w11=((a11&v11)|((a11+v11)&w10)) && d12=(a12+v12+w11) && w12=((a12&v12)|((a12+v12)&w11)) && d13=(a13+v13+w12) && w13=((a13&v13)|((a13+v13)&w12)) && bo1=(w13+1)
+
+quit

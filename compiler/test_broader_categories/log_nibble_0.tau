@@ -1,0 +1,6 @@
+# Component: log_nibble_0
+# Guarantees: log0
+
+solve data0=1 && log0=data0
+
+quit

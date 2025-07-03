@@ -1,0 +1,7 @@
+# DIV_LOOKUP
+# Nibble: -1, Carry In: False, Carry Out: False
+# Guarantees: quotient_correct
+
+solve divisor_nonzero=1 && dividend0=0 && divisor0=0 && dividend1=0 && divisor1=0 && dividend2=0 && divisor2=0 && dividend3=0 && divisor3=0 && dividend4=0 && divisor4=0 && dividend5=0 && divisor5=0 && dividend6=0 && divisor6=0 && dividend7=0 && divisor7=0 && quotient0=0 && quotient1=0 && quotient2=0 && quotient3=0 && quotient4=0 && quotient5=0 && quotient6=0 && quotient7=0 && quotient_valid=1
+
+quit

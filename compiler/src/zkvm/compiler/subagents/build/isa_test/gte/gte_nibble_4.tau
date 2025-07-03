@@ -1,0 +1,7 @@
+# GTE_NIBBLE_4
+# Nibble: 4, Carry In: True, Carry Out: True
+# Guarantees: cmp_flags_4
+
+solve inputs_valid_4=1 && a4_0=0 && b4_0=0 && a4_1=0 && b4_1=0 && a4_2=0 && b4_2=0 && a4_3=0 && b4_3=0 && bin4=0 && eq0=((a4_0+b4_0+1)|((a4_0+1)+(b4_0+1)+1)) && eq1=((a4_1+b4_1+1)|((a4_1+1)+(b4_1+1)+1)) && eq2=((a4_2+b4_2+1)|((a4_2+1)+(b4_2+1)+1)) && eq3=((a4_3+b4_3+1)|((a4_3+1)+(b4_3+1)+1)) && neq4=(eq0&eq1&eq2&eq3) && bout4=bin4
+
+quit

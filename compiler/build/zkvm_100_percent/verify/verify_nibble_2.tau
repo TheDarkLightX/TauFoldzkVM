@@ -1,0 +1,6 @@
+# Component: verify_nibble_2
+# Guarantees: verifyok2
+
+solve sig2=1 && msg2=0 && pk2=1 && verifyok2=(sig2&msg2&pk2)
+
+quit

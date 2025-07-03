@@ -1,0 +1,8 @@
+# Contract: add_nibble_4
+# Assumptions: cin=0|cin=1
+# Guarantees: cout4=c19
+# Character count: 314
+
+solve a16=0 && b16=0 && a17=0 && b17=0 && a18=0 && b18=0 && a19=0 && b19=0 && cin=0 && s16=(a16+b16+cin) && c16=((a16&b16)|((a16+b16)&cin)) && s17=(a17+b17+c16) && c17=((a17&b17)|((a17+b17)&c16)) && s18=(a18+b18+c17) && c18=((a18&b18)|((a18+b18)&c17)) && s19=(a19+b19+c18) && c19=((a19&b19)|((a19+b19)&c18)) && cout4=c19
+
+quit

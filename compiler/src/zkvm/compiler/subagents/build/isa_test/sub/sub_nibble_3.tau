@@ -1,0 +1,7 @@
+# SUB_NIBBLE_3
+# Nibble: 3, Carry In: True, Carry Out: True
+# Guarantees: diff_ok_3, borrow_ok_3
+
+solve valid_3=1 && a30=0 && b30=0 && a31=0 && b31=0 && a32=0 && b32=0 && a33=0 && b33=0 && v30=(b30+1) && v31=(b31+1) && v32=(b32+1) && v33=(b33+1) && k=0 && bi3=0 && d30=(a30+v30+bi3) && w30=((a30&v30)|((a30+v30)&bi3)) && d31=(a31+v31+w30) && w31=((a31&v31)|((a31+v31)&w30)) && d32=(a32+v32+w31) && w32=((a32&v32)|((a32+v32)&w31)) && d33=(a33+v33+w32) && w33=((a33&v33)|((a33+v33)&w32)) && bo3=(w33+1)
+
+quit

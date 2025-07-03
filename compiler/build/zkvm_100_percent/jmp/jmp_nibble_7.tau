@@ -1,0 +1,6 @@
+# Component: jmp_nibble_7
+# Guarantees: newpc28, newpc29, newpc30, newpc31
+
+solve target28=1 && target29=0 && target30=1 && target31=0 && pc28=0 && pc29=1 && pc30=0 && pc31=1 && newpc28=target28 && newpc29=target29 && newpc30=target30 && newpc31=target31
+
+quit

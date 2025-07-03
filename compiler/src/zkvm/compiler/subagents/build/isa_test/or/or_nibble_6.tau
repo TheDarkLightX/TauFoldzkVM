@@ -1,0 +1,7 @@
+# OR_NIBBLE_6
+# Nibble: 6, Carry In: False, Carry Out: False
+# Guarantees: or_correct_6
+
+solve valid_inputs_6=1 && a6_0=0 && b6_0=0 && a6_1=0 && b6_1=0 && a6_2=0 && b6_2=0 && a6_3=0 && b6_3=0 && r6_0=(a6_0|b6_0) && r6_1=(a6_1|b6_1) && r6_2=(a6_2|b6_2) && r6_3=(a6_3|b6_3)
+
+quit

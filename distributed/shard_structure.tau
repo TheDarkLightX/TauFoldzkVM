@@ -1,0 +1,7 @@
+# Proof Shard Structure
+# Each shard proves a portion of execution trace
+
+# Shard 0: Steps 0-3
+solve shard0_id0=0 && shard0_id1=0 && start0_0=0 && start0_1=0 && end0_0=1 && end0_1=1 && mem_start0=0 && mem_start1=0 && mem_end0=1 && mem_end1=1 && commit0_0=1 && commit0_1=0 && commit0_2=1 && commit0_3=1 && shard1_id0=1 && shard1_id1=0 && start1_0=0 && start1_1=0 && end1_0=1 && end1_1=1 && commit1_0=0 && commit1_1=1 && commit1_2=0 && commit1_3=1 && no_overlap=((end0_0+1)|(end0_1+1)|start1_0|start1_1) && valid=(commit0_0&commit1_1&no_overlap)
+
+quit

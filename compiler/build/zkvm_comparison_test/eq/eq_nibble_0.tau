@@ -1,0 +1,6 @@
+# Component: eq_nibble_0
+# Guarantees: eq0
+
+solve a0=0 && b0=0 && eq0=(a0&b0)
+
+quit

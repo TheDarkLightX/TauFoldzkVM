@@ -1,0 +1,6 @@
+# Component: lt_nibble_7
+# Guarantees: lt7
+
+solve a7=0 && b7=1 && lt7=((a7+1)&b7)
+
+quit

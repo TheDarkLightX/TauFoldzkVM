@@ -1,0 +1,7 @@
+# Memory Instructions: LOAD and STORE
+# Simple memory model with 4 locations (2-bit address)
+
+# Memory state (4 locations x 4 bits each)
+solve m00=1 && m01=0 && m02=1 && m03=0 && m10=0 && m11=1 && m12=0 && m13=1 && m20=1 && m21=1 && m22=0 && m23=0 && m30=0 && m31=0 && m32=1 && m33=1 && addr0=0 && addr1=1 && is_load=1 && is_store=0 && sel0=((addr0+1)&(addr1+1)) && sel1=(addr0&(addr1+1)) && sel2=((addr0+1)&addr1) && sel3=(addr0&addr1) && loaded0=((sel0&m00)|(sel1&m10)|(sel2&m20)|(sel3&m30)) && loaded1=((sel0&m01)|(sel1&m11)|(sel2&m21)|(sel3&m31)) && loaded2=((sel0&m02)|(sel1&m12)|(sel2&m22)|(sel3&m32)) && loaded3=((sel0&m03)|(sel1&m13)|(sel2&m23)|(sel3&m33)) && result=(loaded0&loaded1&(loaded2+1)&(loaded3+1))
+
+quit

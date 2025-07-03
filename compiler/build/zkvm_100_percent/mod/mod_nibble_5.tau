@@ -1,0 +1,6 @@
+# Component: mod_nibble_5
+# Guarantees: rem5
+
+solve a5=1 && b5=1 && rem5=(a5&(b5+1))
+
+quit

@@ -1,0 +1,7 @@
+# Component: jnz_nibble_3
+# Assumptions: zflag=0|zflag=1, cin=0|cin=1
+# Guarantees: newpc12, newpc13, newpc14, newpc15, cout3
+
+solve zflag=0 && target12=1 && target13=0 && target14=1 && target15=0 && pc12=0 && pc13=1 && pc14=0 && pc15=1 && cin=0 && s12=(pc12+cin) && c12=(pc12&cin) && s13=(pc13+c12) && c13=(pc13&c12) && s14=(pc14+c13) && c14=(pc14&c13) && s15=(pc15+c14) && c15=(pc15&c14) && cout3=c15 && newpc12=(((zflag+1)&target12)|(zflag&s0)) && newpc13=(((zflag+1)&target13)|(zflag&s13)) && newpc14=(((zflag+1)&target14)|(zflag&s14)) && newpc15=(((zflag+1)&target15)|(zflag&s15))
+
+quit

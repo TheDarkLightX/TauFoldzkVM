@@ -1,0 +1,6 @@
+# Component: call_nibble_0
+# Guarantees: newpc0, newpc1, newpc2, newpc3, stack0, stack1, stack2, stack3, spchanged0, cout0
+
+solve target0=0 && target1=1 && target2=0 && target3=1 && pc0=1 && pc1=0 && pc2=1 && pc3=0 && sp0=0 && sp1=1 && sp2=0 && sp3=1 && r0=(pc0+0) && r1=(pc1+0) && r2=(pc2+1) && c2=pc2 && r3=(pc3+c2) && cout0=(pc3&c2) && stack0=r0 && stack1=r1 && stack2=r2 && stack3=r3 && newpc0=target0 && newpc1=target1 && newpc2=target2 && newpc3=target3 && spchanged0=1
+
+quit

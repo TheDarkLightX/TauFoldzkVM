@@ -1,0 +1,7 @@
+# Component: call_nibble_5
+# Assumptions: cin=0|cin=1
+# Guarantees: newpc20, newpc21, newpc22, newpc23, stack20, stack21, stack22, stack23, spchanged5, cout5
+
+solve target20=1 && target21=0 && target22=1 && target23=0 && pc20=0 && pc21=1 && pc22=0 && pc23=1 && sp20=1 && sp21=0 && sp22=1 && sp23=0 && cin=0 && r20=(pc20+cin) && c20=(pc20&cin) && r21=(pc21+c20) && c21=(pc21&c20) && r22=(pc22+c21) && c22=(pc22&c21) && r23=(pc23+c22) && c23=(pc23&c22) && cout5=c23 && stack20=r20 && stack21=r21 && stack22=r22 && stack23=r23 && newpc20=target20 && newpc21=target21 && newpc22=target22 && newpc23=target23 && spchanged5=1
+
+quit

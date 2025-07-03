@@ -1,0 +1,7 @@
+# GT_NIBBLE_6
+# Nibble: 6, Carry In: True, Carry Out: True
+# Guarantees: cmp_flags_6
+
+solve inputs_valid_6=1 && a6_0=0 && b6_0=0 && a6_1=0 && b6_1=0 && a6_2=0 && b6_2=0 && a6_3=0 && b6_3=0 && bin6=0 && eq0=((a6_0+b6_0+1)|((a6_0+1)+(b6_0+1)+1)) && eq1=((a6_1+b6_1+1)|((a6_1+1)+(b6_1+1)+1)) && eq2=((a6_2+b6_2+1)|((a6_2+1)+(b6_2+1)+1)) && eq3=((a6_3+b6_3+1)|((a6_3+1)+(b6_3+1)+1)) && neq6=(eq0&eq1&eq2&eq3) && bout6=bin6
+
+quit

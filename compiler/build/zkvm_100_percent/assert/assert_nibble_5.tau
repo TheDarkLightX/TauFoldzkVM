@@ -1,0 +1,5 @@
+# Component: assert_nibble_5
+
+solve cond5=1 && expected5=1 && ok5=(cond5&expected5) && assert=1
+
+quit

@@ -1,0 +1,6 @@
+# Component: ret_nibble_3
+# Guarantees: newpc12, newpc13, newpc14, newpc15, spchanged3
+
+solve sp12=1 && sp13=0 && sp14=1 && sp15=0 && retaddr12=0 && retaddr13=1 && retaddr14=0 && retaddr15=1 && pc12=0 && pc13=1 && pc14=0 && pc15=1 && newpc12=retaddr12 && newpc13=retaddr13 && newpc14=retaddr14 && newpc15=retaddr15 && spchanged3=1
+
+quit

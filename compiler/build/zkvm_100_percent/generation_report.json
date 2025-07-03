@@ -1,0 +1,326 @@
+{
+  "timestamp": "2025-07-03 18:27:39",
+  "total_instructions": 45,
+  "implemented_instructions": 45,
+  "total_components": 457,
+  "successful_components": 457,
+  "failed_components": 0,
+  "max_expression_length": 635,
+  "instruction_stats": {
+    "ADD": {
+      "status": "success",
+      "components": 15,
+      "successful": 15,
+      "failed": 0,
+      "max_chars": 314
+    },
+    "SUB": {
+      "status": "success",
+      "components": 15,
+      "successful": 15,
+      "failed": 0,
+      "max_chars": 33
+    },
+    "MUL": {
+      "status": "success",
+      "components": 8,
+      "successful": 8,
+      "failed": 0,
+      "max_chars": 298
+    },
+    "DIV": {
+      "status": "success",
+      "components": 15,
+      "successful": 15,
+      "failed": 0,
+      "max_chars": 96
+    },
+    "MOD": {
+      "status": "success",
+      "components": 15,
+      "successful": 15,
+      "failed": 0,
+      "max_chars": 96
+    },
+    "AND": {
+      "status": "success",
+      "components": 8,
+      "successful": 8,
+      "failed": 0,
+      "max_chars": 136
+    },
+    "OR": {
+      "status": "success",
+      "components": 8,
+      "successful": 8,
+      "failed": 0,
+      "max_chars": 136
+    },
+    "XOR": {
+      "status": "success",
+      "components": 8,
+      "successful": 8,
+      "failed": 0,
+      "max_chars": 136
+    },
+    "NOT": {
+      "status": "success",
+      "components": 8,
+      "successful": 8,
+      "failed": 0,
+      "max_chars": 92
+    },
+    "SHL": {
+      "status": "success",
+      "components": 15,
+      "successful": 15,
+      "failed": 0,
+      "max_chars": 137
+    },
+    "SHR": {
+      "status": "success",
+      "components": 15,
+      "successful": 15,
+      "failed": 0,
+      "max_chars": 134
+    },
+    "EQ": {
+      "status": "success",
+      "components": 9,
+      "successful": 9,
+      "failed": 0,
+      "max_chars": 61
+    },
+    "NEQ": {
+      "status": "success",
+      "components": 9,
+      "successful": 9,
+      "failed": 0,
+      "max_chars": 80
+    },
+    "LT": {
+      "status": "success",
+      "components": 9,
+      "successful": 9,
+      "failed": 0,
+      "max_chars": 137
+    },
+    "GT": {
+      "status": "success",
+      "components": 9,
+      "successful": 9,
+      "failed": 0,
+      "max_chars": 137
+    },
+    "LTE": {
+      "status": "success",
+      "components": 9,
+      "successful": 9,
+      "failed": 0,
+      "max_chars": 44
+    },
+    "GTE": {
+      "status": "success",
+      "components": 9,
+      "successful": 9,
+      "failed": 0,
+      "max_chars": 44
+    },
+    "LOAD": {
+      "status": "success",
+      "components": 16,
+      "successful": 16,
+      "failed": 0,
+      "max_chars": 16
+    },
+    "STORE": {
+      "status": "success",
+      "components": 16,
+      "successful": 16,
+      "failed": 0,
+      "max_chars": 16
+    },
+    "MLOAD": {
+      "status": "success",
+      "components": 8,
+      "successful": 8,
+      "failed": 0,
+      "max_chars": 128
+    },
+    "MSTORE": {
+      "status": "success",
+      "components": 8,
+      "successful": 8,
+      "failed": 0,
+      "max_chars": 131
+    },
+    "PUSH": {
+      "status": "success",
+      "components": 15,
+      "successful": 15,
+      "failed": 0,
+      "max_chars": 286
+    },
+    "POP": {
+      "status": "success",
+      "components": 15,
+      "successful": 15,
+      "failed": 0,
+      "max_chars": 361
+    },
+    "DUP": {
+      "status": "success",
+      "components": 9,
+      "successful": 9,
+      "failed": 0,
+      "max_chars": 28
+    },
+    "SWAP": {
+      "status": "success",
+      "components": 9,
+      "successful": 9,
+      "failed": 0,
+      "max_chars": 39
+    },
+    "JMP": {
+      "status": "success",
+      "components": 8,
+      "successful": 8,
+      "failed": 0,
+      "max_chars": 172
+    },
+    "JZ": {
+      "status": "success",
+      "components": 16,
+      "successful": 16,
+      "failed": 0,
+      "max_chars": 635
+    },
+    "JNZ": {
+      "status": "success",
+      "components": 16,
+      "successful": 16,
+      "failed": 0,
+      "max_chars": 635
+    },
+    "CALL": {
+      "status": "success",
+      "components": 15,
+      "successful": 15,
+      "failed": 0,
+      "max_chars": 454
+    },
+    "RET": {
+      "status": "success",
+      "components": 8,
+      "successful": 8,
+      "failed": 0,
+      "max_chars": 236
+    },
+    "HASH": {
+      "status": "success",
+      "components": 15,
+      "successful": 15,
+      "failed": 0,
+      "max_chars": 244
+    },
+    "VERIFY": {
+      "status": "success",
+      "components": 9,
+      "successful": 9,
+      "failed": 0,
+      "max_chars": 268
+    },
+    "SIGN": {
+      "status": "success",
+      "components": 8,
+      "successful": 8,
+      "failed": 0,
+      "max_chars": 344
+    },
+    "NOP": {
+      "status": "success",
+      "components": 1,
+      "successful": 1,
+      "failed": 0,
+      "max_chars": 23
+    },
+    "DEBUG": {
+      "status": "success",
+      "components": 8,
+      "successful": 8,
+      "failed": 0,
+      "max_chars": 39
+    },
+    "HALT": {
+      "status": "success",
+      "components": 1,
+      "successful": 1,
+      "failed": 0,
+      "max_chars": 19
+    },
+    "ASSERT": {
+      "status": "success",
+      "components": 8,
+      "successful": 8,
+      "failed": 0,
+      "max_chars": 59
+    },
+    "LOG": {
+      "status": "success",
+      "components": 8,
+      "successful": 8,
+      "failed": 0,
+      "max_chars": 54
+    },
+    "READ": {
+      "status": "success",
+      "components": 8,
+      "successful": 8,
+      "failed": 0,
+      "max_chars": 28
+    },
+    "WRITE": {
+      "status": "success",
+      "components": 8,
+      "successful": 8,
+      "failed": 0,
+      "max_chars": 29
+    },
+    "SEND": {
+      "status": "success",
+      "components": 8,
+      "successful": 8,
+      "failed": 0,
+      "max_chars": 27
+    },
+    "RECV": {
+      "status": "success",
+      "components": 8,
+      "successful": 8,
+      "failed": 0,
+      "max_chars": 26
+    },
+    "TIME": {
+      "status": "success",
+      "components": 8,
+      "successful": 8,
+      "failed": 0,
+      "max_chars": 15
+    },
+    "RAND": {
+      "status": "success",
+      "components": 8,
+      "successful": 8,
+      "failed": 0,
+      "max_chars": 16
+    },
+    "ID": {
+      "status": "success",
+      "components": 8,
+      "successful": 8,
+      "failed": 0,
+      "max_chars": 16
+    }
+  }
+}

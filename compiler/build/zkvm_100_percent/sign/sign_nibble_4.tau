@@ -1,0 +1,6 @@
+# Component: sign_nibble_4
+# Guarantees: sig16, sig17, sig18, sig19
+
+solve msg16=0 && msg17=1 && msg18=0 && msg19=1 && sk16=1 && sk17=0 && sk18=1 && sk19=0 && k16=0 && k17=1 && k18=0 && k19=1 && h16=(msg16&sk16) && s16=(k16+(h16&sk16)) && h17=(msg17&sk17) && s17=(k17+(h17&sk17)) && h18=(msg18&sk18) && s18=(k18+(h18&sk18)) && h19=(msg19&sk19) && s19=(k19+(h19&sk19)) && sig16=s16 && sig17=s17 && sig18=s18 && sig19=s19
+
+quit

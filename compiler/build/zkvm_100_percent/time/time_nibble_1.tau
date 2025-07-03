@@ -1,0 +1,5 @@
+# Component: time_nibble_1
+
+solve ts1=1 && time=1
+
+quit

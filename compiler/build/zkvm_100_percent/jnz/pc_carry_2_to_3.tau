@@ -1,0 +1,7 @@
+# Component: pc_carry_2_to_3
+# Assumptions: cout2=0|cout2=1
+# Guarantees: cin=cout2
+
+solve cout2=0 && cin=cout2
+
+quit

@@ -1,0 +1,6 @@
+# Component: mod_nibble_2
+# Guarantees: rem2
+
+solve a2=1 && b2=1 && rem2=(a2&(b2+1))
+
+quit

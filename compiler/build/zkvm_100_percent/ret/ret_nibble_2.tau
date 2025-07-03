@@ -1,0 +1,6 @@
+# Component: ret_nibble_2
+# Guarantees: newpc8, newpc9, newpc10, newpc11, spchanged2
+
+solve sp8=0 && sp9=1 && sp10=0 && sp11=1 && retaddr8=1 && retaddr9=0 && retaddr10=1 && retaddr11=0 && pc8=1 && pc9=0 && pc10=1 && pc11=0 && newpc8=retaddr8 && newpc9=retaddr9 && newpc10=retaddr10 && newpc11=retaddr11 && spchanged2=1
+
+quit

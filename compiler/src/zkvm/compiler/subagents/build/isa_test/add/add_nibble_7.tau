@@ -1,0 +1,7 @@
+# ADD_NIBBLE_7
+# Nibble: 7, Carry In: True, Carry Out: True
+# Guarantees: sum_ok_7, carry_ok_7
+
+solve valid_7=1 && a70=0 && b70=0 && a71=0 && b71=0 && a72=0 && b72=0 && a73=0 && b73=0 && ci7=0 && s70=(a70+b70+ci7) && c70=((a70&b70)|((a70+b70)&ci7)) && s71=(a71+b71+c70) && c71=((a71&b71)|((a71+b71)&c70)) && s72=(a72+b72+c71) && c72=((a72&b72)|((a72+b72)&c71)) && s73=(a73+b73+c72) && c73=((a73&b73)|((a73+b73)&c72)) && co7=c73
+
+quit

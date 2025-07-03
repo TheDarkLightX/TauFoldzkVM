@@ -1,0 +1,7 @@
+# GTE_RESULT
+# Nibble: -1, Carry In: False, Carry Out: False
+# Guarantees: gte_result_valid
+
+solve all_nibbles_compared=1 && nibble_eq0=0 && nibble_eq1=0 && nibble_eq2=0 && nibble_eq3=0 && nibble_eq4=0 && nibble_eq5=0 && nibble_eq6=0 && nibble_eq7=0 && sign_diff=0 && final_borrow=0 && result=(final_borrow+1)
+
+quit

@@ -1,0 +1,7 @@
+# GT_NIBBLE_7
+# Nibble: 7, Carry In: True, Carry Out: True
+# Guarantees: cmp_flags_7
+
+solve inputs_valid_7=1 && a7_0=0 && b7_0=0 && a7_1=0 && b7_1=0 && a7_2=0 && b7_2=0 && a7_3=0 && b7_3=0 && bin7=0 && eq0=((a7_0+b7_0+1)|((a7_0+1)+(b7_0+1)+1)) && eq1=((a7_1+b7_1+1)|((a7_1+1)+(b7_1+1)+1)) && eq2=((a7_2+b7_2+1)|((a7_2+1)+(b7_2+1)+1)) && eq3=((a7_3+b7_3+1)|((a7_3+1)+(b7_3+1)+1)) && neq7=(eq0&eq1&eq2&eq3) && bout7=bin7
+
+quit

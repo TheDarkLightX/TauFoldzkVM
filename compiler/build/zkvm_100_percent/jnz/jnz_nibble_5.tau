@@ -1,0 +1,7 @@
+# Component: jnz_nibble_5
+# Assumptions: zflag=0|zflag=1, cin=0|cin=1
+# Guarantees: newpc20, newpc21, newpc22, newpc23, cout5
+
+solve zflag=0 && target20=1 && target21=0 && target22=1 && target23=0 && pc20=0 && pc21=1 && pc22=0 && pc23=1 && cin=0 && s20=(pc20+cin) && c20=(pc20&cin) && s21=(pc21+c20) && c21=(pc21&c20) && s22=(pc22+c21) && c22=(pc22&c21) && s23=(pc23+c22) && c23=(pc23&c22) && cout5=c23 && newpc20=(((zflag+1)&target20)|(zflag&s0)) && newpc21=(((zflag+1)&target21)|(zflag&s21)) && newpc22=(((zflag+1)&target22)|(zflag&s22)) && newpc23=(((zflag+1)&target23)|(zflag&s23))
+
+quit

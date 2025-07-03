@@ -1,0 +1,6 @@
+# Component: sign_nibble_1
+# Guarantees: sig4, sig5, sig6, sig7
+
+solve msg4=1 && msg5=0 && msg6=1 && msg7=0 && sk4=1 && sk5=0 && sk6=1 && sk7=0 && k4=1 && k5=0 && k6=1 && k7=0 && h4=(msg4&sk4) && s4=(k4+(h4&sk4)) && h5=(msg5&sk5) && s5=(k5+(h5&sk5)) && h6=(msg6&sk6) && s6=(k6+(h6&sk6)) && h7=(msg7&sk7) && s7=(k7+(h7&sk7)) && sig4=s4 && sig5=s5 && sig6=s6 && sig7=s7
+
+quit

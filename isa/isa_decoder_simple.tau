@@ -1,0 +1,5 @@
+# Simple Instruction Decoder Test
+# Test LUT8 instruction decode (opcode 000)
+solve op0=0 && op1=0 && op2=0 && lut8=((op0+1)&(op1+1)&(op2+1)) && halt=(op0&op1&op2) && valid=(lut8&(halt+1))
+
+quit

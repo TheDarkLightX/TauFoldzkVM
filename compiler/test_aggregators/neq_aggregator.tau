@@ -1,0 +1,6 @@
+# Component: neq_aggregator
+# Guarantees: neq_final
+
+solve neq0=0 && neq1=0 && neq2=0 && neq3=1 && neq_final=(neq0|neq1|neq2|neq3)
+
+quit

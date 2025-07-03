@@ -1,0 +1,5 @@
+# Component: not_nibble_5
+
+solve a20=1 && a21=0 && a22=1 && a23=0 && r20=(a20+1) && r21=(a21+1) && r22=(a22+1) && r23=(a23+1)
+
+quit

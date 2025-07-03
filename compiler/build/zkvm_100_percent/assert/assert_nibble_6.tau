@@ -1,0 +1,5 @@
+# Component: assert_nibble_6
+
+solve cond6=0 && expected6=0 && ok6=(cond6&expected6) && assert=1
+
+quit

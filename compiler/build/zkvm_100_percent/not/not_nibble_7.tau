@@ -1,0 +1,5 @@
+# Component: not_nibble_7
+
+solve a28=1 && a29=0 && a30=1 && a31=0 && r28=(a28+1) && r29=(a29+1) && r30=(a30+1) && r31=(a31+1)
+
+quit

@@ -1,0 +1,583 @@
+// TauFoldZKVM Pac-Man Game
+// A simplified Pac-Man implementation demonstrating game logic
+//
+// Features:
+// - 8x8 game grid
+// - Player movement (Pac-Man)
+// - Ghost AI (4 ghosts with different behaviors)
+// - Dot collection and scoring
+// - Power pellets and ghost vulnerability
+// - Lives system
+// - Game state management
+//
+// Memory Layout:
+// 0x0000-0x003F: Game grid (64 cells)
+// 0x0100: Pac-Man X position
+// 0x0101: Pac-Man Y position
+// 0x0102: Pac-Man direction (0=up, 1=right, 2=down, 3=left)
+// 0x0103: Lives remaining
+// 0x0104: Score (low byte)
+// 0x0105: Score (high byte)
+// 0x0106: Power pellet timer
+// 0x0107: Game state (0=playing, 1=game over, 2=level complete)
+// 0x0110-0x0117: Ghost X positions (4 ghosts)
+// 0x0118-0x011F: Ghost Y positions
+// 0x0120-0x0127: Ghost directions
+// 0x0128-0x012F: Ghost states (0=chase, 1=scatter, 2=frightened, 3=eaten)
+// 0x0130: Dots remaining
+// 0x0131: Level number
+
+// Grid cell values:
+// 0x00: Empty
+// 0x01: Wall
+// 0x02: Dot (10 points)
+// 0x03: Power pellet (50 points)
+// 0x04: Pac-Man
+// 0x10-0x13: Ghosts (Blinky, Pinky, Inky, Clyde)
+
+// Initialize game
+initialize:
+    // Set up initial maze (simplified 8x8)
+    // # = wall, . = dot, o = power pellet, P = pacman start, G = ghost start
+    // ########
+    // #.....o#
+    // #.####.#
+    // #......#
+    // #.####.#
+    // #o..P..#
+    // #......#
+    // ########
+    
+    // Row 0: all walls
+    PUSH 0x01
+    PUSH 0x00
+    STORE
+    PUSH 0x01
+    PUSH 0x01
+    STORE
+    PUSH 0x01
+    PUSH 0x02
+    STORE
+    PUSH 0x01
+    PUSH 0x03
+    STORE
+    PUSH 0x01
+    PUSH 0x04
+    STORE
+    PUSH 0x01
+    PUSH 0x05
+    STORE
+    PUSH 0x01
+    PUSH 0x06
+    STORE
+    PUSH 0x01
+    PUSH 0x07
+    STORE
+    
+    // Row 1: #.....o#
+    PUSH 0x01
+    PUSH 0x08
+    STORE
+    PUSH 0x02       // Dot
+    PUSH 0x09
+    STORE
+    PUSH 0x02
+    PUSH 0x0A
+    STORE
+    PUSH 0x02
+    PUSH 0x0B
+    STORE
+    PUSH 0x02
+    PUSH 0x0C
+    STORE
+    PUSH 0x02
+    PUSH 0x0D
+    STORE
+    PUSH 0x03       // Power pellet
+    PUSH 0x0E
+    STORE
+    PUSH 0x01
+    PUSH 0x0F
+    STORE
+    
+    // Initialize Pac-Man position (row 5, col 4)
+    PUSH 4
+    PUSH 0x0100     // X position
+    STORE
+    PUSH 5
+    PUSH 0x0101     // Y position
+    STORE
+    PUSH 1          // Initial direction (right)
+    PUSH 0x0102
+    STORE
+    
+    // Initialize lives
+    PUSH 3
+    PUSH 0x0103
+    STORE
+    
+    // Initialize score
+    PUSH 0
+    PUSH 0x0104
+    STORE
+    PUSH 0
+    PUSH 0x0105
+    STORE
+    
+    // Initialize ghosts
+    // Blinky (red) - starts at (1,1)
+    PUSH 1
+    PUSH 0x0110
+    STORE
+    PUSH 1
+    PUSH 0x0118
+    STORE
+    PUSH 1          // Direction right
+    PUSH 0x0120
+    STORE
+    PUSH 0          // Chase mode
+    PUSH 0x0128
+    STORE
+    
+    // Count initial dots
+    PUSH 30         // Approximate for demo
+    PUSH 0x0130
+    STORE
+    
+    // Set level 1
+    PUSH 1
+    PUSH 0x0131
+    STORE
+    
+    // Start game
+    PUSH 0
+    PUSH 0x0107
+    STORE
+
+// Main game loop
+game_loop:
+    // Check game state
+    PUSH 0x0107
+    LOAD
+    DUP
+    PUSH 1          // Game over?
+    EQ
+    JNZ game_over_screen
+    DUP
+    PUSH 2          // Level complete?
+    EQ
+    JNZ level_complete
+    POP
+    
+    // Read player input
+    READ            // Get direction input (0-3) or 0xFF for no input
+    DUP
+    PUSH 0xFF
+    EQ
+    JNZ skip_input
+    
+    // Update Pac-Man direction
+    PUSH 0x0102
+    STORE
+    
+skip_input:
+    // Move Pac-Man
+    PUSH 0x0100
+    LOAD            // X position
+    PUSH 0x0101
+    LOAD            // Y position
+    PUSH 0x0102
+    LOAD            // Direction
+    
+    // Calculate new position based on direction
+    DUP
+    PUSH 0          // Up?
+    EQ
+    JNZ move_up
+    DUP
+    PUSH 1          // Right?
+    EQ
+    JNZ move_right
+    DUP
+    PUSH 2          // Down?
+    EQ
+    JNZ move_down
+    // Else left
+    JMP move_left
+
+move_up:
+    POP             // Remove direction
+    PUSH 1
+    SUB             // Y - 1
+    JMP check_move
+
+move_right:
+    POP             // Remove direction
+    SWAP            // Y, X
+    PUSH 1
+    ADD             // X + 1
+    SWAP            // X, Y
+    JMP check_move
+
+move_down:
+    POP             // Remove direction
+    PUSH 1
+    ADD             // Y + 1
+    JMP check_move
+
+move_left:
+    POP             // Remove direction
+    SWAP            // Y, X
+    PUSH 1
+    SUB             // X - 1
+    SWAP            // X, Y
+
+check_move:
+    // Check boundaries (0-7)
+    DUP             // Y, Y, X
+    PUSH 0
+    LT
+    SWAP            // Y, bound_check, X
+    DUP             // Y, Y, bound_check, X
+    PUSH 7
+    GT
+    SWAP            // Y, bound_check2, bound_check, X
+    SWAP            // bound_check2, Y, bound_check, X
+    OR              // out_of_bounds, Y, X
+    SWAP            // Y, out_of_bounds, X
+    SWAP            // out_of_bounds, Y, X
+    JNZ cancel_move
+    
+    SWAP            // X, Y
+    DUP             // X, X, Y
+    PUSH 0
+    LT
+    SWAP            // X, bound_check, Y
+    DUP             // X, X, bound_check, Y
+    PUSH 7
+    GT
+    OR
+    JNZ cancel_move_2
+    
+    // Calculate grid position
+    SWAP            // Y, X
+    DUP             // Y, Y, X
+    PUSH 8
+    MUL             // Y*8, Y, X
+    SWAP            // Y, Y*8, X
+    SWAP            // Y*8, Y, X
+    SWAP            // Y, X, Y*8
+    SWAP            // X, Y, Y*8
+    DUP             // X, X, Y, Y*8
+    SWAP            // X, X, Y, Y*8
+    SWAP            // X, Y, X, Y*8
+    SWAP            // Y, X, X, Y*8
+    POP             // X, X, Y*8
+    ADD             // grid_pos, X
+    
+    // Check cell content
+    DUP             // grid_pos, grid_pos, X
+    LOAD            // cell_value, grid_pos, X
+    
+    // Check for wall
+    DUP
+    PUSH 0x01       // Wall
+    EQ
+    JNZ hit_wall
+    
+    // Check for dot
+    DUP
+    PUSH 0x02       // Dot
+    EQ
+    JNZ collect_dot
+    
+    // Check for power pellet
+    DUP
+    PUSH 0x03       // Power pellet
+    EQ
+    JNZ collect_power_pellet
+    
+    // Check for ghost collision
+    DUP
+    PUSH 0x0F       // Ghost mask
+    AND
+    PUSH 0x10       // Ghost base value
+    GTE
+    JNZ ghost_collision
+    
+    // Valid move - update position
+    POP             // Remove cell value
+    POP             // Remove grid position
+    
+    // Store new position
+    DUP
+    PUSH 0x0100
+    STORE           // Store X
+    
+    // Get Y from grid calculation
+    PUSH 0x0101
+    LOAD            // Current Y
+    PUSH 0x0102
+    LOAD            // Direction
+    DUP
+    PUSH 0          // Up
+    EQ
+    JNZ update_y_up
+    DUP
+    PUSH 2          // Down
+    EQ
+    JNZ update_y_down
+    POP
+    JMP move_ghosts
+
+update_y_up:
+    POP
+    PUSH 1
+    SUB
+    PUSH 0x0101
+    STORE
+    JMP move_ghosts
+
+update_y_down:
+    POP
+    PUSH 1
+    ADD
+    PUSH 0x0101
+    STORE
+    JMP move_ghosts
+
+collect_dot:
+    POP             // Remove cell value
+    
+    // Clear dot from grid
+    PUSH 0x00       // Empty
+    SWAP
+    STORE
+    
+    // Add score
+    PUSH 0x0104
+    LOAD
+    PUSH 10         // Dot value
+    ADD
+    PUSH 0x0104
+    STORE
+    
+    // Decrement dots remaining
+    PUSH 0x0130
+    LOAD
+    PUSH 1
+    SUB
+    DUP
+    PUSH 0x0130
+    STORE
+    
+    // Check if level complete
+    PUSH 0
+    EQ
+    JNZ set_level_complete
+    
+    JMP move_ghosts
+
+collect_power_pellet:
+    POP             // Remove cell value
+    
+    // Clear pellet from grid
+    PUSH 0x00       // Empty
+    SWAP
+    STORE
+    
+    // Add score
+    PUSH 0x0104
+    LOAD
+    PUSH 50         // Power pellet value
+    ADD
+    PUSH 0x0104
+    STORE
+    
+    // Set power timer
+    PUSH 100        // Power duration
+    PUSH 0x0106
+    STORE
+    
+    // Set all ghosts to frightened
+    PUSH 0
+    frighten_loop:
+        DUP
+        PUSH 0x0128
+        ADD
+        PUSH 2      // Frightened state
+        SWAP
+        STORE
+        
+        PUSH 1
+        ADD
+        DUP
+        PUSH 4      // 4 ghosts
+        LT
+        JNZ frighten_loop
+    POP
+    
+    JMP move_ghosts
+
+hit_wall:
+    POP
+    POP
+    POP
+    JMP move_ghosts
+
+cancel_move:
+    POP
+    POP
+cancel_move_2:
+    POP
+
+move_ghosts:
+    // Update power pellet timer
+    PUSH 0x0106
+    LOAD
+    DUP
+    PUSH 0
+    GT
+    JZ skip_power_timer
+    
+    PUSH 1
+    SUB
+    PUSH 0x0106
+    STORE
+    
+    // Check if power ended
+    DUP
+    PUSH 0
+    EQ
+    JNZ reset_ghost_states
+
+skip_power_timer:
+    POP
+    
+    // Simple ghost AI - move towards Pac-Man
+    // (Full implementation would be complex)
+    
+    // Check win/lose conditions
+    JMP check_collisions
+
+reset_ghost_states:
+    PUSH 0
+    reset_loop:
+        DUP
+        PUSH 0x0128
+        ADD
+        PUSH 0      // Chase state
+        SWAP
+        STORE
+        
+        PUSH 1
+        ADD
+        DUP
+        PUSH 4
+        LT
+        JNZ reset_loop
+    POP
+    JMP check_collisions
+
+ghost_collision:
+    // Check if ghost is frightened
+    PUSH 0x0106
+    LOAD
+    PUSH 0
+    GT
+    JNZ eat_ghost
+    
+    // Pac-Man dies
+    PUSH 0x0103
+    LOAD
+    PUSH 1
+    SUB
+    DUP
+    PUSH 0x0103
+    STORE
+    
+    // Check game over
+    PUSH 0
+    EQ
+    JNZ set_game_over
+    
+    // Reset positions
+    JMP initialize_positions
+
+eat_ghost:
+    // Add ghost score
+    PUSH 0x0104
+    LOAD
+    PUSH 200        // Ghost value
+    ADD
+    PUSH 0x0104
+    STORE
+    
+    // Set ghost to eaten state
+    // (Would need to identify which ghost)
+    JMP move_ghosts
+
+check_collisions:
+    // Output game state
+    PUSH 0x0104
+    LOAD            // Score
+    WRITE
+    
+    PUSH 0x0103
+    LOAD            // Lives
+    WRITE
+    
+    JMP game_loop
+
+set_level_complete:
+    PUSH 2
+    PUSH 0x0107
+    STORE
+    JMP game_loop
+
+set_game_over:
+    PUSH 1
+    PUSH 0x0107
+    STORE
+    JMP game_loop
+
+initialize_positions:
+    // Reset Pac-Man to start
+    PUSH 4
+    PUSH 0x0100
+    STORE
+    PUSH 5
+    PUSH 0x0101
+    STORE
+    JMP game_loop
+
+level_complete:
+    PUSH 0xC001     // Level complete code
+    WRITE
+    
+    // Increment level
+    PUSH 0x0131
+    LOAD
+    PUSH 1
+    ADD
+    PUSH 0x0131
+    STORE
+    
+    // Reinitialize for next level
+    JMP initialize
+
+game_over_screen:
+    PUSH 0xDEAD     // Game over code
+    WRITE
+    
+    // Final score
+    PUSH 0x0104
+    LOAD
+    PUSH 0x0105
+    LOAD
+    PUSH 8
+    SHL
+    OR              // Combine high and low bytes
+    WRITE
+    
+    HALT

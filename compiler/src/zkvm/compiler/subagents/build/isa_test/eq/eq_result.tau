@@ -1,0 +1,7 @@
+# EQ_RESULT
+# Nibble: -1, Carry In: False, Carry Out: False
+# Guarantees: eq_result_valid
+
+solve all_nibbles_compared=1 && nibble_eq0=0 && nibble_eq1=0 && nibble_eq2=0 && nibble_eq3=0 && nibble_eq4=0 && nibble_eq5=0 && nibble_eq6=0 && nibble_eq7=0 && sign_diff=0 && final_borrow=0 && result=(nibble_eq0 & nibble_eq1 & nibble_eq2 & nibble_eq3 & nibble_eq4 & nibble_eq5 & nibble_eq6 & nibble_eq7)
+
+quit

@@ -1,0 +1,6 @@
+# Component: mul_partial_5
+# Guarantees: prod5
+
+solve a5=1 && b5=1 && prod5=(a5&b5)
+
+quit

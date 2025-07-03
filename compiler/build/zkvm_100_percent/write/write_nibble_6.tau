@@ -1,0 +1,5 @@
+# Component: write_nibble_6
+
+solve addr6=1 && data6=1 && write=1
+
+quit

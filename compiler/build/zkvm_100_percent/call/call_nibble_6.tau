@@ -1,0 +1,7 @@
+# Component: call_nibble_6
+# Assumptions: cin=0|cin=1
+# Guarantees: newpc24, newpc25, newpc26, newpc27, stack24, stack25, stack26, stack27, spchanged6, cout6
+
+solve target24=0 && target25=1 && target26=0 && target27=1 && pc24=1 && pc25=0 && pc26=1 && pc27=0 && sp24=0 && sp25=1 && sp26=0 && sp27=1 && cin=0 && r24=(pc24+cin) && c24=(pc24&cin) && r25=(pc25+c24) && c25=(pc25&c24) && r26=(pc26+c25) && c26=(pc26&c25) && r27=(pc27+c26) && c27=(pc27&c26) && cout6=c27 && stack24=r24 && stack25=r25 && stack26=r26 && stack27=r27 && newpc24=target24 && newpc25=target25 && newpc26=target26 && newpc27=target27 && spchanged6=1
+
+quit

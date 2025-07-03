@@ -1,0 +1,6 @@
+# Component: jmp_simple
+# Guarantees: jmp0
+
+solve addr0=1 && jmp0=addr0
+
+quit

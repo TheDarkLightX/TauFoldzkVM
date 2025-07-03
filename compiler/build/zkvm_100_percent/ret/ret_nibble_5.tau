@@ -1,0 +1,6 @@
+# Component: ret_nibble_5
+# Guarantees: newpc20, newpc21, newpc22, newpc23, spchanged5
+
+solve sp20=1 && sp21=0 && sp22=1 && sp23=0 && retaddr20=0 && retaddr21=1 && retaddr22=0 && retaddr23=1 && pc20=0 && pc21=1 && pc22=0 && pc23=1 && newpc20=retaddr20 && newpc21=retaddr21 && newpc22=retaddr22 && newpc23=retaddr23 && spchanged5=1
+
+quit

@@ -1,0 +1,12 @@
+{
+  "components": [
+    "low_nibble.tau",
+    "high_nibble.tau",
+    "carry_link.tau"
+  ],
+  "char_counts": {
+    "low_nibble.tau": 243,
+    "high_nibble.tau": 261,
+    "carry_link.tau": 38
+  }
+}

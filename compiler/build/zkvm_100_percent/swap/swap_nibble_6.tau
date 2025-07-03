@@ -1,0 +1,6 @@
+# Component: swap_nibble_6
+# Guarantees: swapa6, swapb6
+
+solve a6=1 && b6=0 && swapa6=b6 && swapb6=a6
+
+quit

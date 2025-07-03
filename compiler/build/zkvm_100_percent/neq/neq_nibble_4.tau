@@ -1,0 +1,6 @@
+# Component: neq_nibble_4
+# Guarantees: neq4
+
+solve a4=0 && b4=1 && neq4=(a4+b4)
+
+quit

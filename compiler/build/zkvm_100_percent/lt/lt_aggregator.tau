@@ -1,0 +1,6 @@
+# Component: lt_aggregator
+# Guarantees: ltfinal
+
+solve lt0=0 && eq0=1 && lt1=0 && eq1=1 && lt2=0 && eq2=1 && lt3=0 && eq3=1 && lt3=1 && eq3=0 && ltfinal=(lt0|(eq0&(lt1|(eq1&(lt2|(eq2&lt3))))))
+
+quit

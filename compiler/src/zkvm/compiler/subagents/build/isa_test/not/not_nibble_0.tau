@@ -1,0 +1,7 @@
+# NOT_NIBBLE_0
+# Nibble: 0, Carry In: False, Carry Out: False
+# Guarantees: not_correct_0
+
+solve valid_input_0=1 && a0_0=0 && r0_0=(a0_0+1) && a0_1=0 && r0_1=(a0_1+1) && a0_2=0 && r0_2=(a0_2+1) && a0_3=0 && r0_3=(a0_3+1)
+
+quit

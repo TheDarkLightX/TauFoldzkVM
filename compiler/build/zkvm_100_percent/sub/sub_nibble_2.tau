@@ -1,0 +1,6 @@
+# Component: sub_nibble_2
+# Guarantees: diff2
+
+solve a2=1 && b2=0 && diff2=(a2&(b2+1))
+
+quit

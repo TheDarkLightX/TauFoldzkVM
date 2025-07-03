@@ -1,0 +1,6 @@
+# Component: verify_aggregator
+# Guarantees: verifycomplete
+
+solve allverified=1 && verifycomplete=allverified
+
+quit

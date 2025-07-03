@@ -1,0 +1,5 @@
+# Component: not_nibble_0
+
+solve a0=0 && a1=1 && a2=0 && a3=1 && r0=(a0+1) && r1=(a1+1) && r2=(a2+1) && r3=(a3+1)
+
+quit

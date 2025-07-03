@@ -1,0 +1,7 @@
+# Component: shl_nibble_5
+# Assumptions: cin=0|cin=1
+# Guarantees: cout5=a23
+
+solve a20=1 && b20=0 && a21=0 && b21=1 && a22=1 && b22=0 && a23=0 && b23=1 && cin=0 && r20=cin && r21=a20 && r22=a21 && r23=a22 && cout5=a23
+
+quit

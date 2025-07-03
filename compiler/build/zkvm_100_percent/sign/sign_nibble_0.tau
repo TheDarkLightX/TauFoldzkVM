@@ -1,0 +1,6 @@
+# Component: sign_nibble_0
+# Guarantees: sig0, sig1, sig2, sig3
+
+solve msg0=0 && msg1=1 && msg2=0 && msg3=1 && sk0=1 && sk1=0 && sk2=1 && sk3=0 && k0=0 && k1=1 && k2=0 && k3=1 && h0=(msg0&sk0) && s0=(k0+(h0&sk0)) && h1=(msg1&sk1) && s1=(k1+(h1&sk1)) && h2=(msg2&sk2) && s2=(k2+(h2&sk2)) && h3=(msg3&sk3) && s3=(k3+(h3&sk3)) && sig0=s0 && sig1=s1 && sig2=s2 && sig3=s3
+
+quit

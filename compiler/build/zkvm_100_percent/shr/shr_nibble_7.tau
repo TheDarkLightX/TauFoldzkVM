@@ -1,0 +1,6 @@
+# Component: shr_nibble_7
+# Guarantees: cout7=a28
+
+solve a28=1 && b28=0 && a29=0 && b29=1 && a30=1 && b30=0 && a31=0 && b31=1 && cin=0 && r28=a29 && r29=a30 && r30=a31 && r31=cin && cout7=a28
+
+quit

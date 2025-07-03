@@ -1,0 +1,6 @@
+# Component: lte_aggregator
+# Guarantees: lte_final
+
+solve lt_result=0 && eq_result=1 && lte_final=(lt_result|eq_result)
+
+quit

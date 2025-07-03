@@ -1,0 +1,6 @@
+# Component: eq_nibble_4
+# Guarantees: eq4
+
+solve a4=0 && b4=0 && eq4=(a4&b4)
+
+quit

@@ -1,0 +1,6 @@
+# Component: neq_nibble_0
+# Guarantees: neq0
+
+solve a0=0 && b0=1 && neq0=(a0+b0)
+
+quit

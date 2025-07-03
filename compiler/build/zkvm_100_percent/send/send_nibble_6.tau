@@ -1,0 +1,5 @@
+# Component: send_nibble_6
+
+solve msg6=0 && dest6=1 && send=1
+
+quit

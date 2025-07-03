@@ -1,0 +1,1063 @@
+{
+  "total_components": 31,
+  "instructions": {
+    "ADD": [
+      "add_nibble_0.tau",
+      "add_nibble_1.tau",
+      "add_nibble_2.tau",
+      "add_nibble_3.tau",
+      "add_nibble_4.tau",
+      "add_nibble_5.tau",
+      "add_nibble_6.tau",
+      "add_nibble_7.tau",
+      "carry_0_to_1.tau",
+      "carry_1_to_2.tau",
+      "carry_2_to_3.tau",
+      "carry_3_to_4.tau",
+      "carry_4_to_5.tau",
+      "carry_5_to_6.tau",
+      "carry_6_to_7.tau"
+    ],
+    "AND": [
+      "and_nibble_0.tau",
+      "and_nibble_1.tau",
+      "and_nibble_2.tau",
+      "and_nibble_3.tau",
+      "and_nibble_4.tau",
+      "and_nibble_5.tau",
+      "and_nibble_6.tau",
+      "and_nibble_7.tau"
+    ],
+    "XOR": [
+      "xor_nibble_0.tau",
+      "xor_nibble_1.tau",
+      "xor_nibble_2.tau",
+      "xor_nibble_3.tau",
+      "xor_nibble_4.tau",
+      "xor_nibble_5.tau",
+      "xor_nibble_6.tau",
+      "xor_nibble_7.tau"
+    ]
+  },
+  "max_chars_used": 314,
+  "composition_graph": [
+    {
+      "from": "add_nibble_0",
+      "to": "carry_0_to_1",
+      "shared": [
+        "cout0"
+      ]
+    },
+    {
+      "from": "add_nibble_0",
+      "to": "and_nibble_0",
+      "shared": [
+        "b0",
+        "b2",
+        "b1",
+        "a0",
+        "a2",
+        "b3",
+        "a1",
+        "a3"
+      ]
+    },
+    {
+      "from": "add_nibble_0",
+      "to": "xor_nibble_0",
+      "shared": [
+        "b0",
+        "b2",
+        "b1",
+        "a0",
+        "a2",
+        "b3",
+        "a1",
+        "a3"
+      ]
+    },
+    {
+      "from": "add_nibble_1",
+      "to": "add_nibble_2",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_1",
+      "to": "add_nibble_3",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_1",
+      "to": "add_nibble_4",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_1",
+      "to": "add_nibble_5",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_1",
+      "to": "add_nibble_6",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_1",
+      "to": "add_nibble_7",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_1",
+      "to": "carry_0_to_1",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_1",
+      "to": "carry_1_to_2",
+      "shared": [
+        "cin",
+        "cout1"
+      ]
+    },
+    {
+      "from": "add_nibble_1",
+      "to": "carry_2_to_3",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_1",
+      "to": "carry_3_to_4",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_1",
+      "to": "carry_4_to_5",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_1",
+      "to": "carry_5_to_6",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_1",
+      "to": "carry_6_to_7",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_1",
+      "to": "and_nibble_1",
+      "shared": [
+        "a4",
+        "b6",
+        "b4",
+        "a5",
+        "b7",
+        "a6",
+        "b5",
+        "a7"
+      ]
+    },
+    {
+      "from": "add_nibble_1",
+      "to": "xor_nibble_1",
+      "shared": [
+        "a4",
+        "b6",
+        "b4",
+        "a5",
+        "b7",
+        "a6",
+        "b5",
+        "a7"
+      ]
+    },
+    {
+      "from": "add_nibble_2",
+      "to": "add_nibble_3",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_2",
+      "to": "add_nibble_4",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_2",
+      "to": "add_nibble_5",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_2",
+      "to": "add_nibble_6",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_2",
+      "to": "add_nibble_7",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_2",
+      "to": "carry_0_to_1",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_2",
+      "to": "carry_1_to_2",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_2",
+      "to": "carry_2_to_3",
+      "shared": [
+        "cin",
+        "cout2"
+      ]
+    },
+    {
+      "from": "add_nibble_2",
+      "to": "carry_3_to_4",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_2",
+      "to": "carry_4_to_5",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_2",
+      "to": "carry_5_to_6",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_2",
+      "to": "carry_6_to_7",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_2",
+      "to": "and_nibble_2",
+      "shared": [
+        "a10",
+        "b8",
+        "b9",
+        "a9",
+        "b10",
+        "a8",
+        "a11",
+        "b11"
+      ]
+    },
+    {
+      "from": "add_nibble_2",
+      "to": "xor_nibble_2",
+      "shared": [
+        "a10",
+        "b8",
+        "b9",
+        "a9",
+        "b10",
+        "a8",
+        "a11",
+        "b11"
+      ]
+    },
+    {
+      "from": "add_nibble_3",
+      "to": "add_nibble_4",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_3",
+      "to": "add_nibble_5",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_3",
+      "to": "add_nibble_6",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_3",
+      "to": "add_nibble_7",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_3",
+      "to": "carry_0_to_1",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_3",
+      "to": "carry_1_to_2",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_3",
+      "to": "carry_2_to_3",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_3",
+      "to": "carry_3_to_4",
+      "shared": [
+        "cin",
+        "cout3"
+      ]
+    },
+    {
+      "from": "add_nibble_3",
+      "to": "carry_4_to_5",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_3",
+      "to": "carry_5_to_6",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_3",
+      "to": "carry_6_to_7",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_3",
+      "to": "and_nibble_3",
+      "shared": [
+        "b15",
+        "a12",
+        "a13",
+        "a15",
+        "b13",
+        "b14",
+        "b12",
+        "a14"
+      ]
+    },
+    {
+      "from": "add_nibble_3",
+      "to": "xor_nibble_3",
+      "shared": [
+        "b15",
+        "a12",
+        "a13",
+        "a15",
+        "b13",
+        "b14",
+        "b12",
+        "a14"
+      ]
+    },
+    {
+      "from": "add_nibble_4",
+      "to": "add_nibble_5",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_4",
+      "to": "add_nibble_6",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_4",
+      "to": "add_nibble_7",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_4",
+      "to": "carry_0_to_1",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_4",
+      "to": "carry_1_to_2",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_4",
+      "to": "carry_2_to_3",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_4",
+      "to": "carry_3_to_4",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_4",
+      "to": "carry_4_to_5",
+      "shared": [
+        "cin",
+        "cout4"
+      ]
+    },
+    {
+      "from": "add_nibble_4",
+      "to": "carry_5_to_6",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_4",
+      "to": "carry_6_to_7",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_4",
+      "to": "and_nibble_4",
+      "shared": [
+        "b18",
+        "b17",
+        "a19",
+        "a16",
+        "a17",
+        "b19",
+        "a18",
+        "b16"
+      ]
+    },
+    {
+      "from": "add_nibble_4",
+      "to": "xor_nibble_4",
+      "shared": [
+        "b18",
+        "b17",
+        "a19",
+        "a16",
+        "a17",
+        "b19",
+        "a18",
+        "b16"
+      ]
+    },
+    {
+      "from": "add_nibble_5",
+      "to": "add_nibble_6",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_5",
+      "to": "add_nibble_7",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_5",
+      "to": "carry_0_to_1",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_5",
+      "to": "carry_1_to_2",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_5",
+      "to": "carry_2_to_3",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_5",
+      "to": "carry_3_to_4",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_5",
+      "to": "carry_4_to_5",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_5",
+      "to": "carry_5_to_6",
+      "shared": [
+        "cout5",
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_5",
+      "to": "carry_6_to_7",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_5",
+      "to": "and_nibble_5",
+      "shared": [
+        "b20",
+        "b23",
+        "a21",
+        "a22",
+        "b22",
+        "a23",
+        "b21",
+        "a20"
+      ]
+    },
+    {
+      "from": "add_nibble_5",
+      "to": "xor_nibble_5",
+      "shared": [
+        "b20",
+        "b23",
+        "a21",
+        "a22",
+        "b22",
+        "a23",
+        "b21",
+        "a20"
+      ]
+    },
+    {
+      "from": "add_nibble_6",
+      "to": "add_nibble_7",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_6",
+      "to": "carry_0_to_1",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_6",
+      "to": "carry_1_to_2",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_6",
+      "to": "carry_2_to_3",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_6",
+      "to": "carry_3_to_4",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_6",
+      "to": "carry_4_to_5",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_6",
+      "to": "carry_5_to_6",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_6",
+      "to": "carry_6_to_7",
+      "shared": [
+        "cout6",
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_6",
+      "to": "and_nibble_6",
+      "shared": [
+        "b25",
+        "b27",
+        "a25",
+        "a27",
+        "b26",
+        "b24",
+        "a24",
+        "a26"
+      ]
+    },
+    {
+      "from": "add_nibble_6",
+      "to": "xor_nibble_6",
+      "shared": [
+        "b25",
+        "b27",
+        "a25",
+        "a27",
+        "b26",
+        "b24",
+        "a24",
+        "a26"
+      ]
+    },
+    {
+      "from": "add_nibble_7",
+      "to": "carry_0_to_1",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_7",
+      "to": "carry_1_to_2",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_7",
+      "to": "carry_2_to_3",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_7",
+      "to": "carry_3_to_4",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_7",
+      "to": "carry_4_to_5",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_7",
+      "to": "carry_5_to_6",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_7",
+      "to": "carry_6_to_7",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "add_nibble_7",
+      "to": "and_nibble_7",
+      "shared": [
+        "b29",
+        "a30",
+        "a28",
+        "a29",
+        "b30",
+        "a31",
+        "b31",
+        "b28"
+      ]
+    },
+    {
+      "from": "add_nibble_7",
+      "to": "xor_nibble_7",
+      "shared": [
+        "b29",
+        "a30",
+        "a28",
+        "a29",
+        "b30",
+        "a31",
+        "b31",
+        "b28"
+      ]
+    },
+    {
+      "from": "carry_0_to_1",
+      "to": "carry_1_to_2",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "carry_0_to_1",
+      "to": "carry_2_to_3",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "carry_0_to_1",
+      "to": "carry_3_to_4",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "carry_0_to_1",
+      "to": "carry_4_to_5",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "carry_0_to_1",
+      "to": "carry_5_to_6",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "carry_0_to_1",
+      "to": "carry_6_to_7",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "carry_1_to_2",
+      "to": "carry_2_to_3",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "carry_1_to_2",
+      "to": "carry_3_to_4",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "carry_1_to_2",
+      "to": "carry_4_to_5",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "carry_1_to_2",
+      "to": "carry_5_to_6",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "carry_1_to_2",
+      "to": "carry_6_to_7",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "carry_2_to_3",
+      "to": "carry_3_to_4",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "carry_2_to_3",
+      "to": "carry_4_to_5",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "carry_2_to_3",
+      "to": "carry_5_to_6",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "carry_2_to_3",
+      "to": "carry_6_to_7",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "carry_3_to_4",
+      "to": "carry_4_to_5",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "carry_3_to_4",
+      "to": "carry_5_to_6",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "carry_3_to_4",
+      "to": "carry_6_to_7",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "carry_4_to_5",
+      "to": "carry_5_to_6",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "carry_4_to_5",
+      "to": "carry_6_to_7",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "carry_5_to_6",
+      "to": "carry_6_to_7",
+      "shared": [
+        "cin"
+      ]
+    },
+    {
+      "from": "and_nibble_0",
+      "to": "xor_nibble_0",
+      "shared": [
+        "b0",
+        "r2",
+        "r1",
+        "b2",
+        "b1",
+        "r3",
+        "a0",
+        "a2",
+        "b3",
+        "a1",
+        "r0",
+        "a3"
+      ]
+    },
+    {
+      "from": "and_nibble_1",
+      "to": "xor_nibble_1",
+      "shared": [
+        "r7",
+        "a4",
+        "b6",
+        "r5",
+        "b5",
+        "b4",
+        "a5",
+        "b7",
+        "a6",
+        "r4",
+        "a7",
+        "r6"
+      ]
+    },
+    {
+      "from": "and_nibble_2",
+      "to": "xor_nibble_2",
+      "shared": [
+        "a10",
+        "b8",
+        "r8",
+        "b9",
+        "a9",
+        "b10",
+        "r9",
+        "a8",
+        "a11",
+        "r11",
+        "r10",
+        "b11"
+      ]
+    },
+    {
+      "from": "and_nibble_3",
+      "to": "xor_nibble_3",
+      "shared": [
+        "b15",
+        "a12",
+        "r13",
+        "r12",
+        "a13",
+        "r15",
+        "a15",
+        "b13",
+        "b14",
+        "r14",
+        "b12",
+        "a14"
+      ]
+    },
+    {
+      "from": "and_nibble_4",
+      "to": "xor_nibble_4",
+      "shared": [
+        "b18",
+        "r17",
+        "r18",
+        "b17",
+        "a19",
+        "r19",
+        "a16",
+        "r16",
+        "a17",
+        "b19",
+        "a18",
+        "b16"
+      ]
+    },
+    {
+      "from": "and_nibble_5",
+      "to": "xor_nibble_5",
+      "shared": [
+        "b20",
+        "b23",
+        "r20",
+        "a21",
+        "a22",
+        "r21",
+        "b22",
+        "r23",
+        "r22",
+        "a23",
+        "b21",
+        "a20"
+      ]
+    },
+    {
+      "from": "and_nibble_6",
+      "to": "xor_nibble_6",
+      "shared": [
+        "r24",
+        "b25",
+        "b27",
+        "b24",
+        "a25",
+        "a27",
+        "b26",
+        "r26",
+        "r25",
+        "a24",
+        "a26",
+        "r27"
+      ]
+    },
+    {
+      "from": "and_nibble_7",
+      "to": "xor_nibble_7",
+      "shared": [
+        "b29",
+        "a30",
+        "r31",
+        "a28",
+        "a29",
+        "r29",
+        "r30",
+        "b30",
+        "a31",
+        "b31",
+        "b28",
+        "r28"
+      ]
+    }
+  ]
+}

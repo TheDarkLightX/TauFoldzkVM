@@ -1,0 +1,7 @@
+# SUB_NIBBLE_7
+# Nibble: 7, Carry In: True, Carry Out: True
+# Guarantees: diff_ok_7, borrow_ok_7
+
+solve valid_7=1 && a70=0 && b70=0 && a71=0 && b71=0 && a72=0 && b72=0 && a73=0 && b73=0 && v70=(b70+1) && v71=(b71+1) && v72=(b72+1) && v73=(b73+1) && k=0 && bi7=0 && d70=(a70+v70+bi7) && w70=((a70&v70)|((a70+v70)&bi7)) && d71=(a71+v71+w70) && w71=((a71&v71)|((a71+v71)&w70)) && d72=(a72+v72+w71) && w72=((a72&v72)|((a72+v72)&w71)) && d73=(a73+v73+w72) && w73=((a73&v73)|((a73+v73)&w72)) && bo7=(w73+1)
+
+quit

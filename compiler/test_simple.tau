@@ -1,0 +1,2 @@
+solve inp0=0 && inp1=1 && dbg0=inp0 && debug_valid0=1 && debug_op0=0
+quit

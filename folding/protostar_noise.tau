@@ -1,0 +1,7 @@
+# Noise Vector Evolution in ProtoStar
+# Shows how noise accumulates through folding
+
+# Initial instances have zero noise
+solve e10=0 && e11=0 && e12=0 && e13=0 && e20=0 && e21=0 && e22=0 && e23=0 && cross0=1 && cross1=0 && cross2=1 && cross3=1 && beta=1 && ef0=(e10+(cross0&beta)+(e20&beta)) && ef1=(e11+(cross1&beta)+(e21&beta)) && ef2=(e12+(cross2&beta)+(e22&beta)) && ef3=(e13+(cross3&beta)+(e23&beta)) && noise_present=(ef0|ef1|ef2|ef3)
+
+quit

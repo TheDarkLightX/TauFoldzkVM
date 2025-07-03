@@ -1,0 +1,7 @@
+# Component: hash_nibble_1
+# Assumptions: hin0=0|hin0=1, hin1=0|hin1=1, hin2=0|hin2=1, hin3=0|hin3=1
+# Guarantees: hout0, hout1, hout2, hout3
+
+solve m4=0 && m5=1 && m6=0 && m7=1 && hin0=0 && hin1=0 && hin2=0 && hin3=0 && t0=(m4+hin0) && t1=(m5+hin1) && t2=(m6+hin2) && t3=(m7+hin3) && r0=t3 && r1=t0 && r2=t1 && r3=t2 && hout0=(r0&t1) && hout1=(r1|t2) && hout2=(r2+t3) && hout3=(r3&t0)
+
+quit

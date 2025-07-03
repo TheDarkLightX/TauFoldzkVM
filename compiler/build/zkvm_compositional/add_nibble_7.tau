@@ -1,0 +1,8 @@
+# Contract: add_nibble_7
+# Assumptions: cin=0|cin=1
+# Guarantees: none
+# Character count: 301
+
+solve a28=0 && b28=0 && a29=0 && b29=0 && a30=0 && b30=0 && a31=0 && b31=0 && cin=0 && s28=(a28+b28+cin) && c28=((a28&b28)|((a28+b28)&cin)) && s29=(a29+b29+c28) && c29=((a29&b29)|((a29+b29)&c28)) && s30=(a30+b30+c29) && c30=((a30&b30)|((a30+b30)&c29)) && s31=(a31+b31+c30) && c31=((a31&b31)|((a31+b31)&c30))
+
+quit

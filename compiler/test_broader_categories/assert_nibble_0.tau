@@ -1,0 +1,6 @@
+# Component: assert_nibble_0
+# Guarantees: assert0
+
+solve cond0=1 && assert0=cond0
+
+quit

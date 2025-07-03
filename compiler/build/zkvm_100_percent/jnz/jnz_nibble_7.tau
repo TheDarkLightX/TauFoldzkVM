@@ -1,0 +1,7 @@
+# Component: jnz_nibble_7
+# Assumptions: zflag=0|zflag=1, cin=0|cin=1
+# Guarantees: newpc28, newpc29, newpc30, newpc31
+
+solve zflag=0 && target28=1 && target29=0 && target30=1 && target31=0 && pc28=0 && pc29=1 && pc30=0 && pc31=1 && cin=0 && s28=(pc28+cin) && c28=(pc28&cin) && s29=(pc29+c28) && c29=(pc29&c28) && s30=(pc30+c29) && c30=(pc30&c29) && s31=(pc31+c30) && c31=(pc31&c30) && newpc28=(((zflag+1)&target28)|(zflag&s0)) && newpc29=(((zflag+1)&target29)|(zflag&s29)) && newpc30=(((zflag+1)&target30)|(zflag&s30)) && newpc31=(((zflag+1)&target31)|(zflag&s31))
+
+quit

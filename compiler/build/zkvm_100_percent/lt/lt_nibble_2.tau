@@ -1,0 +1,6 @@
+# Component: lt_nibble_2
+# Guarantees: lt2
+
+solve a2=0 && b2=1 && lt2=((a2+1)&b2)
+
+quit

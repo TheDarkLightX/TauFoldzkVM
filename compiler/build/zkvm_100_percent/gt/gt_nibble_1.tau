@@ -1,0 +1,6 @@
+# Component: gt_nibble_1
+# Guarantees: gt1
+
+solve a1=1 && b1=0 && gt1=(a1&(b1+1))
+
+quit

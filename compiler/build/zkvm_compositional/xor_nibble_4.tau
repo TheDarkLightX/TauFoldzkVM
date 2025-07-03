@@ -1,0 +1,8 @@
+# Contract: xor_nibble_4
+# Assumptions: none
+# Guarantees: none
+# Character count: 136
+
+solve a16=0 && b16=0 && a17=0 && b17=0 && a18=0 && b18=0 && a19=0 && b19=0 && r16=(a16+b16) && r17=(a17+b17) && r18=(a18+b18) && r19=(a19+b19)
+
+quit

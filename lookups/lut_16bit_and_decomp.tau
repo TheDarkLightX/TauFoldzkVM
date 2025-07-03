@@ -1,0 +1,9 @@
+# 16-bit AND via 8-bit lookup decomposition
+# Test: 0x0F0F & 0xF0F0 = 0x0000
+
+# Input: a = 0x0F0F (3855), b = 0xF0F0 (61680)
+# Expected: result = 0x0000 (0)
+
+solve ah0=1 && ah1=1 && ah2=1 && ah3=1 && ah4=0 && ah5=0 && ah6=0 && ah7=0 && al0=1 && al1=1 && al2=1 && al3=1 && al4=0 && al5=0 && al6=0 && al7=0 && bh0=0 && bh1=0 && bh2=0 && bh3=0 && bh4=1 && bh5=1 && bh6=1 && bh7=1 && bl0=0 && bl1=0 && bl2=0 && bl3=0 && bl4=1 && bl5=1 && bl6=1 && bl7=1 && rh0=(ah0&bh0) && rh1=(ah1&bh1) && rh2=(ah2&bh2) && rh3=(ah3&bh3) && rh4=(ah4&bh4) && rh5=(ah5&bh5) && rh6=(ah6&bh6) && rh7=(ah7&bh7) && rl0=(al0&bl0) && rl1=(al1&bl1) && rl2=(al2&bl2) && rl3=(al3&bl3) && rl4=(al4&bl4) && rl5=(al5&bl5) && rl6=(al6&bl6) && rl7=(al7&bl7) && th0=(rh0+1) && th1=(rh1+1) && th2=(rh2+1) && th3=(rh3+1) && th4=(rh4+1) && th5=(rh5+1) && th6=(rh6+1) && th7=(rh7+1) && tl0=(rl0+1) && tl1=(rl1+1) && tl2=(rl2+1) && tl3=(rl3+1) && tl4=(rl4+1) && tl5=(rl5+1) && tl6=(rl6+1) && tl7=(rl7+1) && high_ok=(th0&th1&th2&th3&th4&th5&th6&th7) && low_ok=(tl0&tl1&tl2&tl3&tl4&tl5&tl6&tl7) && result=(high_ok&low_ok)
+
+quit

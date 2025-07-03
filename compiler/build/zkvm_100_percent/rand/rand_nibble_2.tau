@@ -1,0 +1,5 @@
+# Component: rand_nibble_2
+
+solve rnd2=1 && rand=1
+
+quit

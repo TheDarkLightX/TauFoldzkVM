@@ -1,0 +1,7 @@
+# Component: ID_N0
+# Assumptions: process_valid=1
+# Guarantees: id_nibble_0, unique_identifier
+
+solve pid0=0 && pid1=0 && pid2=0 && pid3=0 && tid0=0 && tid1=0 && tid2=0 && tid3=0 && id0=pid0 && id1=pid1 && id2=pid2 && id3=pid3 && getid=1 && valid=1
+
+quit

@@ -1,0 +1,7 @@
+# SHR_MUX
+# Nibble: -1, Carry In: False, Carry Out: False
+# Guarantees: shr_correct
+
+solve valid_shift_amount=1 && shift0=0 && shift1=0 && shift2=0 && shift3=0 && shift4=0 && in0=0 && in1=0 && in2=0 && in3=0 && in4=0 && in5=0 && in6=0 && in7=0 && shift1_0=(shift0&in1)|((shift0+1)&in0) && shift1_1=(shift0&in2)|((shift0+1)&in1) && shift1_2=(shift0&in3)|((shift0+1)&in2) && shift1_3=(shift0&in4)|((shift0+1)&in3) && shift1_4=(shift0&in5)|((shift0+1)&in4) && shift1_5=(shift0&in6)|((shift0+1)&in5) && shift1_6=(shift0&in7)|((shift0+1)&in6) && shift1_7=(shift0&0)|((shift0+1)&in7)
+
+quit

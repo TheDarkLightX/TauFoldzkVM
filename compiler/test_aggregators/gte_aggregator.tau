@@ -1,0 +1,6 @@
+# Component: gte_aggregator
+# Guarantees: gte_final
+
+solve gt_result=0 && eq_result=1 && gte_final=(gt_result|eq_result)
+
+quit

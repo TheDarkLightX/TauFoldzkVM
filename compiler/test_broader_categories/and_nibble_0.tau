@@ -1,0 +1,6 @@
+# Component: and_nibble_0
+# Guarantees: and0
+
+solve a0=1 && b0=1 && and0=(a0&b0)
+
+quit

@@ -1,0 +1,7 @@
+# NOT_NIBBLE_6
+# Nibble: 6, Carry In: False, Carry Out: False
+# Guarantees: not_correct_6
+
+solve valid_input_6=1 && a6_0=0 && r6_0=(a6_0+1) && a6_1=0 && r6_1=(a6_1+1) && a6_2=0 && r6_2=(a6_2+1) && a6_3=0 && r6_3=(a6_3+1)
+
+quit

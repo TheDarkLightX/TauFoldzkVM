@@ -1,0 +1,6 @@
+# Component: gt_aggregator
+# Guarantees: gt_final
+
+solve gt0=0 && eq0=1 && gt1=0 && eq1=1 && gt2=0 && eq2=1 && gt3=1 && eq3=0 && gt_final=(gt0|(eq0&(gt1|(eq1&(gt2|(eq2&gt3))))))
+
+quit

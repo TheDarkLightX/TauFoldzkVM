@@ -1,0 +1,6 @@
+# Component: mod_nibble_7
+# Guarantees: rem7
+
+solve a7=1 && b7=1 && rem7=(a7&(b7+1))
+
+quit

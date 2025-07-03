@@ -1,0 +1,6 @@
+# Component: sub_nibble_7
+# Guarantees: diff7
+
+solve a7=1 && b7=0 && diff7=(a7&(b7+1))
+
+quit

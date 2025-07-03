@@ -1,0 +1,7 @@
+# Proof Request Specification
+# Defines work to be proven and rewards
+
+# Program hash (using RC hash)
+solve prog0=1 && prog1=0 && prog2=1 && prog3=1 && prog4=0 && prog5=1 && prog6=0 && prog7=0 && input0=0 && input1=1 && input2=0 && input3=1 && input4=1 && input5=0 && input6=1 && input7=0 && max_steps0=0 && max_steps1=0 && max_steps2=0 && max_steps3=1 && reward0=0 && reward1=0 && reward2=1 && reward3=0 && reward4=0 && reward5=1 && reward6=1 && reward7=0 && req_id0=(prog0+input0+max_steps0+reward0) && req_id1=(prog1+input1+max_steps1+reward1) && req_id2=(prog2+input2+max_steps2+reward2) && req_id3=(prog3+input3+max_steps3+reward3) && valid=(prog0|prog2|prog3)&(input1|input3|input5)&max_steps3&(reward2|reward5|reward6)
+
+quit

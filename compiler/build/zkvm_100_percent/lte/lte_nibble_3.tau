@@ -1,0 +1,6 @@
+# Component: lte_nibble_3
+# Guarantees: lte3
+
+solve a3=1 && b3=1 && lte3=((a3+1)|b3)
+
+quit

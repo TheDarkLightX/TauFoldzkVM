@@ -1,0 +1,7 @@
+# Component: hash_link_1_to_2
+# Assumptions: hout0=0|hout0=1, hout1=0|hout1=1, hout2=0|hout2=1, hout3=0|hout3=1
+# Guarantees: hin0=hout0, hin1=hout1, hin2=hout2, hin3=hout3
+
+solve hout0=0 && hout1=0 && hout2=0 && hout3=0 && hin0=hout0 && hin1=hout1 && hin2=hout2 && hin3=hout3
+
+quit

@@ -1,0 +1,6 @@
+# Component: verify_nibble_3
+# Guarantees: verifyok3
+
+solve sig3=1 && msg3=1 && pk3=1 && verifyok3=(sig3&msg3&pk3)
+
+quit

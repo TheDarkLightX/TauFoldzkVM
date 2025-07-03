@@ -1,0 +1,5 @@
+# Component: id_nibble_5
+
+solve id5=0 && valid=1
+
+quit

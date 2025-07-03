@@ -1,0 +1,7 @@
+# MUL_8BIT
+# Nibble: -1, Carry In: False, Carry Out: False
+# Guarantees: product_correct
+
+solve valid_mul_inputs=1 && ma0=0 && mb0=0 && ma1=0 && mb1=0 && ma2=0 && mb2=0 && ma3=0 && mb3=0 && ma4=0 && mb4=0 && ma5=0 && mb5=0 && ma6=0 && mb6=0 && ma7=0 && mb7=0 && pp0_0=(ma0&mb0) && pp0_1=(ma0&mb1) && pp0_2=(ma0&mb2) && pp0_3=(ma0&mb3) && pp1_0=(ma1&mb0) && pp1_1=(ma1&mb1) && pp1_2=(ma1&mb2) && pp1_3=(ma1&mb3) && pp2_0=(ma2&mb0) && pp2_1=(ma2&mb1) && pp2_2=(ma2&mb2) && pp2_3=(ma2&mb3) && pp3_0=(ma3&mb0) && pp3_1=(ma3&mb1) && pp3_2=(ma3&mb2) && pp3_3=(ma3&mb3) && p0=pp0_0 && p1=(pp0_1+pp1_0) && p2=(pp0_2+pp1_1+pp2_0) && p3=(pp0_3+pp1_2+pp2_1+pp3_0)
+
+quit

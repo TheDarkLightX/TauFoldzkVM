@@ -1,0 +1,7 @@
+# Component: call_nibble_4
+# Assumptions: cin=0|cin=1
+# Guarantees: newpc16, newpc17, newpc18, newpc19, stack16, stack17, stack18, stack19, spchanged4, cout4
+
+solve target16=0 && target17=1 && target18=0 && target19=1 && pc16=1 && pc17=0 && pc18=1 && pc19=0 && sp16=0 && sp17=1 && sp18=0 && sp19=1 && cin=0 && r16=(pc16+cin) && c16=(pc16&cin) && r17=(pc17+c16) && c17=(pc17&c16) && r18=(pc18+c17) && c18=(pc18&c17) && r19=(pc19+c18) && c19=(pc19&c18) && cout4=c19 && stack16=r16 && stack17=r17 && stack18=r18 && stack19=r19 && newpc16=target16 && newpc17=target17 && newpc18=target18 && newpc19=target19 && spchanged4=1
+
+quit

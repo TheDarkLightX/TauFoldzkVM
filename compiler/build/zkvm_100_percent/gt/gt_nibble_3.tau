@@ -1,0 +1,6 @@
+# Component: gt_nibble_3
+# Guarantees: gt3
+
+solve a3=1 && b3=0 && gt3=(a3&(b3+1))
+
+quit

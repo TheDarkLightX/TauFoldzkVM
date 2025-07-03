@@ -1,0 +1,7 @@
+# SUB_NIBBLE_2
+# Nibble: 2, Carry In: True, Carry Out: True
+# Guarantees: diff_ok_2, borrow_ok_2
+
+solve valid_2=1 && a20=0 && b20=0 && a21=0 && b21=0 && a22=0 && b22=0 && a23=0 && b23=0 && v20=(b20+1) && v21=(b21+1) && v22=(b22+1) && v23=(b23+1) && k=0 && bi2=0 && d20=(a20+v20+bi2) && w20=((a20&v20)|((a20+v20)&bi2)) && d21=(a21+v21+w20) && w21=((a21&v21)|((a21+v21)&w20)) && d22=(a22+v22+w21) && w22=((a22&v22)|((a22+v22)&w21)) && d23=(a23+v23+w22) && w23=((a23&v23)|((a23+v23)&w22)) && bo2=(w23+1)
+
+quit

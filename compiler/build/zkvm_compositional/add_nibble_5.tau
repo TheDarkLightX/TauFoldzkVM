@@ -1,0 +1,8 @@
+# Contract: add_nibble_5
+# Assumptions: cin=0|cin=1
+# Guarantees: cout5=c23
+# Character count: 314
+
+solve a20=0 && b20=0 && a21=0 && b21=0 && a22=0 && b22=0 && a23=0 && b23=0 && cin=0 && s20=(a20+b20+cin) && c20=((a20&b20)|((a20+b20)&cin)) && s21=(a21+b21+c20) && c21=((a21&b21)|((a21+b21)&c20)) && s22=(a22+b22+c21) && c22=((a22&b22)|((a22+b22)&c21)) && s23=(a23+b23+c22) && c23=((a23&b23)|((a23+b23)&c22)) && cout5=c23
+
+quit

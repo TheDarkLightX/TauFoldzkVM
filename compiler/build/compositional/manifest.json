@@ -1,0 +1,81 @@
+{
+  "components": [
+    "add_low.tau",
+    "add_high.tau",
+    "carry_connection.tau"
+  ],
+  "contracts": {
+    "add_low": {
+      "assumptions": [],
+      "guarantees": [
+        "carry_out=c3"
+      ],
+      "variables": [
+        "b3",
+        "b0",
+        "s3",
+        "s1",
+        "c1",
+        "s2",
+        "c2",
+        "a0",
+        "c3",
+        "carry_out",
+        "s0",
+        "c0",
+        "a2",
+        "a1",
+        "b2",
+        "a3",
+        "b1"
+      ]
+    },
+    "add_high": {
+      "assumptions": [
+        "carry_in=0|carry_in=1"
+      ],
+      "guarantees": [],
+      "variables": [
+        "a7",
+        "b5",
+        "b4",
+        "s6",
+        "a4",
+        "b6",
+        "c6",
+        "c7",
+        "s5",
+        "carry_in",
+        "a6",
+        "b7",
+        "c4",
+        "s7",
+        "c5",
+        "a5",
+        "s4"
+      ]
+    },
+    "carry_connection": {
+      "assumptions": [
+        "carry_out=0|carry_out=1"
+      ],
+      "guarantees": [
+        "carry_in=carry_out"
+      ],
+      "variables": [
+        "carry_out",
+        "carry_in"
+      ]
+    }
+  },
+  "composition_verified": [
+    [
+      "add_low",
+      "carry_connection"
+    ],
+    [
+      "add_high",
+      "carry_connection"
+    ]
+  ]
+}

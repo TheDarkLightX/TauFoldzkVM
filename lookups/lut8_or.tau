@@ -1,0 +1,11 @@
+# 8-bit OR Lookup Table
+# Validates OR operation for a key test case
+# Test case: 00001111 OR 11110000 = 11111111
+
+solve a0=1 && a1=1 && a2=1 && a3=1 && a4=0 && a5=0 && a6=0 && a7=0 && 
+      b0=0 && b1=0 && b2=0 && b3=0 && b4=1 && b5=1 && b6=1 && b7=1 && 
+      r0=(a0|b0) && r1=(a1|b1) && r2=(a2|b2) && r3=(a3|b3) && 
+      r4=(a4|b4) && r5=(a5|b5) && r6=(a6|b6) && r7=(a7|b7) &&
+      r0=1 && r1=1 && r2=1 && r3=1 && r4=1 && r5=1 && r6=1 && r7=1
+
+quit

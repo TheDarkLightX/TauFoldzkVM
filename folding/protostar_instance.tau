@@ -1,0 +1,12 @@
+# ProtoStar Instance Structure
+# Instance = (C, r, u, E) where:
+# C: commitments (using RC hash)
+# r: challenges
+# u: slack scalar
+# E: noise vector
+
+# For 8-bit demonstration
+# Instance 1: Simple computation witness
+solve c10=1 && c11=0 && c12=1 && c13=1 && c14=0 && c15=0 && c16=1 && c17=0 && r10=1 && r11=1 && r12=0 && r13=1 && r14=0 && r15=0 && r16=0 && r17=0 && u10=0 && u11=0 && u12=0 && u13=1 && u14=0 && u15=0 && u16=0 && u17=0 && e10=0 && e11=0 && e12=0 && e13=0 && e14=0 && e15=0 && e16=0 && e17=0 && c20=0 && c21=1 && c22=1 && c23=0 && c24=1 && c25=0 && c26=0 && c27=1 && r20=0 && r21=1 && r22=1 && r23=0 && r24=1 && r25=0 && r26=0 && r27=0 && u20=0 && u21=1 && u22=0 && u23=0 && u24=0 && u25=0 && u26=0 && u27=0 && e20=0 && e21=0 && e22=0 && e23=0 && e24=0 && e25=0 && e26=0 && e27=0 && beta0=1 && beta1=0 && beta2=1 && beta3=0 && beta4=0 && beta5=0 && beta6=0 && beta7=0 && cf0=(c10+((beta0&c20))) && cf1=(c11+((beta0&c21))) && cf2=(c12+((beta0&c22))) && cf3=(c13+((beta0&c23))) && cf4=(c14+((beta0&c24))) && cf5=(c15+((beta0&c25))) && cf6=(c16+((beta0&c26))) && cf7=(c17+((beta0&c27))) && rf0=(r10+(r20&beta0)) && rf1=(r11+(r21&beta0)) && rf2=(r12+(r22&beta0)) && rf3=(r13+(r23&beta0)) && rf4=(r14+(r24&beta0)) && rf5=(r15+(r25&beta0)) && rf6=(r16+(r26&beta0)) && rf7=(r17+(r27&beta0)) && uf0=(u10+(u20&beta0)) && uf1=(u11+(u21&beta0)) && uf2=(u12+(u22&beta0)) && uf3=(u13+(u23&beta0)) && uf4=(u14+(u24&beta0)) && uf5=(u15+(u25&beta0)) && uf6=(u16+(u26&beta0)) && uf7=(u17+(u27&beta0)) && ef0=(e10+(e20&beta0)) && ef1=(e11+(e21&beta0)) && ef2=(e12+(e22&beta0)) && ef3=(e13+(e23&beta0)) && ef4=(e14+(e24&beta0)) && ef5=(e15+(e25&beta0)) && ef6=(e16+(e26&beta0)) && ef7=(e17+(e27&beta0)) && valid=(cf0|cf1|cf2|cf3|cf4|cf5|cf6|cf7)
+
+quit

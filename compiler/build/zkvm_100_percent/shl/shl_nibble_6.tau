@@ -1,0 +1,7 @@
+# Component: shl_nibble_6
+# Assumptions: cin=0|cin=1
+# Guarantees: cout6=a27
+
+solve a24=0 && b24=1 && a25=1 && b25=0 && a26=0 && b26=1 && a27=1 && b27=0 && cin=0 && r24=cin && r25=a24 && r26=a25 && r27=a26 && cout6=a27
+
+quit

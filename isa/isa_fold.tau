@@ -1,0 +1,7 @@
+# FOLD Instruction: Fold current instance with accumulator
+# Updates accumulator with folded result
+
+# Current instance (4-bit demo)
+solve curr0=1 && curr1=0 && curr2=1 && curr3=0 && acc0=0 && acc1=1 && acc2=0 && acc3=1 && beta0=1 && beta1=0 && beta2=0 && beta3=0 && new_acc0=(acc0+(beta0&curr0)) && new_acc1=(acc1+(beta0&curr1)) && new_acc2=(acc2+(beta0&curr2)) && new_acc3=(acc3+(beta0&curr3)) && noise0=0 && noise1=0 && noise2=1 && noise3=0 && new_noise0=(noise0|(beta0&curr0&acc0)) && new_noise1=(noise1|(beta0&curr1&acc1)) && new_noise2=(noise2|(beta0&curr2&acc2)) && new_noise3=(noise3|(beta0&curr3&acc3)) && valid=((new_acc0|new_acc1|new_acc2|new_acc3)&(new_noise2))
+
+quit

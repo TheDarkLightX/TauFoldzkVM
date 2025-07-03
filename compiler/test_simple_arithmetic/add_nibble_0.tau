@@ -1,0 +1,6 @@
+# Component: add_nibble_0
+# Guarantees: s0, c0
+
+solve a0=1 && b0=1 && s0=(a0+b0) && c0=(a0&b0)
+
+quit

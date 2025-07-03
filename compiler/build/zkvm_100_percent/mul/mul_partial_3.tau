@@ -1,0 +1,6 @@
+# Component: mul_partial_3
+# Guarantees: prod3
+
+solve a3=1 && b3=1 && prod3=(a3&b3)
+
+quit

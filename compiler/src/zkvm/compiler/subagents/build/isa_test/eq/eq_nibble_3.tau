@@ -1,0 +1,7 @@
+# EQ_NIBBLE_3
+# Nibble: 3, Carry In: True, Carry Out: True
+# Guarantees: cmp_flags_3
+
+solve inputs_valid_3=1 && a3_0=0 && b3_0=0 && a3_1=0 && b3_1=0 && a3_2=0 && b3_2=0 && a3_3=0 && b3_3=0 && bin3=0 && eq0=((a3_0+b3_0+1)|((a3_0+1)+(b3_0+1)+1)) && eq1=((a3_1+b3_1+1)|((a3_1+1)+(b3_1+1)+1)) && eq2=((a3_2+b3_2+1)|((a3_2+1)+(b3_2+1)+1)) && eq3=((a3_3+b3_3+1)|((a3_3+1)+(b3_3+1)+1)) && neq3=(eq0&eq1&eq2&eq3) && bout3=bin3
+
+quit

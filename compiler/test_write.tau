@@ -1,0 +1,7 @@
+# Component: write_nibble_4
+# Assumptions: op_valid=1
+# Guarantees: sys_active4=1
+
+solve inp16=0 && inp17=1 && inp18=0 && inp19=1 && addr16=0 && data16=inp16 && addr17=1 && data17=inp17 && addr18=0 && data18=inp18 && addr19=1 && data19=inp19 && write_op4=0 && sys_active4=1 && op_valid4=1
+
+quit

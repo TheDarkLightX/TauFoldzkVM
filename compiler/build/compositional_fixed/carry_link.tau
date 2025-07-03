@@ -1,0 +1,5 @@
+# Compositional 8-bit adder - carry_link.tau
+
+solve cout=1 && cin=cout && verified=1
+
+quit

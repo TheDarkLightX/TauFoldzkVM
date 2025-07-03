@@ -1,0 +1,6 @@
+# Component: verify_nibble_7
+# Guarantees: verifyok7
+
+solve sig7=1 && msg7=1 && pk7=1 && verifyok7=(sig7&msg7&pk7)
+
+quit

@@ -1,0 +1,7 @@
+# ADD_NIBBLE_2
+# Nibble: 2, Carry In: True, Carry Out: True
+# Guarantees: sum_ok_2, carry_ok_2
+
+solve valid_2=1 && a20=0 && b20=0 && a21=0 && b21=0 && a22=0 && b22=0 && a23=0 && b23=0 && ci2=0 && s20=(a20+b20+ci2) && c20=((a20&b20)|((a20+b20)&ci2)) && s21=(a21+b21+c20) && c21=((a21&b21)|((a21+b21)&c20)) && s22=(a22+b22+c21) && c22=((a22&b22)|((a22+b22)&c21)) && s23=(a23+b23+c22) && c23=((a23&b23)|((a23+b23)&c22)) && co2=c23
+
+quit

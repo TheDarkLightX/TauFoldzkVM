@@ -1,0 +1,6 @@
+# Component: sub_nibble_3
+# Guarantees: diff3
+
+solve a3=1 && b3=0 && diff3=(a3&(b3+1))
+
+quit

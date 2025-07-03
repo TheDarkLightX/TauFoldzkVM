@@ -1,0 +1,7 @@
+# Component: add_nibble_6
+# Assumptions: cin=0|cin=1
+# Guarantees: cout6=c27
+
+solve a24=0 && b24=1 && a25=1 && b25=0 && a26=0 && b26=1 && a27=1 && b27=0 && cin=0 && s24=(a24+b24+cin) && c24=((a24&b24)|((a24+b24)&cin)) && s25=(a25+b25+c24) && c25=((a25&b25)|((a25+b25)&c24)) && s26=(a26+b26+c25) && c26=((a26&b26)|((a26+b26)&c25)) && s27=(a27+b27+c26) && c27=((a27&b27)|((a27+b27)&c26)) && cout6=c27
+
+quit

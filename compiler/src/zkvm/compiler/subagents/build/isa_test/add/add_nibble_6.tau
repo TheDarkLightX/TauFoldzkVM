@@ -1,0 +1,7 @@
+# ADD_NIBBLE_6
+# Nibble: 6, Carry In: True, Carry Out: True
+# Guarantees: sum_ok_6, carry_ok_6
+
+solve valid_6=1 && a60=0 && b60=0 && a61=0 && b61=0 && a62=0 && b62=0 && a63=0 && b63=0 && ci6=0 && s60=(a60+b60+ci6) && c60=((a60&b60)|((a60+b60)&ci6)) && s61=(a61+b61+c60) && c61=((a61&b61)|((a61+b61)&c60)) && s62=(a62+b62+c61) && c62=((a62&b62)|((a62+b62)&c61)) && s63=(a63+b63+c62) && c63=((a63&b63)|((a63+b63)&c62)) && co6=c63
+
+quit

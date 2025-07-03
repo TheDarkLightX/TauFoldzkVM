@@ -1,0 +1,7 @@
+# Component: ADD_NIBBLE_0
+# Assumptions: valid_0=1
+# Guarantees: sum_ok_0, carry_ok_0
+
+solve a00=0 && b00=0 && a01=0 && b01=0 && a02=0 && b02=0 && a03=0 && b03=0 && s00=(a00+b00) && c00=(a00&b00) && s01=(a01+b01+c00) && c01=((a01&b01)|((a01+b01)&c00)) && s02=(a02+b02+c01) && c02=((a02&b02)|((a02+b02)&c01)) && s03=(a03+b03+c02) && c03=((a03&b03)|((a03+b03)&c02)) && co0=c03
+
+quit

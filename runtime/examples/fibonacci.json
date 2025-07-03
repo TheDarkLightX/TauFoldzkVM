@@ -1,0 +1,29 @@
+{
+  "instructions": [
+    {
+      "Push": 0
+    },
+    {
+      "Push": 1
+    },
+    "Dup",
+    "Swap",
+    "Add",
+    "Dup",
+    "Swap",
+    "Add",
+    "Dup",
+    "Swap",
+    "Add",
+    "Dup",
+    "Swap",
+    "Add",
+    "Halt"
+  ],
+  "metadata": {
+    "name": "Fibonacci Example",
+    "version": "1.0.0",
+    "description": "Calculates the 10th Fibonacci number using stack operations",
+    "created_at": "2025-07-03T23:06:09.073277+00:00"
+  }
+}

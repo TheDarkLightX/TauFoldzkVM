@@ -1,0 +1,6 @@
+# Component: lte_nibble_5
+# Guarantees: lte5
+
+solve a5=1 && b5=1 && lte5=((a5+1)|b5)
+
+quit

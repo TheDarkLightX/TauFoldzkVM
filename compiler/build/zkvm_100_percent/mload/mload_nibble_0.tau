@@ -1,0 +1,6 @@
+# Component: mload_nibble_0
+# Guarantees: mdata0
+
+solve maddr0=0 && memspace=1 && mdata0=maddr0
+
+quit

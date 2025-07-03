@@ -1,0 +1,7 @@
+# High-Degree Gate in ProtoStar
+# Degree-3 constraint: a*b*c = d
+
+# Inputs
+solve a0=1 && a1=0 && a2=1 && a3=0 && b0=1 && b1=1 && b2=0 && b3=0 && c0=0 && c1=1 && c2=1 && c3=0 && d0=(a0&b0&c0) && d1=(a1&b1&c1) && d2=(a2&b2&c2) && d3=(a3&b3&c3) && expected0=0 && expected1=0 && expected2=0 && expected3=0 && t0=(d0+expected0+1) && t1=(d1+expected1+1) && t2=(d2+expected2+1) && t3=(d3+expected3+1) && valid=(t0&t1&t2&t3)
+
+quit

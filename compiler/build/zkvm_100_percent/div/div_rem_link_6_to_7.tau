@@ -1,0 +1,7 @@
+# Component: div_rem_link_6_to_7
+# Assumptions: rout0=0|rout0=1, rout1=0|rout1=1, rout2=0|rout2=1, rout3=0|rout3=1
+# Guarantees: rin0=rout0, rin1=rout1, rin2=rout2, rin3=rout3
+
+solve rout0=0 && rout1=0 && rout2=0 && rout3=0 && rin0=rout0 && rin1=rout1 && rin2=rout2 && rin3=rout3
+
+quit

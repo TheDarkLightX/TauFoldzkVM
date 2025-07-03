@@ -1,0 +1,6 @@
+# Component: jmp_nibble_3
+# Guarantees: newpc12, newpc13, newpc14, newpc15
+
+solve target12=1 && target13=0 && target14=1 && target15=0 && pc12=0 && pc13=1 && pc14=0 && pc15=1 && newpc12=target12 && newpc13=target13 && newpc14=target14 && newpc15=target15
+
+quit

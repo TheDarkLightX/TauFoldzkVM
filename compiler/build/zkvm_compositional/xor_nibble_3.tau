@@ -1,0 +1,8 @@
+# Contract: xor_nibble_3
+# Assumptions: none
+# Guarantees: none
+# Character count: 136
+
+solve a12=0 && b12=0 && a13=0 && b13=0 && a14=0 && b14=0 && a15=0 && b15=0 && r12=(a12+b12) && r13=(a13+b13) && r14=(a14+b14) && r15=(a15+b15)
+
+quit

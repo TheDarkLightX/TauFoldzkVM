@@ -1,0 +1,7 @@
+# Component: call_nibble_3
+# Assumptions: cin=0|cin=1
+# Guarantees: newpc12, newpc13, newpc14, newpc15, stack12, stack13, stack14, stack15, spchanged3, cout3
+
+solve target12=1 && target13=0 && target14=1 && target15=0 && pc12=0 && pc13=1 && pc14=0 && pc15=1 && sp12=1 && sp13=0 && sp14=1 && sp15=0 && cin=0 && r12=(pc12+cin) && c12=(pc12&cin) && r13=(pc13+c12) && c13=(pc13&c12) && r14=(pc14+c13) && c14=(pc14&c13) && r15=(pc15+c14) && c15=(pc15&c14) && cout3=c15 && stack12=r12 && stack13=r13 && stack14=r14 && stack15=r15 && newpc12=target12 && newpc13=target13 && newpc14=target14 && newpc15=target15 && spchanged3=1
+
+quit

@@ -1,0 +1,6 @@
+# Component: data_nibble_6
+# Guarantees: data6
+
+solve d6=1 && data6=d6
+
+quit

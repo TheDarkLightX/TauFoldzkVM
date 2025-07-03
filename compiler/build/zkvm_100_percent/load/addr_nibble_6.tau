@@ -1,0 +1,6 @@
+# Component: addr_nibble_6
+# Guarantees: addr6
+
+solve a6=0 && addr6=a6
+
+quit

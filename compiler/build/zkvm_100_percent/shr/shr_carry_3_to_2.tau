@@ -1,0 +1,7 @@
+# Component: shr_carry_3_to_2
+# Assumptions: cout2=0|cout2=1
+# Guarantees: cin=cout2
+
+solve cout2=0 && cin=cout2
+
+quit

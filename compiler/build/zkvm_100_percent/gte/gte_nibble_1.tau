@@ -1,0 +1,6 @@
+# Component: gte_nibble_1
+# Guarantees: gte1
+
+solve a1=1 && b1=1 && gte1=(a1|(b1+1))
+
+quit

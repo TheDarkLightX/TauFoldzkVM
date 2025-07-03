@@ -1,0 +1,6 @@
+# Component: eq_nibble_5
+# Guarantees: eq5
+
+solve a5=1 && b5=1 && eq5=(a5&b5)
+
+quit

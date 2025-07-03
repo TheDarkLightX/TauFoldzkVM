@@ -1,0 +1,7 @@
+# Component: jnz_nibble_6
+# Assumptions: zflag=0|zflag=1, cin=0|cin=1
+# Guarantees: newpc24, newpc25, newpc26, newpc27, cout6
+
+solve zflag=0 && target24=0 && target25=1 && target26=0 && target27=1 && pc24=1 && pc25=0 && pc26=1 && pc27=0 && cin=0 && s24=(pc24+cin) && c24=(pc24&cin) && s25=(pc25+c24) && c25=(pc25&c24) && s26=(pc26+c25) && c26=(pc26&c25) && s27=(pc27+c26) && c27=(pc27&c26) && cout6=c27 && newpc24=(((zflag+1)&target24)|(zflag&s0)) && newpc25=(((zflag+1)&target25)|(zflag&s25)) && newpc26=(((zflag+1)&target26)|(zflag&s26)) && newpc27=(((zflag+1)&target27)|(zflag&s27))
+
+quit

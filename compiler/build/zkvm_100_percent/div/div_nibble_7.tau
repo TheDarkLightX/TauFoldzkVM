@@ -1,0 +1,6 @@
+# Component: div_nibble_7
+# Guarantees: q7, r7
+
+solve a7=1 && b7=1 && q7=(a7&b7) && r7=0
+
+quit

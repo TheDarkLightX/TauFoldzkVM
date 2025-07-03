@@ -1,0 +1,6 @@
+# Component: ret_nibble_7
+# Guarantees: newpc28, newpc29, newpc30, newpc31, spchanged7
+
+solve sp28=1 && sp29=0 && sp30=1 && sp31=0 && retaddr28=0 && retaddr29=1 && retaddr30=0 && retaddr31=1 && pc28=0 && pc29=1 && pc30=0 && pc31=1 && newpc28=retaddr28 && newpc29=retaddr29 && newpc30=retaddr30 && newpc31=retaddr31 && spchanged7=1
+
+quit

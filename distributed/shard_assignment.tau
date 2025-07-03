@@ -1,0 +1,7 @@
+# Shard Assignment Protocol
+# Assigns shards to provers based on commitment
+
+# Prover addresses (4-bit)
+solve prover0_0=1 && prover0_1=0 && prover0_2=0 && prover0_3=1 && prover1_0=0 && prover1_1=1 && prover1_2=1 && prover1_3=0 && commit0=1 && commit1=0 && commit2=1 && commit3=0 && assign0=((commit0+1)&commit1) && assign1=(commit0&(commit1+1)) && valid=(assign0+assign1)
+
+quit

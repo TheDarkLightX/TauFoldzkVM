@@ -1,0 +1,6 @@
+# Component: swap_aggregator
+# Guarantees: swapcomplete
+
+solve allswapped=1 && swapcomplete=allswapped
+
+quit

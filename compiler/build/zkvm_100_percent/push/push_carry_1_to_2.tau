@@ -1,0 +1,6 @@
+# Component: push_carry_1_to_2
+# Guarantees: pushcarry
+
+solve carry=0 && pushcarry=carry
+
+quit

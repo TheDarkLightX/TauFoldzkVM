@@ -1,0 +1,9 @@
+# Compositional 8-bit Addition using Contracts  
+# Part 2: High nibble addition contract with carry in
+
+# Assumptions: carry_in from low nibble
+# Guarantees: produces correct 4-bit sum
+
+solve a4=1 && a5=0 && a6=1 && a7=0 && b4=1 && b5=1 && b6=0 && b7=0 && carry_in=0 && s4=(a4+b4+carry_in) && c4=((a4&b4)|((a4+b4)&carry_in)) && s5=(a5+b5+c4) && c5=((a5&b5)|((a5+b5)&c4)) && s6=(a6+b6+c5) && c6=((a6&b6)|((a6+b6)&c5)) && s7=(a7+b7+c6)
+
+quit

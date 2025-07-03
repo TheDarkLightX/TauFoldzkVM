@@ -1,0 +1,6 @@
+# Component: mod_nibble_6
+# Guarantees: rem6
+
+solve a6=1 && b6=1 && rem6=(a6&(b6+1))
+
+quit

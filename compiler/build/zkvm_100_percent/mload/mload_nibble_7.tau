@@ -1,0 +1,6 @@
+# Component: mload_nibble_7
+# Guarantees: mdata7
+
+solve maddr7=1 && memspace=1 && mdata7=maddr7
+
+quit

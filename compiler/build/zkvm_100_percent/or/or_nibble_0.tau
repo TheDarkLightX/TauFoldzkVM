@@ -1,0 +1,5 @@
+# Component: or_nibble_0
+
+solve a0=0 && b0=1 && a1=1 && b1=0 && a2=0 && b2=1 && a3=1 && b3=0 && r0=(a0|b0) && r1=(a1|b1) && r2=(a2|b2) && r3=(a3|b3)
+
+quit

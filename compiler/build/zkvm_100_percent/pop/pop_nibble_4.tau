@@ -1,0 +1,6 @@
+# Component: pop_nibble_4
+# Guarantees: popped4
+
+solve stackop=1 && stackdata4=0 && popped4=(stackdata4&stackop)
+
+quit

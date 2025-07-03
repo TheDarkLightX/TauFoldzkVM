@@ -1,0 +1,7 @@
+# Contract: add_low
+# Assumptions: 
+# Guarantees: carry_out=c3
+
+solve a0=1 && b0=0 && a1=0 && b1=1 && a2=1 && b2=0 && a3=0 && b3=1 && s0=(a0+b0) && c0=(a0&b0) && s1=(a1+b1+c0) && c1=((a1&b1)|((a1+b1)&c0)) && s2=(a2+b2+c1) && c2=((a2&b2)|((a2+b2)&c1)) && s3=(a3+b3+c2) && c3=((a3&b3)|((a3+b3)&c2)) && carry_out=c3 && guarantee=1
+
+quit

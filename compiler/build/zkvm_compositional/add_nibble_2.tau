@@ -1,0 +1,8 @@
+# Contract: add_nibble_2
+# Assumptions: cin=0|cin=1
+# Guarantees: cout2=c11
+# Character count: 290
+
+solve a8=0 && b8=0 && a9=0 && b9=0 && a10=0 && b10=0 && a11=0 && b11=0 && cin=0 && s8=(a8+b8+cin) && c8=((a8&b8)|((a8+b8)&cin)) && s9=(a9+b9+c8) && c9=((a9&b9)|((a9+b9)&c8)) && s10=(a10+b10+c9) && c10=((a10&b10)|((a10+b10)&c9)) && s11=(a11+b11+c10) && c11=((a11&b11)|((a11+b11)&c10)) && cout2=c11
+
+quit

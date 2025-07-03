@@ -1,0 +1,6 @@
+# Component: sign_nibble_3
+# Guarantees: sig12, sig13, sig14, sig15
+
+solve msg12=1 && msg13=0 && msg14=1 && msg15=0 && sk12=1 && sk13=0 && sk14=1 && sk15=0 && k12=1 && k13=0 && k14=1 && k15=0 && h12=(msg12&sk12) && s12=(k12+(h12&sk12)) && h13=(msg13&sk13) && s13=(k13+(h13&sk13)) && h14=(msg14&sk14) && s14=(k14+(h14&sk14)) && h15=(msg15&sk15) && s15=(k15+(h15&sk15)) && sig12=s12 && sig13=s13 && sig14=s14 && sig15=s15
+
+quit

@@ -1,0 +1,6 @@
+# Component: not_nibble_0
+# Guarantees: not0
+
+solve a0=1 && not0=(a0+1)
+
+quit

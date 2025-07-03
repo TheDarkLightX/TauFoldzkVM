@@ -1,0 +1,5 @@
+# Component: debug_nibble_3
+
+solve a3=1 && b3=0 && out3=(a3&b3) && debug=1
+
+quit

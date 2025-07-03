@@ -1,0 +1,7 @@
+# JMP
+# Nibble: -1, Carry In: False, Carry Out: False
+# Guarantees: jumped
+
+solve valid=1 && p0=0 && t0=0 && p1=0 && t1=0 && p2=0 && t2=0 && p3=0 && t3=0 && p4=0 && t4=0 && p5=0 && t5=0 && p6=0 && t6=0 && p7=0 && t7=0 && n0=t0 && n1=t1 && n2=t2 && n3=t3 && n4=t4 && n5=t5 && n6=t6 && n7=t7
+
+quit

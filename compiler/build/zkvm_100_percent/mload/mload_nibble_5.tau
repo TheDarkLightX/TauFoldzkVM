@@ -1,0 +1,6 @@
+# Component: mload_nibble_5
+# Guarantees: mdata5
+
+solve maddr5=1 && memspace=1 && mdata5=maddr5
+
+quit

@@ -1,0 +1,6 @@
+# Component: gt_nibble_5
+# Guarantees: gt5
+
+solve a5=1 && b5=0 && gt5=(a5&(b5+1))
+
+quit

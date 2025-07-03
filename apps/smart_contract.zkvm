@@ -1,0 +1,277 @@
+// TauFoldZKVM Smart Contract Demo
+// A simple token contract with balance tracking and transfers
+//
+// Contract functions:
+// - Initialize: Set up initial token distribution
+// - Transfer: Move tokens between accounts
+// - Mint: Create new tokens (owner only)
+// - Burn: Destroy tokens
+// - Balance: Check account balance
+//
+// Memory layout:
+// 0x0000-0x00FF: Account balances (256 accounts)
+// 0x0100: Total supply
+// 0x0101: Contract owner
+// 0x0102: Transfer count
+// 0x0200-0x02FF: Transfer history
+
+// Initialize contract
+initialize:
+    // Set contract owner (account 0)
+    PUSH 0
+    PUSH 0x0101
+    STORE
+    
+    // Initial supply: 1,000,000 tokens
+    PUSH 1000000
+    DUP
+    PUSH 0x0100
+    STORE
+    
+    // Give all initial tokens to owner
+    PUSH 0          // Owner address
+    STORE          // Store balance
+    
+    // Initialize transfer count
+    PUSH 0
+    PUSH 0x0102
+    STORE
+    
+    JMP main_loop
+
+// Main contract loop
+main_loop:
+    // Read function selector
+    READ
+    
+    // Function dispatch
+    DUP
+    PUSH 0x01      // Transfer function
+    EQ
+    JNZ transfer
+    
+    DUP
+    PUSH 0x02      // Mint function
+    EQ
+    JNZ mint
+    
+    DUP
+    PUSH 0x03      // Burn function
+    EQ
+    JNZ burn
+    
+    DUP
+    PUSH 0x04      // Balance query
+    EQ
+    JNZ balance_query
+    
+    DUP
+    PUSH 0x05      // Total supply query
+    EQ
+    JNZ supply_query
+    
+    DUP
+    PUSH 0xFF      // Exit
+    EQ
+    JNZ exit
+    
+    // Invalid function
+    POP
+    PUSH 0xE0      // Error code
+    WRITE
+    JMP main_loop
+
+// Transfer function
+// Input: from_address, to_address, amount
+transfer:
+    POP            // Remove function selector
+    
+    READ           // from_address
+    DUP
+    READ           // to_address
+    DUP
+    READ           // amount
+    DUP
+    
+    // Verify sender has sufficient balance
+    SWAP           // amount, to, from, from
+    SWAP           // amount, from, to, from
+    SWAP           // from, amount, to, from
+    DUP            // from, from, amount, to, from
+    LOAD           // balance, from, amount, to, from
+    
+    SWAP           // from, balance, amount, to, from
+    POP            // balance, amount, to, from
+    SWAP           // amount, balance, to, from
+    DUP            // amount, amount, balance, to, from
+    SWAP           // amount, amount, balance, to, from
+    GT             // amount > balance?, amount, to, from
+    JNZ insufficient_balance
+    
+    // Deduct from sender
+    SWAP           // amount, to, from
+    DUP            // amount, amount, to, from
+    SWAP           // amount, amount, to, from
+    SWAP           // amount, to, amount, from
+    SWAP           // amount, to, from, amount
+    DUP            // from, from, amount, to, amount
+    LOAD           // sender_balance, from, amount, to, amount
+    SWAP           // from, sender_balance, amount, to, amount
+    SWAP           // sender_balance, from, amount, to, amount
+    SUB            // new_balance, from, to, amount
+    SWAP           // from, new_balance, to, amount
+    STORE          // to, amount
+    
+    // Add to receiver
+    SWAP           // amount, to
+    DUP            // amount, amount, to
+    SWAP           // amount, amount, to
+    SWAP           // amount, to, amount
+    DUP            // to, to, amount, amount
+    LOAD           // receiver_balance, to, amount, amount
+    SWAP           // to, receiver_balance, amount, amount
+    SWAP           // receiver_balance, to, amount, amount
+    ADD            // new_balance, to, amount
+    SWAP           // to, new_balance, amount
+    STORE          // amount
+    
+    // Record transfer in history
+    PUSH 0x0102
+    LOAD           // transfer_count, amount
+    DUP            // count, count, amount
+    PUSH 0x0200
+    ADD            // history_addr, count, amount
+    SWAP           // count, history_addr, amount
+    SWAP           // history_addr, count, amount
+    STORE          // count
+    
+    // Increment transfer count
+    PUSH 1
+    ADD
+    PUSH 0x0102
+    STORE
+    
+    // Success response
+    PUSH 0x01      // Success code
+    WRITE
+    JMP main_loop
+
+// Mint function (owner only)
+// Input: amount
+mint:
+    POP            // Remove function selector
+    
+    // Verify caller is owner (simplified - would need sender verification)
+    // For demo, we'll just proceed
+    
+    READ           // amount
+    DUP
+    
+    // Update total supply
+    PUSH 0x0100
+    LOAD           // current_supply, amount
+    ADD            // new_supply
+    DUP
+    PUSH 0x0100
+    STORE          // new_supply
+    
+    // Add to owner balance
+    PUSH 0         // owner address
+    LOAD           // owner_balance, new_supply
+    SWAP           // new_supply, owner_balance  
+    POP            // owner_balance
+    
+    PUSH 0         // owner address
+    LOAD           // current_balance
+    ADD            // new_balance
+    PUSH 0         // owner address
+    STORE
+    
+    // Success response
+    PUSH 0x01
+    WRITE
+    JMP main_loop
+
+// Burn function
+// Input: amount
+burn:
+    POP            // Remove function selector
+    
+    READ           // amount
+    DUP
+    
+    // Get sender balance (simplified - using owner)
+    PUSH 0
+    LOAD           // balance, amount
+    
+    // Verify sufficient balance
+    DUP            // balance, balance, amount
+    SWAP           // balance, balance, amount
+    SWAP           // balance, amount, balance
+    GT             // amount > balance?, balance
+    JNZ insufficient_balance_burn
+    
+    // Deduct from balance
+    SUB            // new_balance
+    PUSH 0
+    STORE
+    
+    // Update total supply
+    PUSH 0x0100
+    LOAD
+    SUB
+    PUSH 0x0100
+    STORE
+    
+    // Success response
+    PUSH 0x01
+    WRITE
+    JMP main_loop
+
+// Balance query
+// Input: address
+balance_query:
+    POP            // Remove function selector
+    
+    READ           // address
+    LOAD           // balance
+    WRITE          // Output balance
+    JMP main_loop
+
+// Total supply query
+supply_query:
+    POP            // Remove function selector
+    
+    PUSH 0x0100
+    LOAD           // total_supply
+    WRITE          // Output supply
+    JMP main_loop
+
+// Error handlers
+insufficient_balance:
+    POP            // Clean stack
+    POP
+    POP
+    POP
+    PUSH 0xE1      // Insufficient balance error
+    WRITE
+    JMP main_loop
+
+insufficient_balance_burn:
+    POP            // Clean stack
+    PUSH 0xE1      // Insufficient balance error
+    WRITE
+    JMP main_loop
+
+// Exit
+exit:
+    // Output final stats
+    PUSH 0x0100
+    LOAD           // Total supply
+    DEBUG
+    
+    PUSH 0x0102
+    LOAD           // Transfer count
+    DEBUG
+    
+    HALT

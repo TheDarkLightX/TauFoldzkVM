@@ -1,0 +1,233 @@
+// TauFoldZKVM Calculator Application
+// A simple RPN calculator with memory
+//
+// Commands:
+// - Numbers: Push to stack
+// - +,-,*,/,%: Arithmetic operations
+// - &,|,^,~: Bitwise operations
+// - =,<,>: Comparison operations
+// - M+: Add to memory
+// - MR: Recall from memory
+// - MC: Clear memory
+// - C: Clear stack
+
+// Initialize memory slot at address 0x1000
+PUSH 0
+PUSH 0x1000
+STORE
+
+// Main calculator loop
+main_loop:
+    // Read input command
+    READ
+    DUP
+    
+    // Check for exit (0xFF)
+    PUSH 0xFF
+    EQ
+    JNZ exit
+    
+    // Check for clear (0xC0)
+    DUP
+    PUSH 0xC0
+    EQ
+    JNZ clear_stack
+    
+    // Check for memory store (0xA0)
+    DUP
+    PUSH 0xA0
+    EQ
+    JNZ mem_store
+    
+    // Check for memory recall (0xA1)
+    DUP
+    PUSH 0xA1
+    EQ
+    JNZ mem_recall
+    
+    // Check for memory clear (0xA2)
+    DUP
+    PUSH 0xA2
+    EQ
+    JNZ mem_clear
+    
+    // Check for arithmetic operations
+    DUP
+    PUSH 0x2B  // +
+    EQ
+    JNZ do_add
+    
+    DUP
+    PUSH 0x2D  // -
+    EQ
+    JNZ do_sub
+    
+    DUP
+    PUSH 0x2A  // *
+    EQ
+    JNZ do_mul
+    
+    DUP
+    PUSH 0x2F  // /
+    EQ
+    JNZ do_div
+    
+    DUP
+    PUSH 0x25  // %
+    EQ
+    JNZ do_mod
+    
+    // Check for bitwise operations
+    DUP
+    PUSH 0x26  // &
+    EQ
+    JNZ do_and
+    
+    DUP
+    PUSH 0x7C  // |
+    EQ
+    JNZ do_or
+    
+    DUP
+    PUSH 0x5E  // ^
+    EQ
+    JNZ do_xor
+    
+    DUP
+    PUSH 0x7E  // ~
+    EQ
+    JNZ do_not
+    
+    // Check for comparison operations
+    DUP
+    PUSH 0x3D  // =
+    EQ
+    JNZ do_eq
+    
+    DUP
+    PUSH 0x3C  // <
+    EQ
+    JNZ do_lt
+    
+    DUP
+    PUSH 0x3E  // >
+    EQ
+    JNZ do_gt
+    
+    // Default: treat as number and push to stack
+    // (Already on stack from DUP above)
+    JMP display_result
+
+// Arithmetic operations
+do_add:
+    POP  // Remove command
+    ADD
+    JMP display_result
+
+do_sub:
+    POP  // Remove command
+    SUB
+    JMP display_result
+
+do_mul:
+    POP  // Remove command
+    MUL
+    JMP display_result
+
+do_div:
+    POP  // Remove command
+    // Check for division by zero
+    DUP
+    PUSH 0
+    EQ
+    JNZ div_by_zero_error
+    DIV
+    JMP display_result
+
+do_mod:
+    POP  // Remove command
+    MOD
+    JMP display_result
+
+// Bitwise operations
+do_and:
+    POP  // Remove command
+    AND
+    JMP display_result
+
+do_or:
+    POP  // Remove command
+    OR
+    JMP display_result
+
+do_xor:
+    POP  // Remove command
+    XOR
+    JMP display_result
+
+do_not:
+    POP  // Remove command
+    NOT
+    JMP display_result
+
+// Comparison operations
+do_eq:
+    POP  // Remove command
+    EQ
+    JMP display_result
+
+do_lt:
+    POP  // Remove command
+    LT
+    JMP display_result
+
+do_gt:
+    POP  // Remove command
+    GT
+    JMP display_result
+
+// Memory operations
+mem_store:
+    POP  // Remove command
+    DUP  // Duplicate value to keep on stack
+    PUSH 0x1000
+    STORE
+    JMP display_result
+
+mem_recall:
+    POP  // Remove command
+    PUSH 0x1000
+    LOAD
+    JMP display_result
+
+mem_clear:
+    POP  // Remove command
+    PUSH 0
+    PUSH 0x1000
+    STORE
+    JMP main_loop
+
+// Clear stack
+clear_stack:
+    POP  // Remove command
+    // Pop all values until stack is empty
+    // (In a real implementation, we'd need a stack depth check)
+    JMP main_loop
+
+// Display result
+display_result:
+    DUP    // Duplicate top of stack
+    WRITE  // Output the result
+    JMP main_loop
+
+// Error handlers
+div_by_zero_error:
+    POP    // Remove zero
+    POP    // Remove dividend
+    PUSH 0xFFFF  // Error code
+    WRITE
+    JMP main_loop
+
+// Exit
+exit:
+    HALT

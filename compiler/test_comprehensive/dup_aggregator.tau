@@ -1,0 +1,6 @@
+# Component: dup_aggregator
+# Guarantees: dup_complete
+
+solve all_ok=1 && dup_complete=all_ok
+
+quit

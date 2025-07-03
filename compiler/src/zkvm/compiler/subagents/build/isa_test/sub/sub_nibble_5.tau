@@ -1,0 +1,7 @@
+# SUB_NIBBLE_5
+# Nibble: 5, Carry In: True, Carry Out: True
+# Guarantees: diff_ok_5, borrow_ok_5
+
+solve valid_5=1 && a50=0 && b50=0 && a51=0 && b51=0 && a52=0 && b52=0 && a53=0 && b53=0 && v50=(b50+1) && v51=(b51+1) && v52=(b52+1) && v53=(b53+1) && k=0 && bi5=0 && d50=(a50+v50+bi5) && w50=((a50&v50)|((a50+v50)&bi5)) && d51=(a51+v51+w50) && w51=((a51&v51)|((a51+v51)&w50)) && d52=(a52+v52+w51) && w52=((a52&v52)|((a52+v52)&w51)) && d53=(a53+v53+w52) && w53=((a53&v53)|((a53+v53)&w52)) && bo5=(w53+1)
+
+quit

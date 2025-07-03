@@ -1,0 +1,6 @@
+# Component: eq_aggregator
+# Guarantees: eq_final
+
+solve eq0=1 && eq1=1 && eq2=1 && eq3=1 && eq_final=(eq0&eq1&eq2&eq3)
+
+quit

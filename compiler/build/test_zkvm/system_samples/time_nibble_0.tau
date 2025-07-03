@@ -1,0 +1,7 @@
+# Component: TIME_N0
+# Assumptions: system_clock_valid=1
+# Guarantees: timestamp_nibble_0, monotonic_time
+
+solve clock0=0 && clock1=0 && clock2=0 && clock3=0 && t0=clock0 && t1=clock1 && t2=clock2 && t3=clock3 && time=1 && valid=1
+
+quit

@@ -1,0 +1,273 @@
+// TauFoldZKVM Cryptographic Demo
+// Demonstrates hash chains, digital signatures, and verification
+//
+// This demo implements:
+// 1. Hash chain generation (blockchain-like structure)
+// 2. Digital signature creation and verification
+// 3. Simple proof-of-work mining simulation
+// 4. Merkle tree construction
+
+// Constants
+// Memory layout:
+// 0x1000-0x10FF: Hash chain storage (256 entries)
+// 0x1100-0x11FF: Signature storage
+// 0x1200-0x12FF: Merkle tree nodes
+// 0x1300: Current chain height
+// 0x1301: Mining difficulty target
+// 0x1302: Nonce counter
+
+// Initialize
+PUSH 0          // Chain height = 0
+PUSH 0x1300
+STORE
+
+PUSH 0x00FF     // Difficulty target (lower = harder)
+PUSH 0x1301
+STORE
+
+// Generate genesis block
+PUSH 0x1337     // Genesis data
+HASH            // Create genesis hash
+DUP             // Keep copy for chain
+PUSH 0x1000     // Store at beginning of chain
+STORE
+
+// Update chain height
+PUSH 1
+PUSH 0x1300
+STORE
+
+// Mining demonstration
+mine_loop:
+    // Get current chain height
+    PUSH 0x1300
+    LOAD
+    
+    // Check if we've mined 10 blocks
+    DUP
+    PUSH 10
+    EQ
+    JNZ mining_complete
+    
+    // Get previous block hash
+    DUP
+    PUSH 1
+    SUB
+    PUSH 4          // 4 bytes per hash (simplified)
+    MUL
+    PUSH 0x1000
+    ADD
+    LOAD            // Load previous hash
+    
+    // Start mining new block
+    PUSH 0          // Initialize nonce
+    PUSH 0x1302
+    STORE
+    
+proof_of_work:
+    // Create block candidate: prev_hash || data || nonce
+    DUP             // prev_hash
+    PUSH 0xBEEF     // Some transaction data
+    PUSH 0x1302
+    LOAD            // Current nonce
+    
+    // Combine into single value (simplified)
+    XOR
+    XOR
+    
+    // Hash the candidate
+    HASH
+    
+    // Check if hash meets difficulty
+    DUP
+    PUSH 0x1301
+    LOAD            // Difficulty target
+    LT
+    JNZ block_found
+    
+    // Increment nonce and try again
+    POP             // Remove failed hash
+    PUSH 0x1302
+    LOAD
+    PUSH 1
+    ADD
+    DUP
+    PUSH 0x1302
+    STORE
+    
+    // Check for nonce overflow (give up after 1000 attempts)
+    PUSH 1000
+    GT
+    JNZ mining_failed
+    
+    JMP proof_of_work
+
+block_found:
+    // Store the new block hash
+    PUSH 0x1300
+    LOAD            // Current height
+    PUSH 4
+    MUL
+    PUSH 0x1000
+    ADD
+    STORE           // Store new hash
+    
+    // Log the successful mining
+    PUSH 0x1302
+    LOAD            // Final nonce
+    LOG             // Log nonce value
+    
+    // Increment chain height
+    PUSH 0x1300
+    LOAD
+    PUSH 1
+    ADD
+    DUP
+    PUSH 0x1300
+    STORE
+    
+    JMP mine_loop
+
+mining_failed:
+    POP             // Clean up stack
+    PUSH 0xDEAD     // Error code
+    LOG
+    JMP signature_demo
+
+mining_complete:
+    POP             // Remove height
+
+// Digital signature demonstration
+signature_demo:
+    // Generate a key pair (simulated)
+    PUSH 0x5ECE7    // Private key (secret)
+    PUSH 0xABCDEF   // Public key (derived)
+    
+    // Message to sign
+    PUSH 0x1234     // "Hello, TauFold!"
+    
+    // Create signature
+    DUP             // Message
+    SWAP            // Put private key on top
+    SIGN            // Create signature
+    
+    // Store signature
+    DUP
+    PUSH 0x1100
+    STORE
+    
+    // Verify signature
+    PUSH 0x1100
+    LOAD            // Load signature
+    SWAP            // Message
+    SWAP            // Signature on top
+    PUSH 0xABCDEF   // Public key
+    VERIFY          // Verify signature
+    
+    // Check verification result
+    JZ verification_failed
+    
+    PUSH 0x600D     // "GOOD"
+    LOG
+    JMP merkle_demo
+
+verification_failed:
+    PUSH 0xBAD
+    LOG
+
+// Merkle tree demonstration
+merkle_demo:
+    // Build a simple 4-leaf Merkle tree
+    // Leaves: 0xA, 0xB, 0xC, 0xD
+    
+    // Hash leaf nodes
+    PUSH 0xA
+    HASH
+    PUSH 0x1200     // Store hash(A)
+    STORE
+    
+    PUSH 0xB
+    HASH
+    PUSH 0x1201     // Store hash(B)
+    STORE
+    
+    PUSH 0xC
+    HASH
+    PUSH 0x1202     // Store hash(C)
+    STORE
+    
+    PUSH 0xD
+    HASH
+    PUSH 0x1203     // Store hash(D)
+    STORE
+    
+    // Build internal nodes
+    // hash(A) + hash(B)
+    PUSH 0x1200
+    LOAD
+    PUSH 0x1201
+    LOAD
+    XOR             // Combine (simplified)
+    HASH
+    PUSH 0x1210     // Store hash(AB)
+    STORE
+    
+    // hash(C) + hash(D)
+    PUSH 0x1202
+    LOAD
+    PUSH 0x1203
+    LOAD
+    XOR             // Combine
+    HASH
+    PUSH 0x1211     // Store hash(CD)
+    STORE
+    
+    // Root: hash(AB) + hash(CD)
+    PUSH 0x1210
+    LOAD
+    PUSH 0x1211
+    LOAD
+    XOR             // Combine
+    HASH            // Merkle root
+    
+    // Output Merkle root
+    DUP
+    LOG
+    WRITE
+    
+    // Demonstrate Merkle proof verification
+    // Prove that 0xB is in the tree
+    // Need: hash(B), hash(A), hash(CD)
+    
+    PUSH 0xB
+    HASH            // Recompute hash(B)
+    
+    PUSH 0x1200
+    LOAD            // hash(A) - sibling
+    XOR
+    HASH            // Compute hash(AB)
+    
+    PUSH 0x1211
+    LOAD            // hash(CD) - sibling
+    XOR
+    HASH            // Compute root
+    
+    // Compare with stored root
+    EQ
+    JZ proof_invalid
+    
+    PUSH 0x7E5      // "YES" - proof valid
+    LOG
+    JMP demo_complete
+
+proof_invalid:
+    PUSH 0xF0       // "NO" - proof invalid
+    LOG
+
+demo_complete:
+    // Output summary statistics
+    PUSH 0x1300
+    LOAD            // Final chain height
+    DEBUG
+    
+    HALT

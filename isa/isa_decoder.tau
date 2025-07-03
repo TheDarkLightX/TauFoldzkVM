@@ -1,0 +1,6 @@
+# Instruction Decoder
+# Decodes 3-bit opcode and sets execution flags
+
+solve op0=0 && op1=0 && op2=0 && is_lut8=((op0+1)&(op1+1)&(op2+1)) && is_lut16=(op0&(op1+1)&(op2+1)) && is_fold=((op0+1)&op1&(op2+1)) && is_comm=(op0&op1&(op2+1)) && is_load=((op0+1)&(op1+1)&op2) && is_store=(op0&(op1+1)&op2) && is_cond=((op0+1)&op1&op2) && is_halt=(op0&op1&op2) && valid=(is_lut8+(is_lut16|is_fold|is_comm|is_load|is_store|is_cond|is_halt))
+
+quit

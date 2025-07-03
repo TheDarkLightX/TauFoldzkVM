@@ -1,0 +1,328 @@
+{
+  "timestamp": "2025-07-03T15:42:14.092160",
+  "statistics": {
+    "unknown": 5,
+    "total": 62,
+    "satisfiable": 0,
+    "unsatisfiable": 0,
+    "error": 0,
+    "too_large": 57,
+    "timeout": 0
+  },
+  "success_rate": 0.0,
+  "directories_tested": [
+    "build/zkvm"
+  ],
+  "detailed_results": {
+    "build/zkvm/alu_part0.tau": {
+      "status": "too_large",
+      "expression_length": 1558,
+      "error": "Expression too long: 1558 chars (limit: 800)"
+    },
+    "build/zkvm/alu_part1.tau": {
+      "status": "too_large",
+      "expression_length": 1428,
+      "error": "Expression too long: 1428 chars (limit: 800)"
+    },
+    "build/zkvm/alu_part2.tau": {
+      "status": "too_large",
+      "expression_length": 1406,
+      "error": "Expression too long: 1406 chars (limit: 800)"
+    },
+    "build/zkvm/alu_part3.tau": {
+      "status": "too_large",
+      "expression_length": 1412,
+      "error": "Expression too long: 1412 chars (limit: 800)"
+    },
+    "build/zkvm/alu_part4.tau": {
+      "status": "too_large",
+      "expression_length": 1364,
+      "error": "Expression too long: 1364 chars (limit: 800)"
+    },
+    "build/zkvm/execution_part0.tau": {
+      "status": "too_large",
+      "expression_length": 7478,
+      "error": "Expression too long: 7478 chars (limit: 800)"
+    },
+    "build/zkvm/folding_part0.tau": {
+      "status": "too_large",
+      "expression_length": 6236,
+      "error": "Expression too long: 6236 chars (limit: 800)"
+    },
+    "build/zkvm/folding_part1.tau": {
+      "status": "too_large",
+      "expression_length": 6210,
+      "error": "Expression too long: 6210 chars (limit: 800)"
+    },
+    "build/zkvm/folding_part10.tau": {
+      "status": "too_large",
+      "expression_length": 6211,
+      "error": "Expression too long: 6211 chars (limit: 800)"
+    },
+    "build/zkvm/folding_part11.tau": {
+      "status": "too_large",
+      "expression_length": 6220,
+      "error": "Expression too long: 6220 chars (limit: 800)"
+    },
+    "build/zkvm/folding_part12.tau": {
+      "status": "too_large",
+      "expression_length": 6177,
+      "error": "Expression too long: 6177 chars (limit: 800)"
+    },
+    "build/zkvm/folding_part13.tau": {
+      "status": "too_large",
+      "expression_length": 6177,
+      "error": "Expression too long: 6177 chars (limit: 800)"
+    },
+    "build/zkvm/folding_part14.tau": {
+      "status": "too_large",
+      "expression_length": 6177,
+      "error": "Expression too long: 6177 chars (limit: 800)"
+    },
+    "build/zkvm/folding_part15.tau": {
+      "status": "too_large",
+      "expression_length": 6177,
+      "error": "Expression too long: 6177 chars (limit: 800)"
+    },
+    "build/zkvm/folding_part16.tau": {
+      "status": "too_large",
+      "expression_length": 6177,
+      "error": "Expression too long: 6177 chars (limit: 800)"
+    },
+    "build/zkvm/folding_part17.tau": {
+      "status": "too_large",
+      "expression_length": 5964,
+      "error": "Expression too long: 5964 chars (limit: 800)"
+    },
+    "build/zkvm/folding_part2.tau": {
+      "status": "too_large",
+      "expression_length": 6210,
+      "error": "Expression too long: 6210 chars (limit: 800)"
+    },
+    "build/zkvm/folding_part3.tau": {
+      "status": "too_large",
+      "expression_length": 6210,
+      "error": "Expression too long: 6210 chars (limit: 800)"
+    },
+    "build/zkvm/folding_part4.tau": {
+      "status": "too_large",
+      "expression_length": 6210,
+      "error": "Expression too long: 6210 chars (limit: 800)"
+    },
+    "build/zkvm/folding_part5.tau": {
+      "status": "too_large",
+      "expression_length": 6210,
+      "error": "Expression too long: 6210 chars (limit: 800)"
+    },
+    "build/zkvm/folding_part6.tau": {
+      "status": "too_large",
+      "expression_length": 6210,
+      "error": "Expression too long: 6210 chars (limit: 800)"
+    },
+    "build/zkvm/folding_part7.tau": {
+      "status": "too_large",
+      "expression_length": 6210,
+      "error": "Expression too long: 6210 chars (limit: 800)"
+    },
+    "build/zkvm/folding_part8.tau": {
+      "status": "too_large",
+      "expression_length": 6237,
+      "error": "Expression too long: 6237 chars (limit: 800)"
+    },
+    "build/zkvm/folding_part9.tau": {
+      "status": "too_large",
+      "expression_length": 6187,
+      "error": "Expression too long: 6187 chars (limit: 800)"
+    },
+    "build/zkvm/instruction_decoder_part0.tau": {
+      "status": "unknown",
+      "expression_length": 707,
+      "output": "(Error) Syntax Error: Unexpected '=' at 4:119 (190): \nsolve opcode0=0 && opcode1=1 && opcode2=0 && opcode3=1 && opcode4=0 && opcode5=1 && opcode6=0 && opcode7=1 && is_add0=\n\n"
+    },
+    "build/zkvm/instruction_decoder_part1.tau": {
+      "status": "unknown",
+      "expression_length": 798,
+      "output": "(Error) Syntax Error: Unexpected '=' at 4:118 (189): \nsolve opcode0=0 && opcode1=1 && opcode2=0 && opcode3=1 && opcode4=0 && opcode5=1 && opcode6=0 && opcode7=1 && is_or0=\n\n"
+    },
+    "build/zkvm/instruction_decoder_part2.tau": {
+      "status": "unknown",
+      "expression_length": 792,
+      "output": "(Error) Syntax Error: Unexpected '=' at 4:121 (192): \nsolve opcode0=0 && opcode1=1 && opcode2=0 && opcode3=1 && opcode4=0 && opcode5=1 && opcode6=0 && opcode7=1 && is_store0=\n\n"
+    },
+    "build/zkvm/instruction_decoder_part3.tau": {
+      "status": "unknown",
+      "expression_length": 797,
+      "output": "(Error) Syntax Error: Unexpected '=' at 4:120 (191): \nsolve opcode0=0 && opcode1=1 && opcode2=0 && opcode3=1 && opcode4=0 && opcode5=1 && opcode6=0 && opcode7=1 && is_call0=\n\n"
+    },
+    "build/zkvm/instruction_decoder_part4.tau": {
+      "status": "unknown",
+      "expression_length": 470,
+      "output": "(Error) Syntax Error: Unexpected '=' at 4:120 (191): \nsolve opcode0=0 && opcode1=1 && opcode2=0 && opcode3=1 && opcode4=0 && opcode5=1 && opcode6=0 && opcode7=1 && is_halt0=\n\n"
+    },
+    "build/zkvm/lookup_tables_part0.tau": {
+      "status": "too_large",
+      "expression_length": 2218,
+      "error": "Expression too long: 2218 chars (limit: 800)"
+    },
+    "build/zkvm/lookup_tables_part1.tau": {
+      "status": "too_large",
+      "expression_length": 2226,
+      "error": "Expression too long: 2226 chars (limit: 800)"
+    },
+    "build/zkvm/lookup_tables_part2.tau": {
+      "status": "too_large",
+      "expression_length": 2178,
+      "error": "Expression too long: 2178 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part0.tau": {
+      "status": "too_large",
+      "expression_length": 1565,
+      "error": "Expression too long: 1565 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part1.tau": {
+      "status": "too_large",
+      "expression_length": 1259,
+      "error": "Expression too long: 1259 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part10.tau": {
+      "status": "too_large",
+      "expression_length": 1231,
+      "error": "Expression too long: 1231 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part11.tau": {
+      "status": "too_large",
+      "expression_length": 1231,
+      "error": "Expression too long: 1231 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part12.tau": {
+      "status": "too_large",
+      "expression_length": 1231,
+      "error": "Expression too long: 1231 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part13.tau": {
+      "status": "too_large",
+      "expression_length": 1231,
+      "error": "Expression too long: 1231 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part14.tau": {
+      "status": "too_large",
+      "expression_length": 1231,
+      "error": "Expression too long: 1231 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part15.tau": {
+      "status": "too_large",
+      "expression_length": 1231,
+      "error": "Expression too long: 1231 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part16.tau": {
+      "status": "too_large",
+      "expression_length": 1231,
+      "error": "Expression too long: 1231 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part17.tau": {
+      "status": "too_large",
+      "expression_length": 1231,
+      "error": "Expression too long: 1231 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part18.tau": {
+      "status": "too_large",
+      "expression_length": 1231,
+      "error": "Expression too long: 1231 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part19.tau": {
+      "status": "too_large",
+      "expression_length": 1231,
+      "error": "Expression too long: 1231 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part2.tau": {
+      "status": "too_large",
+      "expression_length": 1563,
+      "error": "Expression too long: 1563 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part20.tau": {
+      "status": "too_large",
+      "expression_length": 1231,
+      "error": "Expression too long: 1231 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part21.tau": {
+      "status": "too_large",
+      "expression_length": 1231,
+      "error": "Expression too long: 1231 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part22.tau": {
+      "status": "too_large",
+      "expression_length": 1231,
+      "error": "Expression too long: 1231 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part23.tau": {
+      "status": "too_large",
+      "expression_length": 1231,
+      "error": "Expression too long: 1231 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part24.tau": {
+      "status": "too_large",
+      "expression_length": 1231,
+      "error": "Expression too long: 1231 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part25.tau": {
+      "status": "too_large",
+      "expression_length": 1231,
+      "error": "Expression too long: 1231 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part26.tau": {
+      "status": "too_large",
+      "expression_length": 1231,
+      "error": "Expression too long: 1231 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part27.tau": {
+      "status": "too_large",
+      "expression_length": 1231,
+      "error": "Expression too long: 1231 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part28.tau": {
+      "status": "too_large",
+      "expression_length": 1231,
+      "error": "Expression too long: 1231 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part3.tau": {
+      "status": "too_large",
+      "expression_length": 1563,
+      "error": "Expression too long: 1563 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part4.tau": {
+      "status": "too_large",
+      "expression_length": 1563,
+      "error": "Expression too long: 1563 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part5.tau": {
+      "status": "too_large",
+      "expression_length": 1563,
+      "error": "Expression too long: 1563 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part6.tau": {
+      "status": "too_large",
+      "expression_length": 1563,
+      "error": "Expression too long: 1563 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part7.tau": {
+      "status": "too_large",
+      "expression_length": 1231,
+      "error": "Expression too long: 1231 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part8.tau": {
+      "status": "too_large",
+      "expression_length": 1231,
+      "error": "Expression too long: 1231 chars (limit: 800)"
+    },
+    "build/zkvm/memory_part9.tau": {
+      "status": "too_large",
+      "expression_length": 1231,
+      "error": "Expression too long: 1231 chars (limit: 800)"
+    },
+    "build/zkvm/verification_part0.tau": {
+      "status": "too_large",
+      "expression_length": 20083,
+      "error": "Expression too long: 20083 chars (limit: 800)"
+    }
+  }
+}

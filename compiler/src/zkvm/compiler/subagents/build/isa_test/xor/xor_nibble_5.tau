@@ -1,0 +1,7 @@
+# XOR_NIBBLE_5
+# Nibble: 5, Carry In: False, Carry Out: False
+# Guarantees: xor_correct_5
+
+solve valid_inputs_5=1 && a5_0=0 && b5_0=0 && a5_1=0 && b5_1=0 && a5_2=0 && b5_2=0 && a5_3=0 && b5_3=0 && r5_0=(a5_0+b5_0) && r5_1=(a5_1+b5_1) && r5_2=(a5_2+b5_2) && r5_3=(a5_3+b5_3)
+
+quit

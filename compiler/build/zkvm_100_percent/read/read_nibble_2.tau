@@ -1,0 +1,5 @@
+# Component: read_nibble_2
+
+solve addr2=0 && data2=0 && read=1
+
+quit

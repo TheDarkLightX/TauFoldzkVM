@@ -1,0 +1,7 @@
+# SUB_BORROW_4_5
+# Nibble: -1, Carry In: True, Carry Out: True
+# Guarantees: borrow_ok_4_5
+
+solve nib4_ok=1 && bo4=1 && bi5=bo4 && bp45=1
+
+quit

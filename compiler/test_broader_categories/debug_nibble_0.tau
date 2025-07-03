@@ -1,0 +1,6 @@
+# Component: debug_nibble_0
+# Guarantees: debug
+
+solve a0=0 && b0=1 && out0=(a0&b0) && debug=1
+
+quit

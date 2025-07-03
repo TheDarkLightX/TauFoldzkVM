@@ -1,0 +1,8 @@
+# Contract: and_nibble_5
+# Assumptions: none
+# Guarantees: none
+# Character count: 136
+
+solve a20=0 && b20=0 && a21=0 && b21=0 && a22=0 && b22=0 && a23=0 && b23=0 && r20=(a20&b20) && r21=(a21&b21) && r22=(a22&b22) && r23=(a23&b23)
+
+quit

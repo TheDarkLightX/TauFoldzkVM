@@ -1,0 +1,423 @@
+// TauFoldZKVM Vending Machine
+// A fully functional vending machine with inventory management
+//
+// Features:
+// - Multiple product slots (A1-A5, B1-B5, C1-C5)
+// - Coin acceptance and change making
+// - Inventory tracking and restocking
+// - Price management
+// - Sales reporting
+//
+// Memory Layout:
+// 0x0100-0x010F: Product prices (slots A1-C5)
+// 0x0110-0x011F: Product inventory counts
+// 0x0120-0x012F: Product codes (what's in each slot)
+// 0x0130: Current balance (coins inserted)
+// 0x0131: Total sales
+// 0x0132: Coin inventory (for change)
+// 0x0140-0x014F: Sales count per product
+
+// Product codes
+// 0x01: Cola (75 cents)
+// 0x02: Chips (50 cents)
+// 0x03: Candy (35 cents)
+// 0x04: Water (100 cents)
+// 0x05: Energy Drink (125 cents)
+
+// Initialize vending machine
+initialize:
+    // Set up product prices (in cents)
+    PUSH 75         // A1: Cola
+    PUSH 0x0100
+    STORE
+    
+    PUSH 75         // A2: Cola
+    PUSH 0x0101
+    STORE
+    
+    PUSH 50         // A3: Chips
+    PUSH 0x0102
+    STORE
+    
+    PUSH 50         // A4: Chips
+    PUSH 0x0103
+    STORE
+    
+    PUSH 35         // A5: Candy
+    PUSH 0x0104
+    STORE
+    
+    PUSH 100        // B1: Water
+    PUSH 0x0105
+    STORE
+    
+    PUSH 100        // B2: Water
+    PUSH 0x0106
+    STORE
+    
+    PUSH 125        // B3: Energy Drink
+    PUSH 0x0107
+    STORE
+    
+    PUSH 125        // B4: Energy Drink
+    PUSH 0x0108
+    STORE
+    
+    PUSH 35         // B5: Candy
+    PUSH 0x0109
+    STORE
+    
+    // Initialize inventory (10 items each)
+    PUSH 0
+    init_inventory_loop:
+        DUP
+        PUSH 10     // 10 items
+        SWAP
+        PUSH 0x0110
+        ADD
+        STORE
+        
+        PUSH 1
+        ADD
+        DUP
+        PUSH 15     // 15 slots total
+        LT
+        JNZ init_inventory_loop
+    POP
+    
+    // Set product codes
+    PUSH 0x01       // A1-A2: Cola
+    PUSH 0x0120
+    STORE
+    PUSH 0x01
+    PUSH 0x0121
+    STORE
+    
+    PUSH 0x02       // A3-A4: Chips
+    PUSH 0x0122
+    STORE
+    PUSH 0x02
+    PUSH 0x0123
+    STORE
+    
+    PUSH 0x03       // A5, B5: Candy
+    PUSH 0x0124
+    STORE
+    PUSH 0x03
+    PUSH 0x0129
+    STORE
+    
+    PUSH 0x04       // B1-B2: Water
+    PUSH 0x0125
+    STORE
+    PUSH 0x04
+    PUSH 0x0126
+    STORE
+    
+    PUSH 0x05       // B3-B4: Energy Drink
+    PUSH 0x0127
+    STORE
+    PUSH 0x05
+    PUSH 0x0128
+    STORE
+    
+    // Initialize coin inventory (100 coins for change)
+    PUSH 10000      // $100 in cents
+    PUSH 0x0132
+    STORE
+    
+    // Initialize current balance to 0
+    PUSH 0
+    PUSH 0x0130
+    STORE
+    
+    // Initialize total sales to 0
+    PUSH 0
+    PUSH 0x0131
+    STORE
+
+// Main vending machine loop
+main_loop:
+    // Display current balance
+    PUSH 0x0130
+    LOAD
+    DEBUG           // Show balance
+    
+    // Read input command
+    READ
+    
+    // Command dispatch
+    DUP
+    PUSH 0x10       // Insert coin
+    EQ
+    JNZ insert_coin
+    
+    DUP
+    PUSH 0x20       // Select product
+    EQ
+    JNZ select_product
+    
+    DUP
+    PUSH 0x30       // Refund
+    EQ
+    JNZ refund
+    
+    DUP
+    PUSH 0x40       // Restock
+    EQ
+    JNZ restock
+    
+    DUP
+    PUSH 0x50       // Sales report
+    EQ
+    JNZ sales_report
+    
+    DUP
+    PUSH 0xFF       // Shutdown
+    EQ
+    JNZ shutdown
+    
+    // Invalid command
+    POP
+    PUSH 0xE0       // Error code
+    WRITE
+    JMP main_loop
+
+// Insert coin handler
+insert_coin:
+    POP             // Remove command
+    READ            // Read coin value (25, 50, 100 cents)
+    
+    // Validate coin
+    DUP
+    PUSH 25         // Quarter
+    EQ
+    SWAP
+    DUP
+    PUSH 50         // Half dollar
+    EQ
+    SWAP
+    DUP
+    PUSH 100        // Dollar
+    EQ
+    OR
+    OR
+    JZ invalid_coin
+    
+    // Add to current balance
+    PUSH 0x0130
+    LOAD
+    ADD
+    DUP
+    PUSH 0x0130
+    STORE
+    
+    // Display new balance
+    WRITE
+    JMP main_loop
+
+invalid_coin:
+    POP
+    PUSH 0xE1       // Invalid coin error
+    WRITE
+    JMP main_loop
+
+// Select product handler
+select_product:
+    POP             // Remove command
+    READ            // Read slot number (0-14 for A1-C5)
+    
+    // Validate slot number
+    DUP
+    PUSH 15
+    GTE
+    JNZ invalid_slot
+    
+    // Check inventory
+    DUP
+    PUSH 0x0110
+    ADD
+    LOAD            // Get inventory count
+    DUP
+    PUSH 0
+    EQ
+    JNZ out_of_stock
+    
+    // Get price
+    SWAP            // slot, inventory
+    DUP             // slot, slot, inventory
+    PUSH 0x0100
+    ADD
+    LOAD            // price, slot, inventory
+    
+    // Check if enough money inserted
+    DUP             // price, price, slot, inventory
+    PUSH 0x0130
+    LOAD            // balance, price, price, slot, inventory
+    SWAP            // price, balance, price, slot, inventory
+    GT              // price > balance?, price, slot, inventory
+    JNZ insufficient_funds
+    
+    // Deduct price from balance
+    PUSH 0x0130
+    LOAD            // balance, price, slot, inventory
+    SWAP            // price, balance, slot, inventory
+    SUB             // new_balance, slot, inventory
+    DUP
+    PUSH 0x0130
+    STORE           // new_balance, slot, inventory
+    
+    // Dispense product
+    SWAP            // slot, new_balance, inventory
+    DUP             // slot, slot, new_balance, inventory
+    PUSH 0x0120
+    ADD
+    LOAD            // product_code, slot, new_balance, inventory
+    PUSH 0xD0       // Dispense command
+    WRITE
+    WRITE           // Write product code
+    
+    // Update inventory
+    SWAP            // new_balance, slot, inventory
+    SWAP            // slot, new_balance, inventory
+    PUSH 0x0110
+    ADD             // inventory_addr, new_balance, inventory
+    SWAP            // new_balance, inventory_addr, inventory
+    SWAP            // inventory_addr, new_balance, inventory
+    SWAP            // new_balance, inventory, inventory_addr
+    PUSH 1
+    SUB             // new_inventory, new_balance, inventory_addr
+    SWAP            // new_balance, new_inventory, inventory_addr
+    SWAP            // new_inventory, new_balance, inventory_addr
+    SWAP            // new_balance, inventory_addr, new_inventory
+    SWAP            // inventory_addr, new_balance, new_inventory
+    SWAP            // new_balance, new_inventory, inventory_addr
+    SWAP            // new_inventory, new_balance, inventory_addr
+    SWAP            // new_balance, inventory_addr, new_inventory
+    POP             // inventory_addr, new_inventory
+    STORE
+    
+    // Update sales total
+    PUSH 0x0131
+    LOAD
+    ADD             // Add price to total sales
+    PUSH 0x0131
+    STORE
+    
+    // Return change if any
+    DUP
+    PUSH 0
+    GT
+    JZ no_change
+    
+    PUSH 0xC0       // Change command
+    WRITE
+    WRITE           // Write change amount
+    
+no_change:
+    // Clear balance
+    PUSH 0
+    PUSH 0x0130
+    STORE
+    
+    JMP main_loop
+
+// Error handlers
+invalid_slot:
+    POP
+    PUSH 0xE2       // Invalid slot error
+    WRITE
+    JMP main_loop
+
+out_of_stock:
+    POP
+    POP
+    PUSH 0xE3       // Out of stock error
+    WRITE
+    JMP main_loop
+
+insufficient_funds:
+    POP
+    POP
+    POP
+    PUSH 0xE4       // Insufficient funds error
+    WRITE
+    JMP main_loop
+
+// Refund handler
+refund:
+    POP             // Remove command
+    PUSH 0x0130
+    LOAD            // Get current balance
+    DUP
+    PUSH 0
+    GT
+    JZ no_refund
+    
+    PUSH 0xC0       // Change command
+    WRITE
+    WRITE           // Write refund amount
+    
+    // Clear balance
+    PUSH 0
+    PUSH 0x0130
+    STORE
+    
+no_refund:
+    JMP main_loop
+
+// Restock handler (maintenance mode)
+restock:
+    POP             // Remove command
+    READ            // Read slot number
+    READ            // Read quantity to add
+    
+    // Update inventory
+    SWAP            // slot, quantity
+    PUSH 0x0110
+    ADD
+    DUP
+    LOAD            // current_inventory, addr
+    SWAP            // addr, current_inventory
+    SWAP            // current_inventory, addr
+    ADD             // new_inventory, addr
+    SWAP            // addr, new_inventory
+    STORE
+    
+    PUSH 0x01       // Success code
+    WRITE
+    JMP main_loop
+
+// Sales report
+sales_report:
+    POP             // Remove command
+    
+    // Output total sales
+    PUSH 0x0131
+    LOAD
+    WRITE
+    
+    // Output coin inventory
+    PUSH 0x0132
+    LOAD
+    WRITE
+    
+    // Could add more detailed reporting here
+    JMP main_loop
+
+// Shutdown
+shutdown:
+    // Final sales report
+    PUSH 0x0131
+    LOAD
+    DEBUG           // Total sales
+    
+    // Return all coins in machine
+    PUSH 0x0130
+    LOAD            // Current balance
+    PUSH 0x0132
+    LOAD            // Coin inventory
+    ADD
+    DEBUG           // Total cash in machine
+    
+    HALT

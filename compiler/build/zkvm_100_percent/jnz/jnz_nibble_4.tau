@@ -1,0 +1,7 @@
+# Component: jnz_nibble_4
+# Assumptions: zflag=0|zflag=1, cin=0|cin=1
+# Guarantees: newpc16, newpc17, newpc18, newpc19, cout4
+
+solve zflag=0 && target16=0 && target17=1 && target18=0 && target19=1 && pc16=1 && pc17=0 && pc18=1 && pc19=0 && cin=0 && s16=(pc16+cin) && c16=(pc16&cin) && s17=(pc17+c16) && c17=(pc17&c16) && s18=(pc18+c17) && c18=(pc18&c17) && s19=(pc19+c18) && c19=(pc19&c18) && cout4=c19 && newpc16=(((zflag+1)&target16)|(zflag&s0)) && newpc17=(((zflag+1)&target17)|(zflag&s17)) && newpc18=(((zflag+1)&target18)|(zflag&s18)) && newpc19=(((zflag+1)&target19)|(zflag&s19))
+
+quit

@@ -1,0 +1,7 @@
+# LUT8 Instruction: 8-bit lookup operation
+# Format: LUT8 rd, rs1, rs2, table_id
+
+# Instruction fields
+solve op0=0 && op1=0 && op2=0 && rs10=1 && rs11=0 && rs12=1 && rs13=1 && rs20=0 && rs21=1 && rs22=1 && rs23=0 && tid0=0 && tid1=0 && use_and=((tid0+1)&(tid1+1)) && use_or=(tid0&(tid1+1)) && use_xor=((tid0+1)&tid1) && use_add=(tid0&tid1) && and0=(rs10&rs20) && or0=(rs10|rs20) && xor0=(rs10+rs20) && and1=(rs11&rs21) && or1=(rs11|rs21) && xor1=(rs11+rs21) && and2=(rs12&rs22) && or2=(rs12|rs22) && xor2=(rs12+rs22) && and3=(rs13&rs23) && or3=(rs13|rs23) && xor3=(rs13+rs23) && rd0=((use_and&and0)|(use_or&or0)|(use_xor&xor0)) && rd1=((use_and&and1)|(use_or&or1)|(use_xor&xor1)) && rd2=((use_and&and2)|(use_or&or2)|(use_xor&xor2)) && rd3=((use_and&and3)|(use_or&or3)|(use_xor&xor3)) && result=(rd0|rd1|rd2|rd3)
+
+quit

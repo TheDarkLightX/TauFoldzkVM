@@ -1,0 +1,5 @@
+# SHL lookup validation: 1 shl 0 = 1
+# No shift
+solve a0=1 && a1=0 && a2=0 && a3=0 && a4=0 && a5=0 && a6=0 && a7=0 && sh0=0 && sh1=0 && sh2=0 && sh3=0 && sh4=0 && sh5=0 && sh6=0 && sh7=0 && r0=a0 && r1=a1 && r2=a2 && r3=a3 && r4=a4 && r5=a5 && r6=a6 && r7=a7 && t0=r0 && t1=(r1+1) && t2=(r2+1) && t3=(r3+1) && t4=(r4+1) && t5=(r5+1) && t6=(r6+1) && t7=(r7+1) && result=(t0&t1&t2&t3&t4&t5&t6&t7)
+
+quit
