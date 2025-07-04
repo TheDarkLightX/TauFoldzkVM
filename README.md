@@ -2,6 +2,10 @@
 
 A zero-knowledge virtual machine implementation using Tau's constraint satisfaction system, incorporating state-of-the-art folding schemes and distributed proving.
 
+## Important Notice
+
+This project generates Tau language programs but does not include or distribute the Tau language itself. Users must obtain Tau separately from [IDNI](https://github.com/IDNI/tau-lang) under their license terms.
+
 ## Overview
 
 TauFoldZKVM implements a zkVM using:
