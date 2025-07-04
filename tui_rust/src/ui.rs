@@ -15,15 +15,30 @@ use crate::apps::{
 };
 
 pub fn draw(f: &mut Frame, app: &mut App) {
+    // Main content area (leave space for status bar)
+    let main_chunks = Layout::default()
+        .direction(Direction::Vertical)
+        .constraints([
+            Constraint::Min(10),      // Main content
+            Constraint::Length(1),    // Status bar
+        ])
+        .split(f.size());
+
+    // Draw main content
     match &app.state {
         AppState::Welcome => crate::welcome::draw_welcome_screen(f),
-        AppState::MainMenu => draw_main_menu(f, app),
-        AppState::RunningApp(demo_app) => draw_app_screen(f, app, demo_app),
-        AppState::Help => draw_help_screen(f),
+        AppState::MainMenu => draw_main_menu_with_area(f, app, main_chunks[0]),
+        AppState::RunningApp(demo_app) => draw_app_screen_with_area(f, app, demo_app, main_chunks[0]),
+        AppState::Help => crate::help::draw_help_screen(f, &app.state),
+    }
+
+    // Draw status bar (except for welcome and help screens)
+    if !matches!(app.state, AppState::Welcome | AppState::Help) {
+        draw_status_bar(f, &app.state, main_chunks[1]);
     }
 }
 
-fn draw_main_menu(f: &mut Frame, app: &App) {
+fn draw_main_menu_with_area(f: &mut Frame, app: &App, area: Rect) {
     let chunks = Layout::default()
         .direction(Direction::Vertical)
         .margin(2)
@@ -32,7 +47,7 @@ fn draw_main_menu(f: &mut Frame, app: &App) {
             Constraint::Min(10),
             Constraint::Length(3),
         ])
-        .split(f.size());
+        .split(area);
 
     // Title
     let title = Paragraph::new(vec![
@@ -113,6 +128,8 @@ fn draw_main_menu(f: &mut Frame, app: &App) {
             Span::raw(" Navigate  "),
             Span::styled("Enter", Style::default().fg(Color::Green).add_modifier(Modifier::BOLD)),
             Span::raw(" Select  "),
+            Span::styled("?", Style::default().fg(Color::Cyan).add_modifier(Modifier::BOLD)),
+            Span::raw(" Help  "),
             Span::styled("q/Esc", Style::default().fg(Color::Red).add_modifier(Modifier::BOLD)),
             Span::raw(" Quit"),
         ]),
@@ -128,10 +145,11 @@ fn draw_main_menu(f: &mut Frame, app: &App) {
     f.render_widget(instructions, chunks[2]);
 }
 
-fn draw_app_screen(
+fn draw_app_screen_with_area(
     f: &mut Frame,
     app: &App,
     demo_app: &DemoApp,
+    area: Rect,
 ) {
     let chunks = Layout::default()
         .direction(Direction::Vertical)
@@ -142,7 +160,7 @@ fn draw_app_screen(
             Constraint::Length(5),
             Constraint::Length(3),
         ])
-        .split(f.size());
+        .split(area);
 
     // App header
     let header = Paragraph::new(vec![Line::from(vec![
@@ -181,6 +199,8 @@ fn draw_app_screen(
     let controls = Paragraph::new(vec![Line::from(vec![
         Span::styled("Esc", Style::default().fg(Color::Yellow).add_modifier(Modifier::BOLD)),
         Span::raw(" Back to Menu  "),
+        Span::styled("?", Style::default().fg(Color::Cyan).add_modifier(Modifier::BOLD)),
+        Span::raw(" Help  "),
         Span::raw("App-specific controls vary"),
     ])])
     .style(Style::default())
@@ -843,39 +863,12 @@ fn draw_execution_stats(f: &mut Frame, app: &App, area: Rect) {
     f.render_widget(stats_widget, area);
 }
 
-fn draw_help_screen(f: &mut Frame) {
-    let help_text = vec![
-        Line::from(""),
-        Line::from(vec![Span::styled(
-            "TauFoldzkVM Help",
-            Style::default().fg(Color::Cyan).add_modifier(Modifier::BOLD),
-        )]),
-        Line::from(""),
-        Line::from("Navigation:"),
-        Line::from("  ↑/↓     - Navigate menu"),
-        Line::from("  Enter   - Select application"),
-        Line::from("  Esc     - Go back / Exit"),
-        Line::from("  q       - Quit application"),
-        Line::from(""),
-        Line::from("In Applications:"),
-        Line::from("  Each app has specific controls"),
-        Line::from("  Calculator: Use number keys and operators"),
-        Line::from("  Pacman: Arrow keys to move"),
-        Line::from(""),
-        Line::from("The zkVM executes all operations with zero-knowledge proofs"),
-        Line::from("Watch the execution stats and folding progress in real-time"),
-    ];
-
-    let help = Paragraph::new(help_text)
-        .style(Style::default())
-        .block(
-            Block::default()
-                .borders(Borders::ALL)
-                .title(" Help ")
-                .border_type(BorderType::Rounded),
-        )
-        .alignment(Alignment::Left)
-        .wrap(Wrap { trim: true });
-
-    f.render_widget(help, f.size());
+fn draw_status_bar(f: &mut Frame, app_state: &AppState, area: Rect) {
+    let status_text = crate::help::get_status_bar_text(app_state);
+    
+    let status_bar = Paragraph::new(vec![Line::from(status_text)])
+        .style(Style::default().bg(Color::DarkGray))
+        .alignment(Alignment::Center);
+    
+    f.render_widget(status_bar, area);
 }

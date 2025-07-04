@@ -3,6 +3,7 @@ mod ui;
 mod apps;
 mod zkvm;
 mod welcome;
+mod help;
 
 use anyhow::Result;
 use crossterm::{
@@ -77,10 +78,12 @@ async fn run_app<B: ratatui::backend::Backend>(
                         KeyCode::Enter => app.select_current_app(),
                         KeyCode::Up => app.previous_app(),
                         KeyCode::Down => app.next_app(),
+                        KeyCode::Char('?') | KeyCode::F(1) => app.state = AppState::Help,
                         _ => {}
                     },
                     AppState::RunningApp(_) => match key.code {
                         KeyCode::Esc => app.return_to_menu(),
+                        KeyCode::Char('?') | KeyCode::F(1) => app.state = AppState::Help,
                         _ => app.handle_app_input(key),
                     },
                     AppState::Help => match key.code {
