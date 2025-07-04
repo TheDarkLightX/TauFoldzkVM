@@ -1,0 +1,18 @@
+[package]
+name = "tau-zkvm-tui"
+version = "0.1.0"
+edition = "2021"
+authors = ["DarkLightX/Dana Edwards"]
+description = "Rich TUI interface for TauFoldzkVM demo applications"
+license = "MIT"
+
+[dependencies]
+ratatui = "0.26"
+crossterm = "0.27"
+tokio = { version = "1.35", features = ["full"] }
+anyhow = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tui-textarea = "0.4"
+unicode-width = "0.1"
+dirs = "5.0"
