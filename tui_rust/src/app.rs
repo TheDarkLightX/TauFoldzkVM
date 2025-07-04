@@ -54,6 +54,7 @@ impl DemoApp {
 
 #[derive(Debug)]
 pub enum AppState {
+    Welcome,
     MainMenu,
     RunningApp(DemoApp),
     Help,

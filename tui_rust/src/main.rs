@@ -2,6 +2,7 @@ mod app;
 mod ui;
 mod apps;
 mod zkvm;
+mod welcome;
 
 use anyhow::Result;
 use crossterm::{
@@ -16,6 +17,7 @@ use ratatui::{
 use std::{io, time::Duration};
 
 use crate::app::{App, AppState};
+use crate::welcome::{should_show_welcome, mark_welcomed};
 
 #[tokio::main]
 async fn main() -> Result<()> {
@@ -27,7 +29,13 @@ async fn main() -> Result<()> {
     let mut terminal = Terminal::new(backend)?;
 
     // Create app and run
-    let app = App::new();
+    let mut app = App::new();
+    
+    // Show welcome screen on first run
+    if should_show_welcome() {
+        app.state = AppState::Welcome;
+    }
+    
     let res = run_app(&mut terminal, app).await;
 
     // Restore terminal
@@ -56,6 +64,14 @@ async fn run_app<B: ratatui::backend::Backend>(
         if event::poll(Duration::from_millis(250))? {
             if let Event::Key(key) = event::read()? {
                 match app.state {
+                    AppState::Welcome => match key.code {
+                        KeyCode::Enter => {
+                            mark_welcomed();
+                            app.state = AppState::MainMenu;
+                        }
+                        KeyCode::Char('q') | KeyCode::Esc => return Ok(()),
+                        _ => {}
+                    },
                     AppState::MainMenu => match key.code {
                         KeyCode::Char('q') | KeyCode::Esc => return Ok(()),
                         KeyCode::Enter => app.select_current_app(),

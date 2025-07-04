@@ -16,6 +16,7 @@ use crate::apps::{
 
 pub fn draw(f: &mut Frame, app: &mut App) {
     match &app.state {
+        AppState::Welcome => crate::welcome::draw_welcome_screen(f),
         AppState::MainMenu => draw_main_menu(f, app),
         AppState::RunningApp(demo_app) => draw_app_screen(f, app, demo_app),
         AppState::Help => draw_help_screen(f),

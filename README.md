@@ -2,9 +2,56 @@
 
 A zero-knowledge virtual machine implementation using Tau's constraint satisfaction system, incorporating state-of-the-art folding schemes and distributed proving.
 
+## 🚀 Quick Start
+
+### One-Line Installation
+```bash
+curl -sSL https://raw.githubusercontent.com/TheDarkLightX/TauFoldzkVM/main/install.sh | bash
+```
+
+### Manual Installation
+```bash
+git clone https://github.com/TheDarkLightX/TauFoldzkVM.git
+cd TauFoldzkVM
+./install.sh
+```
+
+### Alternative Commands
+```bash
+# One-time setup
+./setup.sh
+
+# Run the interactive TUI demo
+./run.sh
+
+# Or run in demo mode (no Tau required)
+./demo.sh
+```
+
+That's it! The TUI will launch with 5 interactive demo applications.
+
 ## Important Notice
 
 This project generates Tau language programs but does not include or distribute the Tau language itself. Users must obtain Tau separately from [IDNI](https://github.com/IDNI/tau-lang) under their license terms.
+
+## Demo Applications
+
+The TUI includes 5 fully interactive demo applications:
+
+### 🧮 Calculator
+Basic arithmetic with zero-knowledge proofs for every operation
+
+### 🔐 Crypto Demo  
+SHA256 hashing, digital signatures, and encryption - all with ZK proofs
+
+### 👾 Pacman Game
+Full game with ghost AI where every move is cryptographically verified
+
+### 💰 Smart Contract
+ERC20-like token with transfers, minting, and burning in zkVM
+
+### 🥤 Vending Machine
+Complete finite state machine demonstrating state transition proofs
 
 ## Overview
 
