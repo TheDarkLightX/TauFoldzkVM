@@ -1,0 +1,19 @@
+# 4-to-16 Decoder (Structural)
+#
+# Defines a 4-to-16 decoder by composing two 2-to-4 decoders.
+#
+# Interface:
+#   a3,a2,a1,a0: 4-bit address input.
+#   o0,...,o15:  16-bit data output.
+
+dec4to16(a3,a2,a1,a0, o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15) := ex l0,l1,l2,l3, h0,h1,h2,h3 (
+  # Instantiate two 2-to-4 decoders for the low and high bits of the address.
+  dec2to4(a1, a0, l0,l1,l2,l3) &&
+  dec2to4(a3, a2, h0,h1,h2,h3) &&
+
+  # Combine the outputs of the two decoders to generate the 16 output lines.
+  (o0  = (h0 & l0)) && (o1  = (h0 & l1)) && (o2  = (h0 & l2)) && (o3  = (h0 & l3)) &&
+  (o4  = (h1 & l0)) && (o5  = (h1 & l1)) && (o6  = (h1 & l2)) && (o7  = (h1 & l3)) &&
+  (o8  = (h2 & l0)) && (o9  = (h2 & l1)) && (o10 = (h2 & l2)) && (o11 = (h2 & l3)) &&
+  (o12 = (h3 & l0)) && (o13 = (h3 & l1)) && (o14 = (h3 & l2)) && (o15 = (h3 & l3))
+))

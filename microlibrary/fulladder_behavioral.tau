@@ -1,0 +1,30 @@
+# Full Adder Behavioral Definition
+#
+# This specification defines the expected behavior of a full adder using
+# standard arithmetic and logical operations, rather than its structure.
+#
+# Inputs:
+#   a: first bit
+#   b: second bit
+#   i: carry-in bit
+#
+# Outputs:
+#   s: sum bit
+#   o: carry-out bit
+#
+# Truth Table:
+# | a | b | i | s | o |
+# |---|---|---|---|---|
+# | 0 | 0 | 0 | 0 | 0 |
+# | 0 | 0 | 1 | 1 | 0 |
+# | 0 | 1 | 0 | 1 | 0 |
+# | 0 | 1 | 1 | 0 | 1 |
+# | 1 | 0 | 0 | 1 | 0 |
+# | 1 | 0 | 1 | 0 | 1 |
+# | 1 | 1 | 0 | 0 | 1 |
+# | 1 | 1 | 1 | 1 | 1 |
+
+fulladder_behavioral(a, b, i, s, o) := (
+    (s = (a + b + i)) &&
+    (o = ((a & b) | (i & (a + b))))
+)

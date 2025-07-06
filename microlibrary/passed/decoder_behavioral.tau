@@ -1,0 +1,8 @@
+# 2-to-4 Decoder (Behavioral Specification)
+#
+# Predicate: decoder_b(s1, s0, o3, o2, o1, o0)
+# s1, s0: 2-bit select input
+# o3..o0: 4-bit output
+#
+# Defines the decoder based on its truth table.
+decoder_b(s1, s0, o3, o2, o1, o0) := (o0 = (s1' & s0')) && (o1 = (s1' & s0)) && (o2 = (s1 & s0')) && (o3 = (s1 & s0))

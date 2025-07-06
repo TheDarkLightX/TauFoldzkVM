@@ -1,0 +1,2 @@
+# and2(a, b, out) specifies a 2-input AND gate.
+and2(a, b, o) := (o = a & b)

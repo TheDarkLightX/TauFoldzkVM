@@ -1,0 +1,3 @@
+# Canonical definition for a single bit.
+# A variable is a bit if it is either 0 or 1.
+bit(x) := (x=0|x=1)

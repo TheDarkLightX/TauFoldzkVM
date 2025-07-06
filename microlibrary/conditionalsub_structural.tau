@@ -1,0 +1,27 @@
+# 1-bit Conditional Subtractor Formal Definition
+#
+# A 1-bit conditional subtractor takes two data bits, 'a' and 'b', and a control bit 'k'.
+# It produces a result 'r' and a borrow-out 'o'.
+# - If k=0, the circuit acts as a buffer: r = a, o = 0.
+# - If k=1, the circuit subtracts b from a: r = a - b, o = borrow.
+#
+# Its correctness is formally proven in `proofs/prove_conditionalsub.tau`.
+#
+# Truth Table:
+# | a | b | k | r | o |
+# |---|---|---|---|---|
+# | 0 | 0 | 0 | 0 | 0 |
+# | 0 | 1 | 0 | 0 | 0 |
+# | 1 | 0 | 0 | 1 | 0 |
+# | 1 | 1 | 0 | 1 | 0 |
+# | 0 | 0 | 1 | 0 | 0 | (0-0=0,b=0)
+# | 0 | 1 | 1 | 1 | 1 | (0-1=1,b=1)
+# | 1 | 0 | 1 | 1 | 0 | (1-0=1,b=0)
+# | 1 | 1 | 1 | 0 | 0 | (1-1=0,b=0)
+
+# NOTE: In file mode, definitions must NOT end with a period.
+# Logic: r is a mux between 'a' and 'a XOR b'. o is 'a' AND b AND k'.
+cs_s(a, b, k, r, o) := (
+    (r + ((a&k') | ((a+b)&k)))' &
+    (o + (a'&b&k))'
+)

@@ -1,0 +1,23 @@
+# 1-bit Comparator Formal Definition
+#
+# A 1-bit comparator takes two 1-bit inputs, a and b, and produces three outputs:
+#   g: 1 if a > b, 0 otherwise
+#   e: 1 if a = b, 0 otherwise
+#   l: 1 if a < b, 0 otherwise
+#
+# Its correctness is formally proven in `proofs/prove_comparator.tau`.
+#
+# Truth Table:
+# | a | b | g | e | l |
+# |---|---|---|---|---|
+# | 0 | 0 | 0 | 1 | 0 |
+# | 0 | 1 | 0 | 0 | 1 |
+# | 1 | 0 | 1 | 0 | 0 |
+# | 1 | 1 | 0 | 1 | 0 |
+
+# NOTE: In file mode, definitions must NOT end with a period.
+comp_s(a, b, g, e, l) := (
+    (g + (a & b'))' &
+    (e + (a+b)')' &
+    (l + (a' & b))'
+)

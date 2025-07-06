@@ -1,0 +1,16 @@
+# Half Adder Formal Definition
+#
+# Defines a half adder as a predicate `h`.
+# This definition is stored in the current theory and can be composed.
+# Its correctness is formally proven in `proofs/prove_half_adder.tau`.
+#
+# Truth Table:
+# | a | b | s (a+b) | c (a&b) |
+# |---|---|---------|---------|
+# | 0 | 0 |    0    |    0    |
+# | 0 | 1 |    1    |    0    |
+# | 1 | 0 |    1    |    0    |
+# | 1 | 1 |    0    |    1    |
+
+# NOTE: In file mode, definitions must NOT end with a period.
+h(a, b, s, c) := (s = (a + b)) && (c = (a & b))

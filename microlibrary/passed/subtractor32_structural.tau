@@ -1,0 +1,34 @@
+# 32-Bit Subtractor (Structural Specification)
+#
+# This specification defines a 32-bit subtractor using the two's complement method.
+# It is composed of a 32-bit inverter and a 32-bit adder.
+# A - B is implemented as A + (!B) + 1.
+#
+# Inputs:
+#   a31..a0: 32-bit input vector A (minuend)
+#   b31..b0: 32-bit input vector B (subtrahend)
+#
+# Outputs:
+#   s31..s0:  32-bit difference vector S
+#   o:        1-bit borrow-out
+#             (o=1 if a borrow was needed, i.e., if A < B)
+
+# Helper predicate for a 32-bit inverter
+inv32(i31,i30,i29,i28,i27,i26,i25,i24,i23,i22,i21,i20,i19,i18,i17,i16,i15,i14,i13,i12,i11,i10,i9,i8,i7,i6,i5,i4,i3,i2,i1,i0, o31,o30,o29,o28,o27,o26,o25,o24,o23,o22,o21,o20,o19,o18,o17,o16,o15,o14,o13,o12,o11,o10,o9,o8,o7,o6,o5,o4,o3,o2,o1,o0) := (
+    inv(i31, o31) & inv(i30, o30) & inv(i29, o29) & inv(i28, o28) & inv(i27, o27) & inv(i26, o26) & inv(i25, o25) & inv(i24, o24) &
+    inv(i23, o23) & inv(i22, o22) & inv(i21, o21) & inv(i20, o20) & inv(i19, o19) & inv(i18, o18) & inv(i17, o17) & inv(i16, o16) &
+    inv(i15, o15) & inv(i14, o14) & inv(i13, o13) & inv(i12, o12) & inv(i11, o11) & inv(i10, o10) & inv(i9, o9) & inv(i8, o8) &
+    inv(i7, o7) & inv(i6, o6) & inv(i5, o5) & inv(i4, o4) & inv(i3, o3) & inv(i2, o2) & inv(i1, o1) & inv(i0, o0)
+)
+
+# Structural definition of the 32-bit subtractor
+subtractor32_s(a31,a30,a29,a28,a27,a26,a25,a24,a23,a22,a21,a20,a19,a18,a17,a16,a15,a14,a13,a12,a11,a10,a9,a8,a7,a6,a5,a4,a3,a2,a1,a0, b31,b30,b29,b28,b27,b26,b25,b24,b23,b22,b21,b20,b19,b18,b17,b16,b15,b14,b13,b12,b11,b10,b9,b8,b7,b6,b5,b4,b3,b2,b1,b0, s31,s30,s29,s28,s27,s26,s25,s24,s23,s22,s21,s20,s19,s18,s17,s16,s15,s14,s13,s12,s11,s10,s9,s8,s7,s6,s5,s4,s3,s2,s1,s0, o) := ex inv_b31,inv_b30,inv_b29,inv_b28,inv_b27,inv_b26,inv_b25,inv_b24,inv_b23,inv_b22,inv_b21,inv_b20,inv_b19,inv_b18,inv_b17,inv_b16,inv_b15,inv_b14,inv_b13,inv_b12,inv_b11,inv_b10,inv_b9,inv_b8,inv_b7,inv_b6,inv_b5,inv_b4,inv_b3,inv_b2,inv_b1,inv_b0, adder_cout (
+    # Invert the subtrahend B
+    inv32(b31,b30,b29,b28,b27,b26,b25,b24,b23,b22,b21,b20,b19,b18,b17,b16,b15,b14,b13,b12,b11,b10,b9,b8,b7,b6,b5,b4,b3,b2,b1,b0, inv_b31,inv_b30,inv_b29,inv_b28,inv_b27,inv_b26,inv_b25,inv_b24,inv_b23,inv_b22,inv_b21,inv_b20,inv_b19,inv_b18,inv_b17,inv_b16,inv_b15,inv_b14,inv_b13,inv_b12,inv_b11,inv_b10,inv_b9,inv_b8,inv_b7,inv_b6,inv_b5,inv_b4,inv_b3,inv_b2,inv_b1,inv_b0) &
+
+    # Add A + (!B) + 1 (cin=1)
+    adder32_s(a31,a30,a29,a28,a27,a26,a25,a24,a23,a22,a21,a20,a19,a18,a17,a16,a15,a14,a13,a12,a11,a10,a9,a8,a7,a6,a5,a4,a3,a2,a1,a0, inv_b31,inv_b30,inv_b29,inv_b28,inv_b27,inv_b26,inv_b25,inv_b24,inv_b23,inv_b22,inv_b21,inv_b20,inv_b19,inv_b18,inv_b17,inv_b16,inv_b15,inv_b14,inv_b13,inv_b12,inv_b11,inv_b10,inv_b9,inv_b8,inv_b7,inv_b6,inv_b5,inv_b4,inv_b3,inv_b2,inv_b1,inv_b0, 1, s31,s30,s29,s28,s27,s26,s25,s24,s23,s22,s21,s20,s19,s18,s17,s16,s15,s14,s13,s12,s11,s10,s9,s8,s7,s6,s5,s4,s3,s2,s1,s0, adder_cout) &
+
+    # The borrow-out is the inverse of the adder's carry-out
+    inv(adder_cout, o)
+)

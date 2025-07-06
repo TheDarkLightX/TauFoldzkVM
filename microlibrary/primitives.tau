@@ -1,0 +1,14 @@
+# Verified primitive components for the microlibrary.
+# Both behavioral and structural definitions are included for compositional proofs.
+
+# Helper predicate to constrain variables to a single bit.
+bit(x) := (x=0) || (x=1).
+
+# For a half_adder, the behavioral and structural definitions are identical.
+half_adder(a, b, s, c) := ((s = a + b) && (c = a & b)).
+
+# Full Adder Behavioral Specification (Mathematical)
+full_adder_behav(a, b, k, s, cout) := ((s = a+b+k) && (cout = ((a&b)|(k&(a+b))))).
+
+# Full Adder Structural Specification (Gate-level)
+full_adder_struct(a, b, k, s, cout) := ex s1 ex c1 ex c2 ((half_adder(a, b, s1, c1) && half_adder(s1, k, s, c2) && (cout = (c1 | c2)))).

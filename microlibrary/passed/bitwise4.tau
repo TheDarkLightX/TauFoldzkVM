@@ -1,0 +1,26 @@
+# microlibrary/pending/bitwise4.tau
+#
+# Defines 4-bit bitwise logical operations, both structurally and behaviorally.
+# All variables are single-letter to conform to the Tau parser's requirements.
+
+# --- 4-bit Bitwise AND ---
+# a,b,c,d: A[3-0] | e,f,g,h: B[3-0] | i,j,k,l: Out[3-0]
+and4_s(a,b,c,d, e,f,g,h, i,j,k,l) :=
+    and2(a,e,i) && and2(b,f,j) && and2(c,g,k) && and2(d,h,l).
+
+and4_b(a,b,c,d, e,f,g,h, i,j,k,l) :=
+    (i = a & e) && (j = b & f) && (k = c & g) && (l = d & h).
+
+# --- 4-bit Bitwise OR ---
+or4_s(a,b,c,d, e,f,g,h, i,j,k,l) :=
+    or2(a,e,i) && or2(b,f,j) && or2(c,g,k) && or2(d,h,l).
+
+or4_b(a,b,c,d, e,f,g,h, i,j,k,l) :=
+    (i = a | e) && (j = b | f) && (k = c | g) && (l = d | h).
+
+# --- 4-bit Bitwise XOR ---
+xor4_s(a,b,c,d, e,f,g,h, i,j,k,l) :=
+    xor2(a,e,i) && xor2(b,f,j) && xor2(c,g,k) && xor2(d,h,l).
+
+xor4_b(a,b,c,d, e,f,g,h, i,j,k,l) :=
+    (i = a + e) && (j = b + f) && (k = c + g) && (l = d + h).

@@ -1,0 +1,7 @@
+# microlibrary/full_adder.tau  (already verified)
+fa_sane(a,b,cin,sum,cout) :=
+    ex s1, c1, c2 (
+        ha(a , b , s1, c1) &&
+        ha(s1, cin, sum, c2) &&
+        (cout = (c1 | c2))
+    ).

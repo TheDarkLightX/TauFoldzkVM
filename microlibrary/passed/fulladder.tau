@@ -1,0 +1,37 @@
+# Full Adder Formal Definition
+#
+# A full adder is a digital circuit that performs addition on three binary digits.
+# It is composed of two half adders and an OR gate.
+# Its correctness is formally proven in `proofs/prove_full_adder.tau`.
+#
+# Inputs:
+#   a: first bit
+#   b: second bit
+#   i: carry-in bit (to avoid keyword 'in')
+#
+# Outputs:
+#   s: sum bit
+#   o: carry-out bit
+#
+# Truth Table:
+# | a | b | i | s | o |
+# |---|---|---|---|---|
+# | 0 | 0 | 0 | 0 | 0 |
+# | 0 | 0 | 1 | 1 | 0 |
+# | 0 | 1 | 0 | 1 | 0 |
+# | 0 | 1 | 1 | 0 | 1 |
+# | 1 | 0 | 0 | 1 | 0 |
+# | 1 | 0 | 1 | 0 | 1 |
+# | 1 | 1 | 0 | 0 | 1 |
+# | 1 | 1 | 1 | 1 | 1 |
+
+# The full adder is defined in terms of the half adder predicate `h`.
+# To prove this, the half adder definition file must be passed to the
+# tau executable before this file.
+
+# Definition using two half adders
+# x, y are intermediate wires from the first half adder
+# z is the intermediate carry from the second half adder
+f(a, b, i, s, o) := ex x ex y ex z (h(a, b, x, y) && h(x, i, s, z) && (o = (y | z)))
+
+# NOTE: In file mode, definitions must NOT end with a period.

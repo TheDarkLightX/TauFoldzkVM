@@ -1,0 +1,20 @@
+# 4-to-16 Decoder (Behavioral - Corrected)
+# This is a corrected, behavioral version of the flawed component from `microlibrary/passed`.
+dec4to16(a3,a2,a1,a0, o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15) := (
+    (o0 = (a3' & a2' & a1' & a0')) &&
+    (o1 = (a3' & a2' & a1' & a0)) &&
+    (o2 = (a3' & a2' & a1 & a0')) &&
+    (o3 = (a3' & a2' & a1 & a0)) &&
+    (o4 = (a3' & a2 & a1' & a0')) &&
+    (o5 = (a3' & a2 & a1' & a0)) &&
+    (o6 = (a3' & a2 & a1 & a0')) &&
+    (o7 = (a3' & a2 & a1 & a0)) &&
+    (o8 = (a3 & a2' & a1' & a0')) &&
+    (o9 = (a3 & a2' & a1' & a0)) &&
+    (o10 = (a3 & a2' & a1 & a0')) &&
+    (o11 = (a3 & a2' & a1 & a0)) &&
+    (o12 = (a3 & a2 & a1' & a0')) &&
+    (o13 = (a3 & a2 & a1' & a0)) &&
+    (o14 = (a3 & a2 & a1 & a0')) &&
+    (o15 = (a3 & a2 & a1 & a0))
+)

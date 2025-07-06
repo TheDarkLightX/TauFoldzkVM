@@ -1,0 +1,17 @@
+# 4-Bit Register
+#
+# Defines a 4-bit register by composing four 1-bit registers (`reg1`).
+# All bits share a single write-enable signal `w`.
+#
+# Interface:
+#   a,b,c,d: 4-bit data input.
+#   w:       1-bit write-enable.
+#   p,q,r,s: 4-bit previous state.
+#   x,y,z,v: 4-bit next state.
+
+reg4(a,b,c,d, w, p,q,r,s, x,y,z,v) := (
+  (x = reg1(a, w, p)) &&
+  (y = reg1(b, w, q)) &&
+  (z = reg1(c, w, r)) &&
+  (v = reg1(d, w, s))
+).

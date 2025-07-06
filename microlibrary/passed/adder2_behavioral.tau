@@ -1,0 +1,28 @@
+# 2-Bit Adder (Behavioral Specification)
+#
+# This specification defines a 2-bit adder using Tau's native word-level
+# arithmetic. It describes the "what" (the mathematical behavior) rather than
+# the "how" (the gate-level structure).
+#
+# Its logical equivalence to the structural (ripple-carry) specification is formally
+# proven in `proofs/passed/prove_adder2_equivalence.tau`.
+#
+# Inputs:
+#   a1,a0: 2-bit input vector A
+#   b1,b0: 2-bit input vector B
+#   cin:   1-bit carry-in
+#
+# Outputs:
+#   s1,s0:  2-bit sum vector S
+#   cout:   1-bit final carry-out
+#
+# Example Truth Table Rows:
+# | a1 a0 | b1 b0 | cin | cout s1 s0 |
+# |-------|-------|-----|------------|
+# |  0  1  |  0  1  |  0  |   0   1  0  |  (1 + 1 = 2)
+# |  1  1  |  0  1  |  1  |   1   0  1  |  (3 + 1 + 1 = 5)
+# |  1  1  |  1  1  |  1  |   1   1  1  |  (3 + 3 + 1 = 7)
+
+# The expression `[cout,s1,s0] = [a1,a0] + [b1,b0] + cin` directly represents
+# the addition of two 2-bit numbers with a carry-in, resulting in a 3-bit output.
+adder2_b(a1,a0, b1,b0, cin, s1,s0, cout) := [cout,s1,s0] = [a1,a0] + [b1,b0] + cin

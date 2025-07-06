@@ -1,0 +1,9 @@
+# This file contains two definitions for a full-adder.
+
+# 1. Structural Full-Adder (fa_s)
+# Built from two half-adders and an OR gate.
+fa_s(a, b, c, s, o) := ex x, y, z (ha(a, b, x, y) && ha(x, c, s, z) && or2(y, z, o))
+
+# 2. Behavioral Full-Adder (fa_b)
+# Mathematical definition using majority function for carry.
+fa_b(a, b, c, s, o) := (s = a + b + c) && (o = (a & b) | (a & c) | (b & c))

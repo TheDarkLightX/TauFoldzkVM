@@ -1,0 +1,2 @@
+# or2(a, b, out) specifies a 2-input OR gate.
+or2(a, b, o) := (o = a | b)

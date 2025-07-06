@@ -1,0 +1,15 @@
+# 1-Bit Register (D-Latch)
+#
+# Defines a single 1-bit register using the canonical Tau syntax for stateful elements.
+# This is the fundamental building block for the structural RAM model.
+#
+# Inputs:
+#   i[t]:  The 1-bit data input at time t.
+#   we[t]: The write-enable signal at time t. 
+#
+# Outputs:
+#   o[t]: The 1-bit data output at time t. Reflects the state from the previous cycle.
+
+reg1(i, we, o) := always (
+    o[t] <-> (we[t-1] & i[t-1]) | (we[t-1]' & o[t-1])
+).

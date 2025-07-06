@@ -1,0 +1,6 @@
+# Full Adder (Sanitized Definition)
+#
+# This version uses single-letter variables (a,b,k,s,c) to exactly match
+# the `fa_math` contract, eliminating potential variable-name confusion.
+
+fa_sane(a, b, k, s, c) := (s = ((a + b) + k)) && (c = ((a & b) | (a & k) | (b & k))).

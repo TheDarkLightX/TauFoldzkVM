@@ -1,0 +1,31 @@
+# 4x1-Bit RAM
+#
+# Defines a 4-word, 1-bit RAM using previously verified components:
+# `reg1`, `dec2to4`, and `mux4`.
+#
+# This is a stateful component.
+#
+# Interface:
+#   a1, a0:    2-bit address input.
+#   i:         1-bit data input.
+#   w:         1-bit write-enable.
+#   p0,p1,p2,p3: 4-bit previous state of the internal registers.
+#   n0,n1,n2,n3: 4-bit next state of the internal registers.
+#   o:         1-bit data output.
+
+ram4x1(a1,a0, i,w, p0,p1,p2,p3, n0,n1,n2,n3, o) := ex e0,e1,e2,e3 (
+  # 1. Decode the address to get individual write-enable signals.
+  dec2to4(a1, a0, e0,e1,e2,e3) &&
+
+  # 2. Define the next state for each of the four 1-bit registers.
+  #    The final write-enable for each register is a combination of the
+  #    global write-enable 'w' and the specific enable from the decoder.
+  (n0 = reg1(i, (w & e0), p0)) &&
+  (n1 = reg1(i, (w & e1), p1)) &&
+  (n2 = reg1(i, (w & e2), p2)) &&
+  (n3 = reg1(i, (w & e3), p3)) &&
+
+  # 3. Select the output from the *previous* state of the registers.
+  #    This models a read-before-write behavior.
+  mux4(p0,p1,p2,p3, a1,a0, o)
+).

@@ -1,0 +1,23 @@
+// Conditional Subtractor for 32-bit numbers.
+// Computes diff = x - y - borrow_in.
+cond_sub(x, y, borrow_in, diff, borrow_out) :=
+    (
+        (y + borrow_in <= x) &&
+        diff = (x - y - borrow_in) &&
+        borrow_out = 0
+    ) || (
+        (y + borrow_in > x) &&
+        diff = (4294967296 + x - y - borrow_in) && // 2^32
+        borrow_out = 1
+    ).// Conditional Subtractor for 32-bit numbers.
+// Computes diff = x - y - borrow_in.
+cond_sub(x, y, borrow_in, diff, borrow_out) :=
+    (
+        (y + borrow_in <= x) &&
+        diff = (x - y - borrow_in) &&
+        borrow_out = 0
+    ) || (
+        (y + borrow_in > x) &&
+        diff = (4294967296 + x - y - borrow_in) && // 2^32
+        borrow_out = 1
+    ).

@@ -1,0 +1,11 @@
+# microlibrary/pending/and3.tau
+#
+# Defines a 3-input AND gate, both structurally and behaviorally.
+# This is a minimal test case to debug compositional proof failures.
+
+# --- Behavioral Definition ---
+and3_b(a,b,c,o) := (o = a & b & c).
+
+# --- Structural Definition ---
+# Built from two 2-input AND gates.
+and3_s(a,b,c,o) := ex w (and2(a,b,w) && and2(w,c,o)).

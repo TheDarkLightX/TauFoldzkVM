@@ -1,0 +1,20 @@
+# microlibrary/pending/add2.tau
+#
+# Defines a 2-bit ripple-carry adder using single-letter variables to conform
+# to the Tau parser's strict requirements.
+#
+# Mapping:
+# a,b: a1,a0 | c,d: b1,b0 | e: carryin
+# f,g: s1,s0 | h: carryout | i: internal carry
+
+add2_s(a,b, c,d, e, f,g,h) :=
+    ex i (
+         fa_s(b, d, e, g, i) &&
+         fa_s(a, c, i, f, h)
+    )
+
+add2_b(a,b, c,d, e, f,g,h) :=
+    ex i (
+         fa_b(b, d, e, g, i) &&
+         fa_b(a, c, i, f, h)
+    )

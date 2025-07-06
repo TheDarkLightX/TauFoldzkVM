@@ -1,0 +1,21 @@
+# microlibrary/pending/add_only_alu.tau
+#
+# A simplified, add-only ALU for debugging purposes.
+
+# --- Structural Definition ---
+# Inputs: a,b,c,d (A[3:0]), e,f,g,h (B[3:0]), m (Cin)
+# Outputs: i,j,k,l (Sum[3:0]), n (Cout)
+add_only_alu_s(a,b,c,d, e,f,g,h, m, i,j,k,l,n) :=
+    add4_s(a,b,c,d, e,f,g,h, m, i,j,k,l,n).
+
+# --- Behavioral Definition ---
+add_only_alu_b(a,b,c,d, e,f,g,h, m, i,j,k,l,n) :=
+    ex c0,c1,c2 (
+        fa_b(d,h,m, l,c0) && # LSB
+        fa_b(c,g,c0, k,c1) &&
+        fa_b(b,f,c1, j,c2) &&
+        fa_b(a,e,c2, i,n)    # MSB
+    ).
+
+# Helper for behavioral ADD operation, required by alu4_b
+fa_b(a,b,c, s,o) := (s = a+b+c) && (o = (a&b)|(a&c)|(b&c)).

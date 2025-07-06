@@ -1,0 +1,20 @@
+# 8-Bit Ripple-Carry Adder (Structural Specification)
+#
+# This specification defines an 8-bit adder by composing eight 1-bit full adders (`fa`).
+# This demonstrates the scalability of the ripple-carry design pattern, where the carry-out
+# from each bit is rippled to the next.
+#
+# Its logical equivalence to the behavioral (word-level) specification is formally
+# proven in `proofs/passed/prove_adder8_equivalence.tau`.
+#
+# Inputs:
+#   a7..a0: 8-bit input vector A
+#   b7..b0: 8-bit input vector B
+#   cin:    1-bit carry-in
+#
+# Outputs:
+#   s7..s0:  8-bit sum vector S
+#   cout:    1-bit final carry-out
+
+# c1..c7 are the intermediate carry bits connecting the full adders.
+adder8_s(a7,a6,a5,a4,a3,a2,a1,a0, b7,b6,b5,b4,b3,b2,b1,b0, cin, s7,s6,s5,s4,s3,s2,s1,s0, cout) := ex c1 ex c2 ex c3 ex c4 ex c5 ex c6 ex c7 (fa(a0,b0,cin,s0,c1) && fa(a1,b1,c1,s1,c2) && fa(a2,b2,c2,s2,c3) && fa(a3,b3,c3,s3,c4) && fa(a4,b4,c4,s4,c5) && fa(a5,b5,c5,s5,c6) && fa(a6,b6,c6,s6,c7) && fa(a7,b7,c7,s7,cout))

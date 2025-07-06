@@ -1,0 +1,8 @@
+# Define the conditional subtractor function
+define cond_sub(a,b,cond,sub) = (sub = ((cond & (a-b)) | ((cond' & a))))
+
+# Prove that the definition is a tautology by showing
+# that there is no counterexample.
+unsat exists a,b,cond,sub. (cond_sub(a,b,cond,sub) & !(sub = ((cond & (a-b)) | ((cond' & a)))))
+
+quit

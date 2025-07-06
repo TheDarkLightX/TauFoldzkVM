@@ -1,0 +1,7 @@
+# Full-Adder (Structural Definition)
+# Composed of two half-adders and an OR gate.
+fa_s(a, b, cin, s, cout) := ex s1, c1, c2 (
+    ha(a, b, s1, c1) &&
+    ha(s1, cin, s, c2) &&
+    (cout = (c1 | c2))
+)

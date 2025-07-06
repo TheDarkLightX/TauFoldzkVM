@@ -1,0 +1,21 @@
+# 2-to-4 Decoder
+#
+# Defines a 2-to-4 decoder. This is a combinational component.
+#
+# Interface:
+#   a, b:    2-bit address input.
+#   x,y,z,v: 4-bit data output.
+#
+# Logic:
+# The output line corresponding to the binary value of the address (ab) is high.
+# x is high for address 00.
+# y is high for address 01.
+# z is high for address 10.
+# v is high for address 11.
+
+dec2to4(a, b, x,y,z,v) := (
+  (x = (a' & b')) &&
+  (y = (a' & b))  &&
+  (z = (a & b'))  &&
+  (v = (a & b))
+)

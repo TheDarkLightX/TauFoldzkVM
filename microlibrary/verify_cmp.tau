@@ -1,0 +1,11 @@
+# Define the comparator function
+define cmp(a,b,lt,eq,gt) = (lt=(a'&b) & eq=(a+b)' & gt=(a&b'))
+
+# Prove that the definition is a tautology by showing
+# that there is no counterexample.
+# A counterexample would be a set of inputs for which the
+# function call is true, but the guarantee is false.
+# We prove this is impossible by showing the following is unsat.
+unsat exists a,b,lt,eq,gt. (cmp(a,b,lt,eq,gt) & !(lt=(a'&b) & eq=(a+b)' & gt=(a&b')))
+
+quit

@@ -1,0 +1,14 @@
+# Full-Adder Mathematical Contract (Truth Table Definition)
+# This predicate defines the arithmetic guarantee of a full-adder
+# by explicitly listing all 8 rows of its truth table.
+# This avoids unsupported operators and provides a canonical, verifiable spec.
+fa_math(a,b,k,s,c) := (
+    ((a=0 && b=0 && k=0) -> (s=0 && c=0)) &&
+    ((a=0 && b=0 && k=1) -> (s=1 && c=0)) &&
+    ((a=0 && b=1 && k=0) -> (s=1 && c=0)) &&
+    ((a=0 && b=1 && k=1) -> (s=0 && c=1)) &&
+    ((a=1 && b=0 && k=0) -> (s=1 && c=0)) &&
+    ((a=1 && b=0 && k=1) -> (s=0 && c=1)) &&
+    ((a=1 && b=1 && k=0) -> (s=0 && c=1)) &&
+    ((a=1 && b=1 && k=1) -> (s=1 && c=1))
+)

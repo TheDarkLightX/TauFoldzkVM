@@ -1,0 +1,6 @@
+# 2-to-1 Multiplexer Formal Definition (pending verification)
+#
+# Selects input 'a' if selector 's' is 0, and input 'b' if 's' is 1.
+# Logic: o = (a & s') | (b & s)
+
+mux2(a, b, s, o) := (o = ((a & s') | (b & s)))

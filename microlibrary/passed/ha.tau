@@ -1,0 +1,4 @@
+# ha(a, b, s, c) specifies a half-adder structurally.
+# It computes sum (s) and carry (c) from two bits (a, b).
+# This implementation is built from verified and2 and xor2 gates.
+ha(a, b, s, c) := xor2(a, b, s) && and2(a, b, c).

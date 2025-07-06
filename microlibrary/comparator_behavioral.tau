@@ -1,0 +1,12 @@
+# 1-bit Comparator Behavioral Definition
+#
+# Defines the expected behavior of a 1-bit comparator based on its truth table.
+# g (greater): a & b'
+# e (equal): (a+b)'
+# l (less): a' & b
+
+comp_b(a, b, g, e, l) := (
+    (g + (a & b'))' &
+    (e + (a+b)')' &
+    (l + (a' & b))'
+)

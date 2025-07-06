@@ -1,0 +1,5 @@
+cmp(a, b, eq, gt) :=
+    eq = (a == b) &&
+    gt = (a > b).cmp(a, b, eq, gt) :=
+    eq = (a == b) &&
+    gt = (a > b).

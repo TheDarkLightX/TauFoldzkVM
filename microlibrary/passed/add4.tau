@@ -1,0 +1,24 @@
+# microlibrary/pending/add4.tau
+#
+# Defines a 4-bit ripple-carry adder hierarchically from two 2-bit adders.
+# All variables are single-letter to conform to the Tau parser's requirements.
+#
+# This file defines both structural (add4_s) and behavioral (add4_b)
+# models by composing the corresponding verified 2-bit adders (add2_s, add2_b).
+#
+# Variable Mapping:
+# Inputs (9): a,b,c,d (A3-A0) | e,f,g,h (B3-B0) | i (Cin)
+# Outputs (5): j,k,l,m (S3-S0) | n (Cout)
+# Internal (1): p (intermediate carry from low bits to high bits)
+
+add4_s(a,b,c,d, e,f,g,h, i, j,k,l,m,n) :=
+    ex p (
+        add2_s(c,d, g,h, i, l,m, p) &&  # Low 2 bits
+        add2_s(a,b, e,f, p, j,k, n)   # High 2 bits
+    ).
+
+add4_b(a,b,c,d, e,f,g,h, i, j,k,l,m,n) :=
+    ex p (
+        add2_b(c,d, g,h, i, l,m, p) &&  # Low 2 bits
+        add2_b(a,b, e,f, p, j,k, n)   # High 2 bits
+    )

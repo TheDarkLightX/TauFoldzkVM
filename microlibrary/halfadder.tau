@@ -1,0 +1,3 @@
+# Half Adder Definition
+ha(a, b, s, c) := ((s + (a+b))' & (c + (a&b))')
+

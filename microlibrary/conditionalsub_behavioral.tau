@@ -1,0 +1,10 @@
+# 1-bit Conditional Subtractor Behavioral Definition
+#
+# Defines the expected behavior of a 1-bit conditional subtractor based on its truth table.
+# - If k=0, r=a, o=0.
+# - If k=1, r=a-b (a+b), o=borrow (a'&b).
+
+cs_b(a, b, k, r, o) := (
+    (r + ((a&k') | ((a+b)&k)))' &
+    (o + (a'&b&k))'
+)

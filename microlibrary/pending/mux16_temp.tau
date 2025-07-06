@@ -1,0 +1,19 @@
+# 16-to-1 Multiplexer (Structural)
+#
+# Defines a 16-to-1 multiplexer by composing five 4-to-1 muxes.
+#
+# Interface:
+#   i0,...,i15:  16-bit data input.
+#   s3,s2,s1,s0: 4-bit select input.
+#   o:           1-bit data output.
+
+mux16(i0,i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12,i13,i14,i15, s3,s2,s1,s0, o) := ex m0,m1,m2,m3 (
+  # First stage of four 4-to-1 muxes, selected by s1,s0.
+  mux4(i0, i1, i2, i3, s1,s0, m0) &&
+  mux4(i4, i5, i6, i7, s1,s0, m1) &&
+  mux4(i8, i9, i10,i11, s1,s0, m2) &&
+  mux4(i12,i13,i14,i15, s1,s0, m3) &&
+
+  # Final stage mux, selected by s3,s2.
+  mux4(m0,m1,m2,m3, s3,s2, o)
+).

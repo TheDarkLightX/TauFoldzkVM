@@ -1,0 +1,54 @@
+# microlibrary/pending/alu4.tau
+#
+# Defines a 4-bit ALU, both structurally and behaviorally.
+# All variables are single-letter, avoiding reserved keywords T and F.
+# OP codes: 00=AND, 01=OR, 10=XOR, 11=ADD
+
+# --- Structural ALU ---
+# Inputs: a,b,c,d (A[3:0]), e,f,g,h (B[3:0]), p,q (OP[1:0]), m (Cin)
+# Outputs: i,j,k,l (Res[3:0]), n (Cout), z (Zero)
+alu4_s(a,b,c,d, e,f,g,h, p,q,m, i,j,k,l,n,z) :=
+    ex o,r,s,t, u,v,w,x, y,A,B,C, D,E,G,H,I (
+        # o,r,s,t: AND[3:0] | u,v,w,x: OR[3:0]  | y,A,B,C: XOR[3:0]
+        # D,E,G,H: ADD[3:0] | I: ADD_Cout
+
+        # 1. Perform all operations in parallel
+        and4_s(a,b,c,d, e,f,g,h, o,r,s,t) &&
+        or4_s(a,b,c,d, e,f,g,h, u,v,w,x) &&
+        xor4_s(a,b,c,d, e,f,g,h, y,A,B,C) &&
+        add4_s(a,b,c,d, e,f,g,h, m, D,E,G,H,I) &&
+
+        # 2. Select result bits using 4-to-1 MUXes
+        mux4(o, u, y, D, p, q, i) &&
+        mux4(r, v, A, E, p, q, j) &&
+        mux4(s, w, B, G, p, q, k) &&
+        mux4(t, x, C, H, p, q, l) &&
+
+        # 3. Calculate flags
+        (n = (I & p & q)) && # Carry-out is only active for ADD
+        (z = (i|j|k|l)') # Use behavioral Zero flag
+    ).
+
+# --- Behavioral ALU ---
+# Fully hierarchical definition using behavioral sacred bricks.
+alu4_b(a,b,c,d, e,f,g,h, p,q,m, i,j,k,l,n,z) :=
+    ex o,r,s,t, u,v,w,x, y,A,B,C, D,E,G,H,I (
+        # o,r,s,t: AND[3:0] | u,v,w,x: OR[3:0]  | y,A,B,C: XOR[3:0]
+        # D,E,G,H: ADD[3:0] | I: ADD_Cout
+
+        # 1. Define results of all four operations behaviorally using sacred bricks
+        and4_b(a,b,c,d, e,f,g,h, o,r,s,t) &&
+        or4_b(a,b,c,d, e,f,g,h, u,v,w,x) &&
+        xor4_b(a,b,c,d, e,f,g,h, y,A,B,C) &&
+        add4_b(a,b,c,d, e,f,g,h, m, D,E,G,H,I) &&
+
+        # 2. Select result bits using hierarchical mux4 calls
+        mux4(o, u, y, D, p, q, i) &&
+        mux4(r, v, A, E, p, q, j) &&
+        mux4(s, w, B, G, p, q, k) &&
+        mux4(t, x, C, H, p, q, l) &&
+
+        # 3. Calculate flags
+        (n = (I & p & q)) &&
+        (z = (i|j|k|l)')
+    ).

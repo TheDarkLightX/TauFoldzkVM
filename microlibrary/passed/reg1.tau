@@ -1,0 +1,16 @@
+# 1-Bit Register (Next-State Function)
+#
+# Defines the next-state value for a 1-bit register.
+# This is a timeless, combinational function.
+#
+# Interface:
+#   i: 1-bit data input.
+#   w: 1-bit write-enable.
+#   p: 1-bit previous state.
+#
+# Returns:
+#   The next state value.
+
+reg1(i, w, p) := (
+  (w & i) | (w' & p)
+)

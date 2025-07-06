@@ -1,0 +1,7 @@
+# 2-to-4 Decoder
+dec2to4(a, b, x,y,z,v) := (
+  (x = (a' & b')) &&
+  (y = (a' & b))  &&
+  (z = (a & b'))  &&
+  (v = (a & b))
+)

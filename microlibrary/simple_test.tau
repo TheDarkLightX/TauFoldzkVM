@@ -1,0 +1,3 @@
+is_one(x) := x = 1
+
+always is_one(1)

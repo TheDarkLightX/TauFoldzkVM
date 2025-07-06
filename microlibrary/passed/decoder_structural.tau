@@ -1,0 +1,6 @@
+# 2-to-4 Decoder (Structural Specification)
+#
+# Predicate: decoder_s(s1, s0, o3, o2, o1, o0)
+#
+# Builds a 2-to-4 decoder by composing three 1-to-2 demultiplexers.
+decoder_s(s1, s0, o3, o2, o1, o0) := ex t0, t1. demux(s1, 1, t0, t1) && demux(s0, t0, o0, o1) && demux(s0, t1, o2, o3)

@@ -1,0 +1,7 @@
+# Full Adder (Structural Definition) (pending verification)
+#
+# Defines a full adder by composing two half-adders and an OR gate.
+# This demonstrates hierarchical design.
+# Internal wires: s1, c1, c2
+
+fa_s(a, b, cin, s, cout) := ex s1, c1, c2 ha(a, b, s1, c1) && ha(s1, cin, s, c2) && or2(c1, c2, cout)

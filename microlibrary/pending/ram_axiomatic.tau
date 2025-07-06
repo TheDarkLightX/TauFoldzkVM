@@ -1,0 +1,17 @@
+# Canonical Axiomatic Specification for a 4x1 RAM
+#
+# This file defines the temporal behavior of a 4x1 RAM as a single, 
+# universally true formula, following the pattern from ram_cell.tau.
+# All predicates and variables are single-letter to conform to parser rules.
+
+always (
+    # Uniqueness Axiom: One value per address at any given time.
+    (all t,a,b,d,e ( (m(a,b,d,t) && m(a,b,e,t)) -> (d=e) ))
+    &&
+    # State Transition Axiom: The value at an address persists unless written to.
+    (all t,a,b,d (
+        m(a,b,d,t) <->
+            ( w(a,b,d,t-1) ) ||       # Case 1: A write occurred to this address at t-1.
+            ( !ex v (w(a,b,v,t-1)) && m(a,b,d,t-1) ) # Case 2: No write occurred, so value persists.
+    ))
+).

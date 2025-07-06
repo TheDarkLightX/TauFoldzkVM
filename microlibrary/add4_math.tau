@@ -1,0 +1,14 @@
+# microlibrary/add4_math.tau
+#
+# Mathematical specification for a 4-bit adder, composed of
+# verified 1-bit full-adder mathematical contracts (fa_math).
+#
+# a3..a0  ,  b3..b0  ,  cin   ->   s3..s0 , cout
+add4_math(a3,a2,a1,a0,  b3,b2,b1,b0,  cin,
+            s3,s2,s1,s0,  cout) :=
+    ex c1, c2, c3 (
+         fa_math(a0,b0,cin , s0,c1) &&
+         fa_math(a1,b1,c1  , s1,c2) &&
+         fa_math(a2,b2,c2  , s2,c3) &&
+         fa_math(a3,b3,c3  , s3,cout)
+    ).

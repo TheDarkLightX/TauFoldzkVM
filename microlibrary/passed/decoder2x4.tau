@@ -1,0 +1,25 @@
+# microlibrary/pending/decoder2x4.tau
+#
+# A 2-to-4 decoder. Given a 2-bit input (a, b), it asserts one
+# of the four output lines (p, q, r, s).
+
+# --- Dependencies ---
+# inv, and2, and3 should be loaded from microlibrary/passed/
+
+# --- Behavioral Definition ---
+decoder2x4_b(a, b, p,q,r,s) := (
+    (s = (a' & b')) &&
+    (r = (a' & b))  &&
+    (q = (a & b'))  &&
+    (p = (a & b))
+).
+
+# --- Structural Definition ---
+decoder2x4_s(a, b, p,q,r,s) := ex n, m (
+    inv(a, n) &&
+    inv(b, m) &&
+    and3(n, m, 1, s) &&
+    and3(n, b, 1, r) &&
+    and3(a, m, 1, q) &&
+    and3(a, b, 1, p)
+).

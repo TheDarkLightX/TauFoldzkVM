@@ -1,0 +1,6 @@
+# Bit Predicate Definition
+#
+# This file defines a predicate `bit(x)` which is true if and only if x is 0 or 1.
+# This is a foundational component for ensuring type safety in all proofs.
+
+bit(x) := (x = 0) || (x = 1)

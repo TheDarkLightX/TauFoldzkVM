@@ -1,0 +1,2 @@
+# xor2(a, b, out) specifies a 2-input XOR gate.
+xor2(a, b, o) := (o = a + b)

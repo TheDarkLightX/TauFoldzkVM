@@ -1,0 +1,20 @@
+# 16-Bit Adder (Behavioral Specification)
+#
+# This specification defines a 16-bit adder using Tau's native word-level arithmetic.
+# It describes the "what" (the mathematical behavior) rather than the "how" (the gate-level structure).
+#
+# Its logical equivalence to the structural (ripple-carry) specification is formally
+# proven in `proofs/passed/prove_adder16_equivalence.tau`.
+#
+# Inputs:
+#   a15..a0: 16-bit input vector A
+#   b15..b0: 16-bit input vector B
+#   cin:     1-bit carry-in
+#
+# Outputs:
+#   s15..s0:  16-bit sum vector S
+#   cout:     1-bit final carry-out
+
+# The expression `[cout,s...s0] = [a...a0] + [b...b0] + cin` directly represents
+# the addition of two 16-bit numbers with a carry-in, resulting in a 17-bit output vector.
+adder16_b(a15,a14,a13,a12,a11,a10,a9,a8,a7,a6,a5,a4,a3,a2,a1,a0, b15,b14,b13,b12,b11,b10,b9,b8,b7,b6,b5,b4,b3,b2,b1,b0, cin, s15,s14,s13,s12,s11,s10,s9,s8,s7,s6,s5,s4,s3,s2,s1,s0, cout) := [cout,s15,s14,s13,s12,s11,s10,s9,s8,s7,s6,s5,s4,s3,s2,s1,s0] = [a15,a14,a13,a12,a11,a10,a9,a8,a7,a6,a5,a4,a3,a2,a1,a0] + [b15,b14,b13,b12,b11,b10,b9,b8,b7,b6,b5,b4,b3,b2,b1,b0] + cin

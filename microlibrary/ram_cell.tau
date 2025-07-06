@@ -1,0 +1,20 @@
+# 1-Bit RAM Cell (Structural Specification)
+#
+# This specification defines a single 1-bit memory cell with one read and one write port.
+# It forms the basic building block for a larger RAM.
+#
+# Inputs:
+#   i[t]:  The 1-bit data input at time t.
+#   we[t]: The write-enable signal at time t. If 1, the cell's state is updated to 'i[t]'.
+#
+# Outputs:
+#   o[t]: The 1-bit data output at time t. This reflects the cell's state from the *previous* cycle (t-1).
+#
+# State Logic:
+# The output `o[t]` is defined by the state of the cell in the previous cycle. 
+# If write-enable `we[t-1]` was high, the new state `o[t]` becomes the input `i[t-1]`.
+# Otherwise, the state persists, and `o[t]` remains equal to `o[t-1]`.
+
+always (
+    (o[t] <-> (we[t-1] & i[t-1]) | (we[t-1]' & o[t-1]))
+).

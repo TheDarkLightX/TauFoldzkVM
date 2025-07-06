@@ -1,0 +1,28 @@
+# 2-Bit Ripple-Carry Adder (Structural Specification)
+#
+# This specification defines a 2-bit adder by composing two 1-bit full adders (`fa`).
+# This demonstrates the "ripple-carry" design pattern, where the carry-out (`c1`)
+# from the first full adder (for the least significant bits) is "rippled" into
+# the carry-in of the second full adder (for the most significant bits).
+#
+# Its logical equivalence to the behavioral (word-level) specification is formally
+# proven in `proofs/passed/prove_adder2_equivalence.tau`.
+#
+# Inputs:
+#   a1,a0: 2-bit input vector A
+#   b1,b0: 2-bit input vector B
+#   cin:   1-bit carry-in
+#
+# Outputs:
+#   s1,s0:  2-bit sum vector S
+#   cout:   1-bit final carry-out
+#
+# Example Truth Table Rows:
+# | a1 a0 | b1 b0 | cin | cout s1 s0 |
+# |-------|-------|-----|------------|
+# |  0  1  |  0  1  |  0  |   0   1  0  |  (1 + 1 = 2)
+# |  1  1  |  0  1  |  1  |   1   0  1  |  (3 + 1 + 1 = 5)
+# |  1  1  |  1  1  |  1  |   1   1  1  |  (3 + 3 + 1 = 7)
+
+# c1 is the intermediate carry bit that connects the two full adders.
+adder2_s(a1,a0, b1,b0, cin, s1,s0, cout) := ex c1. fa(a0,b0,cin, s0,c1) && fa(a1,b1,c1, s1,cout)

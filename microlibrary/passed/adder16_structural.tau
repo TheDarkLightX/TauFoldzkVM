@@ -1,0 +1,19 @@
+# 16-Bit Ripple-Carry Adder (Structural Specification)
+#
+# This specification defines a 16-bit adder by composing sixteen 1-bit full adders (`fa`).
+# This demonstrates the scalability of the ripple-carry design pattern.
+#
+# Its logical equivalence to the behavioral (word-level) specification is formally
+# proven in `proofs/passed/prove_adder16_equivalence.tau`.
+#
+# Inputs:
+#   a15..a0: 16-bit input vector A
+#   b15..b0: 16-bit input vector B
+#   cin:     1-bit carry-in
+#
+# Outputs:
+#   s15..s0:  16-bit sum vector S
+#   cout:     1-bit final carry-out
+
+# c1..c15 are the intermediate carry bits connecting the full adders.
+adder16_s(a15,a14,a13,a12,a11,a10,a9,a8,a7,a6,a5,a4,a3,a2,a1,a0, b15,b14,b13,b12,b11,b10,b9,b8,b7,b6,b5,b4,b3,b2,b1,b0, cin, s15,s14,s13,s12,s11,s10,s9,s8,s7,s6,s5,s4,s3,s2,s1,s0, cout) := ex c1 ex c2 ex c3 ex c4 ex c5 ex c6 ex c7 ex c8 ex c9 ex c10 ex c11 ex c12 ex c13 ex c14 ex c15 (fa(a0,b0,cin,s0,c1) && fa(a1,b1,c1,s1,c2) && fa(a2,b2,c2,s2,c3) && fa(a3,b3,c3,s3,c4) && fa(a4,b4,c4,s4,c5) && fa(a5,b5,c5,s5,c6) && fa(a6,b6,c6,s6,c7) && fa(a7,b7,c7,s7,c8) && fa(a8,b8,c8,s8,c9) && fa(a9,b9,c9,s9,c10) && fa(a10,b10,c10,s10,c11) && fa(a11,b11,c11,s11,c12) && fa(a12,b12,c12,s12,c13) && fa(a13,b13,c13,s13,c14) && fa(a14,b14,c14,s14,c15) && fa(a15,b15,c15,s15,cout))
