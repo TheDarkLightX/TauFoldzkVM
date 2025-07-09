@@ -1,185 +1,74 @@
-# TauFoldZKVM Implementation
+# TauFold-zkVM
 
-A zero-knowledge virtual machine implementation using Tau's constraint satisfaction system, incorporating state-of-the-art folding schemes and distributed proving.
+A formally verified microlibrary of zkVM components built using the [Tau Language's](https://github.com/IDNI/tau-lang) reactive synthesis engine.
 
-## 🚀 Quick Start
+This project is not a complete, runnable zkVM. It is a collection of provably correct hardware and logic components—**"sacred bricks"**—that can be used to construct high-assurance zero-knowledge virtual machines.
 
-### One-Line Installation
+## The Tau Paradigm: Reactive Synthesis
+
+Tau is not a conventional programming language; it is a tool for **reactive synthesis**. This concept can be framed as a game between a controller and its environment:
+
+> *For every move the environment (inputs) can make, can I (the controller) always produce a move (outputs) **now** so the system's rules are never broken—forever?*
+
+Tau's satisfiability check directly encodes this game. When a Tau specification is run, the runtime repeatedly:
+
+1.  **Requests input values** for the current time-step.
+2.  **Invokes an internal solver** to synthesize concrete output values that satisfy the specification's constraints.
+3.  **Emits those outputs** and advances to the next time-step.
+
+This makes a Tau spec an **executable strategy** that is guaranteed to be correct for any possible sequence of inputs.
+
+## Can a whole zkVM fit inside Tau?
+
+-   **Theoretically, yes.** One could describe an entire ISA, micro-architectural state, and memory system as a set of Tau constraints. Satisfiability would guarantee a valid state transition for any program.
+-   **Practically, this is challenging.** The state-space explosion and the complexity of bit-vector arithmetic make this approach intractable for all but the simplest machines.
+
+### A Pragmatic Approach
+
+This project takes a more practical, hierarchical approach:
+
+1.  **Specify & Verify Micro-components:** We use Tau for what it excels at: formally verifying small, critical hardware components like adders, multiplexers, registers, and program counters.
+2.  **Export Proofs:** These verified "sacred bricks" can then be used with confidence by higher-level tools or conventional code to construct an optimized zkVM circuit.
+3.  **Ambient Monitors:** Tau can still be used to specify and monitor high-level properties of the larger system, such as memory isolation or protocol correctness.
+
+## Repository Structure
+
+The project is organized around the verification workflow:
+
+-   `microlibrary/`: Contains the Tau definitions for hardware components.
+    -   `passed/`: **Sacred Bricks.** These components are formally verified and considered immutable.
+    -   `pending/`: Components that are new, being debugged, or awaiting verification.
+-   `proofs/`: Contains the equivalence proofs for the components in the microlibrary.
+    -   `passed/`: Proofs that have successfully run, verifying a component.
+    -   `pending/`: Proofs that are under development.
+
+## Verification Workflow
+
+Our core verification strategy is the **UNSAT Discrepancy Proof**. To prove a structural implementation (`*_s.tau`) is equivalent to its mathematical specification (`*_b.tau`), we create a proof that asserts there exists a set of inputs for which their outputs differ. The Tau solver must prove this assertion is **unsatisfiable**.
+
+### Running a Proof
+
+To run a proof, you need a local build of the [Tau Language](https://github.com/IDNI/tau-lang). The canonical way to execute a proof is to pipe it directly into the `tau` executable:
+
 ```bash
-curl -sSL https://raw.githubusercontent.com/TheDarkLightX/TauFoldzkVM/main/install.sh | bash
+# Example: Verifying the 2-bit program counter
+cat proofs/pending/prove_pc2_equivalence.tau | ./path/to/tau-lang/build-Release/tau
 ```
 
-### Manual Installation
-```bash
-git clone https://github.com/TheDarkLightX/TauFoldzkVM.git
-cd TauFoldzkVM
-./install.sh
-```
+A successful proof will output `%1: T`, indicating the solver proved the discrepancy was unsatisfiable.
 
-### Alternative Commands
-```bash
-# One-time setup
-./setup.sh
+### Best Practices
 
-# Run the interactive TUI demo
-./run.sh
+1.  **Contracts First, Then Structure:** Always start with a clear mathematical contract (`_b.tau`) before building the gate-level implementation (`_s.tau`).
+2.  **Slice and Decompose:** Prove components at the smallest possible scale (1-bit, one mode, one cycle) and compose them hierarchically.
+3.  **Guard All Inputs:** Use helper predicates like `bit(x)` to constrain the domain of variables, preventing the solver from exploring impossible states.
 
-# Or run in demo mode (no Tau required)
-./demo.sh
-```
+## Project Status
 
-That's it! The TUI will launch with 5 interactive demo applications.
+This project is an active research and development effort. We are focused on building out the foundational layers of a zkVM, including:
 
-## Important Notice
+-   Arithmetic Logic Unit (ALU) components
+-   Register files and memory blocks
+-   Program counters and instruction decoders
 
-This project generates Tau language programs but does not include or distribute the Tau language itself. Users must obtain Tau separately from [IDNI](https://github.com/IDNI/tau-lang) under their license terms.
-
-## Demo Applications
-
-The TUI includes 5 fully interactive demo applications:
-
-### 🧮 Calculator
-Basic arithmetic with zero-knowledge proofs for every operation
-
-### 🔐 Crypto Demo  
-SHA256 hashing, digital signatures, and encryption - all with ZK proofs
-
-### 👾 Pacman Game
-Full game with ghost AI where every move is cryptographically verified
-
-### 💰 Smart Contract
-ERC20-like token with transfers, minting, and burning in zkVM
-
-### 🥤 Vending Machine
-Complete finite state machine demonstrating state transition proofs
-
-## Overview
-
-TauFoldZKVM implements a zkVM using:
-- **Jolt/Lasso lookup tables** for efficient arithmetic operations
-- **ProtoStar folding** with noise vectors for accumulation
-- **8-instruction ISA** mixing lookups and constraints
-- **Distributed proving** with market-based incentives
-
-## Architecture
-
-```
-src/zkvm/
-├── lookups/          # Lookup table infrastructure
-├── folding/          # ProtoStar folding implementation
-├── isa/              # Instruction set architecture
-├── distributed/      # Distributed proving system
-└── contracts/        # Boolean/Heyting algebra contracts
-```
-
-## Key Components
-
-### 1. Lookup Tables (Phase 1)
-- 8-bit operations: AND, OR, XOR, ADD, SUB, SHL, SHR
-- 16-bit decomposition framework
-- 5-10x constraint reduction vs direct encoding
-- All validations proven satisfiable
-
-### 2. ProtoStar Folding (Phase 2)
-- Explicit noise vector tracking
-- High-degree gate support (degree 3+)
-- O(d) lookup integration
-- ~150 constraints per fold
-
-### 3. Instruction Set (Phase 3)
-- 8 instructions: LUT8, LUT16, FOLD, COMM, LOAD, STORE, COND, HALT
-- Mixed lookup/constraint approach
-- Native ProtoStar support
-- ~60 constraints per instruction average
-
-### 4. Distributed Proving (Phase 4)
-- Time-based execution sharding
-- Reverse auction shard assignment
-- Binary tree aggregation
-- Verification market incentives
-
-## Usage
-
-### Validating Lookups
-```bash
-./external_dependencies/run_tau.sh src/zkvm/lookups/lut_and_15_240.tau
-```
-
-### Testing Folding
-```bash
-./external_dependencies/run_tau.sh src/zkvm/folding/protostar_degree3.tau
-```
-
-### Running ISA Tests
-```bash
-./external_dependencies/run_tau.sh src/zkvm/isa/isa_decoder_simple.tau
-```
-
-## Tau Language Learnings
-
-### Critical Quirks Discovered
-1. **File mode limitations**: Only single `solve` statements
-2. **NOT operator issues**: Use `(x+1)` instead of `x'` for 0-checks
-3. **Expression length**: ~800 character limit
-4. **Variable naming**: No underscores, use simple names
-
-### Working Patterns
-```tau
-# Validated lookup pattern
-solve a0=1 && ... && r0=(a0&b0) && ... && 
-      t0=(r0+1) && ... && result=(t0&t1&...)
-quit
-```
-
-## Performance Metrics
-
-- **8-bit lookup**: 20-50 constraints
-- **16-bit via decomposition**: 100-150 constraints  
-- **ProtoStar fold**: 150-200 constraints
-- **Full instruction**: 50-100 constraints
-- **Total per VM step**: ~300 constraints (well under 40k limit)
-
-## Implementation Status
-
-✅ **Phase 1**: Lookup tables (AND, OR, XOR, ADD, SUB, SHL, SHR)
-✅ **Phase 2**: ProtoStar folding with noise vectors
-✅ **Phase 3**: 8-instruction ISA implementation
-✅ **Phase 4**: Distributed proving specification
-
-## Files Created
-
-- **81 total files**: 45 .tau specs, 6 Python generators, 30 documentation files
-- **All validations pass**: Every Tau specification is satisfiable
-- **Complete test coverage**: Multiple test cases per operation
-
-## Integration with Tau Standard Library
-
-This zkVM integrates with existing Tau components:
-- Uses RC hash from `src/crypto/rc/` for commitments
-- Follows Boolean algebra patterns from `src/core/`
-- Compatible with contract framework from `booleancontractdesign.md`
-
-## Future Work
-
-1. **Full multiplication**: Complete 8-bit MUL implementation
-2. **Memory subsystem**: Larger address space
-3. **Contract integration**: Boolean algebra assume-guarantee
-4. **Performance optimization**: Further constraint reduction
-5. **Real deployment**: Integration with proving network
-
-## Safety Considerations
-
-- All operations validated through satisfiability
-- No procedural code - pure constraint declarations
-- Distributed system designed for trustless operation
-- Economic incentives align with security
-
-## Documentation Updates
-
-This implementation adds significant new capabilities to the Tau Standard Library:
-- First zkVM implementation in pure constraints
-- Demonstrates advanced folding schemes
-- Shows distributed system design in Tau
-- Provides reusable lookup table framework
-
-The implementation serves as both a practical zkVM and a demonstration of Tau's capabilities for complex constraint systems.
+Our primary goal is to create a robust, open-source library of formally verified components, establishing a foundation of trust for future zkVM development.
